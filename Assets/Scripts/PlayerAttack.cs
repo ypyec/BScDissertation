@@ -28,9 +28,17 @@ public class PlayerAttack : MonoBehaviour
 			anim.SetTrigger ("Hit");
 		} else if (Input.GetAxisRaw ("Fire2") != 0) {
 			anim.SetTrigger ("Hit2");
+		} else if (Input.GetAxisRaw ("Fire3") != 0) {
+			anim.SetTrigger ("Hit3");
+		} else if (Input.GetAxisRaw ("Fire4") != 0) {
+			anim.SetTrigger ("Block");
 		} else {
 			anim.ResetTrigger ("Hit");
 			anim.ResetTrigger ("Hit2");
+			anim.ResetTrigger ("Hit3");
+			anim.ResetTrigger ("Block");
 		}
+
+
 	}
 }

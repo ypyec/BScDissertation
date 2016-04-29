@@ -6,13 +6,15 @@ public class PlayerMovement : MonoBehaviour
 
 	Vector3 movement;                   
 	Animator anim;                      
-	Rigidbody playerRigidbody;          
+	Rigidbody playerRigidbody;
+	bool attacking;
 
 	void Awake ()
 	{
 		movement = new Vector3 (0f, 0f, 0f);
 		anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
+		attacking = false;
 	}
 
 
@@ -21,8 +23,23 @@ public class PlayerMovement : MonoBehaviour
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
 
-		Move (h, v);
-		Animating (h, v);
+		if(	this.anim.GetCurrentAnimatorStateInfo(0).IsName("bigHit") ||
+			this.anim.GetCurrentAnimatorStateInfo(0).IsName("block") ||
+			this.anim.GetCurrentAnimatorStateInfo(0).IsName("SuperCharge"))
+		{
+			// Avoid any reload.
+			this.attacking = true;
+		}
+		else if (this.attacking)
+		{
+			this.attacking = false;
+			// You have just leaved your state!
+		}
+
+		if (!attacking) {
+			Move (h, v);
+			Animating (h, v);
+		}
 	}
 
 	void Move (float h, float v)
