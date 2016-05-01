@@ -16,19 +16,25 @@ public class PlayerAttack : MonoBehaviour
 	public float skillTwoCD = 10f;
 
 
+	public GameObject blockObj;
+	public float blockCD = 10f;
+
+	public GameObject superChargeObj;
+	public int superChargeDMG = 10;
+	public float superChargeCD = 10f;
+
 	Animator anim;
 	float [] cooldowns;                                    
-
-
-	private GameObject NowShot;
+	bool attacking;
 
 	void Awake ()
 	{
-		NowShot = null;
 		anim = GetComponent <Animator> ();
 		cooldowns = new float[4];
 		cooldowns [0] = basicShotCD;
 		cooldowns [1] = skillTwoCD;
+		cooldowns [2] = blockCD;
+		cooldowns [3] = superChargeCD;
 	}
 
 
@@ -38,21 +44,38 @@ public class PlayerAttack : MonoBehaviour
 			cooldowns [i] += Time.deltaTime;
 		}
 
-
-		if(Input.GetButton ("Fire1") && cooldowns[0] >= basicShotCD){
-			StartCoroutine (animateAttack ());
-		} else if (Input.GetButton ("Fire2") && cooldowns[1] >= skillTwoCD) {
-			StartCoroutine (animateSkillTwo ());
-		} else if (Input.GetAxisRaw ("Fire3") != 0) {
-			anim.SetTrigger ("Hit3");
-		} else if (Input.GetAxisRaw ("Fire4") != 0) {
-			anim.SetTrigger ("Block");
-		} else {
-			anim.ResetTrigger ("Hit");
-			anim.ResetTrigger ("Hit2");
-			anim.ResetTrigger ("Hit3");
-			anim.ResetTrigger ("Block");
+		if(	this.anim.GetCurrentAnimatorStateInfo(0).IsName("bigHit") ||
+			this.anim.GetCurrentAnimatorStateInfo(0).IsName("block") ||
+			this.anim.GetCurrentAnimatorStateInfo(0).IsName("SuperCharge"))
+		{
+			// Avoid any reload.
+			this.attacking = true;
 		}
+		else if (this.attacking)
+		{
+			this.attacking = false;
+			// You have just leaved your state!
+		}
+
+		if (!this.attacking) {
+			if(Input.GetButton ("Fire1") && cooldowns[0] >= basicShotCD)
+			{
+				StartCoroutine (animateAttack ());
+			} else if (Input.GetButton ("Fire2") && cooldowns[1] >= skillTwoCD) {
+				StartCoroutine (animateSkillTwo ());
+			} else if (Input.GetButton ("Fire3") && cooldowns[2] >= skillTwoCD) {
+				StartCoroutine(animateBlock ());
+			} else if (Input.GetButton ("Fire4") && cooldowns[3] >= superChargeCD) {
+				StartCoroutine(animateSuperCharge ());
+			} else {
+				anim.ResetTrigger ("Hit");
+				anim.ResetTrigger ("Hit2");
+				anim.ResetTrigger ("Hit3");
+				anim.ResetTrigger ("Block");
+			}
+		}
+
+
 	}
 
 	IEnumerator animateAttack(){
@@ -93,10 +116,48 @@ public class PlayerAttack : MonoBehaviour
 		GameObject s1 = (GameObject)Instantiate(skillTwo, skillTwoOrigin.transform.position, this.transform.rotation);
 		s1.GetComponent<BeamParam>().SetBeamParam(this.GetComponent<BeamParam>());
 
-		NowShot = (GameObject)Instantiate(wave, this.transform.position, this.transform.rotation);
+		GameObject NowShot = (GameObject)Instantiate(wave, this.transform.position, this.transform.rotation);
 		NowShot.transform.localScale *= 0.25f;
 		NowShot.transform.Rotate(Vector3.left, 90.0f);
 		NowShot.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
+	}
+
+	IEnumerator animateBlock(){
+		cooldowns [2] = 0f;
+		anim.SetTrigger ("Block");
+
+		yield return new WaitForSeconds (0.1f);
+
+		block ();
+
+	}
+
+	void block(){
+
+		Vector3 bPos = new Vector3 ();
+		bPos = this.transform.position;
+		bPos.y = 1;
+		GameObject b = (GameObject)Instantiate (blockObj, bPos, this.transform.rotation);
+		Destroy (b, 3.3f);
+	}
+
+	IEnumerator animateSuperCharge(){
+		cooldowns [3] = 0f;
+		anim.SetTrigger ("Hit3");
+
+		yield return new WaitForSeconds (2.2f);
+
+		superCharge ();
+
+	}
+
+	void superCharge(){
+
+		Vector3 scPos = new Vector3 ();
+		scPos = this.transform.position;
+		scPos.y = 1;
+		GameObject sc = (GameObject)Instantiate (superChargeObj, scPos, this.transform.rotation);
+		Destroy (sc, 0.5f);
 	}
 }
