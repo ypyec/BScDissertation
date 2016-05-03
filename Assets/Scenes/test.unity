@@ -226,48 +226,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &288508678
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 288508670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c54b008096aa54531af27843cbe7fe6b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wave: {fileID: 0}
-  basicShot: {fileID: 0}
-  basicShotOrigin: {fileID: 0}
-  basicShotDMG: 5
-  basicShotCD: 0.65
-  skillTwo: {fileID: 0}
-  skillTwoOrigin: {fileID: 0}
-  skillTwoDMG: 10
-  skillTwoCD: 10
-  blockObj: {fileID: 0}
-  blockCD: 10
-  superChargeObj: {fileID: 0}
-  superChargeDMG: 10
-  superChargeCD: 10
---- !u!114 &288508679
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 288508670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5efe3bc5e3edb3e42b0a9a45eec91b94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BeamColor: {r: 1, g: 0, b: 0, a: 1}
-  AnimationSpd: 0.1
-  Scale: 0.5
-  MaxLength: 32
-  bEnd: 0
-  bGero: 0
 --- !u!1001 &838050382
 Prefab:
   m_ObjectHideFlags: 0

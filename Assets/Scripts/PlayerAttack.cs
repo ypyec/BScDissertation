@@ -90,7 +90,11 @@ public class PlayerAttack : MonoBehaviour
 
 	void attack(){
 
-		GameObject s1 = (GameObject)Instantiate(basicShot, basicShotOrigin.transform.position, this.transform.rotation);
+		Vector3 shotPosition = new Vector3 ();
+		shotPosition = basicShotOrigin.transform.position;
+		shotPosition.y = 0.2f;
+
+		GameObject s1 = (GameObject)Instantiate(basicShot, shotPosition, this.transform.rotation);
 		s1.GetComponent<BeamParam>().SetBeamParam(this.GetComponent<BeamParam>());
 
 		GameObject wav = (GameObject)Instantiate(wave, this.transform.position, this.transform.rotation);
@@ -113,7 +117,11 @@ public class PlayerAttack : MonoBehaviour
 
 	void useSkillTwo(){
 
-		GameObject s1 = (GameObject)Instantiate(skillTwo, skillTwoOrigin.transform.position, this.transform.rotation);
+		Vector3 shotPosition = new Vector3 ();
+		shotPosition = skillTwoOrigin.transform.position;
+		shotPosition.y = 0.2f;
+
+		GameObject s1 = (GameObject)Instantiate(skillTwo, shotPosition, this.transform.rotation);
 		s1.GetComponent<BeamParam>().SetBeamParam(this.GetComponent<BeamParam>());
 
 		GameObject NowShot = (GameObject)Instantiate(wave, this.transform.position, this.transform.rotation);
