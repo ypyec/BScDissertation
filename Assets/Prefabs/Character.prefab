@@ -12253,6 +12253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  attacking: 0
 --- !u!114 &11426542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -12626,7 +12627,7 @@ MonoBehaviour:
         dazName: Genesis2Female__PHMFaceYoung
         blendshapeType: 3
         isLocked: 0
-        currentValue: 100
+        currentValue: 0
         defaultValue: 0
       - _ID: FHMGoblin
         dazName: Genesis2Female__FHMGoblin
@@ -12728,13 +12729,13 @@ MonoBehaviour:
         dazName: Genesis2Female__PHMMouthNarrowL
         blendshapeType: 3
         isLocked: 0
-        currentValue: 25
+        currentValue: 0
         defaultValue: 0
       - _ID: PHMMouthNarrowR
         dazName: Genesis2Female__PHMMouthNarrowR
         blendshapeType: 3
         isLocked: 0
-        currentValue: 25
+        currentValue: 0
         defaultValue: 0
       - _ID: PHMMouthSmile
         dazName: Genesis2Female__PHMMouthSmile
@@ -12788,7 +12789,7 @@ MonoBehaviour:
         dazName: Genesis2Female__PHMNoseDepth
         blendshapeType: 3
         isLocked: 0
-        currentValue: 38.9
+        currentValue: 0
         defaultValue: 0
       - _ID: PHMNoseSize
         dazName: Genesis2Female__PHMNoseSize
@@ -13081,7 +13082,7 @@ MonoBehaviour:
         dazName: Genesis2Female__PHMFaceYoung
         blendshapeType: 3
         isLocked: 0
-        currentValue: 100
+        currentValue: 0
         defaultValue: 0
       - _ID: FHMGoblin
         dazName: Genesis2Female__FHMGoblin
@@ -13153,13 +13154,13 @@ MonoBehaviour:
         dazName: Genesis2Female__PHMMouthNarrowL
         blendshapeType: 3
         isLocked: 0
-        currentValue: 25
+        currentValue: 0
         defaultValue: 0
       - _ID: PHMMouthNarrowR
         dazName: Genesis2Female__PHMMouthNarrowR
         blendshapeType: 3
         isLocked: 0
-        currentValue: 25
+        currentValue: 0
         defaultValue: 0
       - _ID: PHMMouthSmile
         dazName: Genesis2Female__PHMMouthSmile
@@ -13195,7 +13196,7 @@ MonoBehaviour:
         dazName: Genesis2Female__PHMNoseDepth
         blendshapeType: 3
         isLocked: 0
-        currentValue: 38.9
+        currentValue: 0
         defaultValue: 0
       - _ID: PHMNoseSize
         dazName: Genesis2Female__PHMNoseSize
@@ -18820,7 +18821,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 38.9
   - 0
   - 0
   - 0
@@ -18838,7 +18838,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 100
   - 0
   - 0
   - 0
@@ -19044,8 +19043,10 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 25
-  - 25
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0
@@ -19227,7 +19228,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 38.9
   - 0
   - 0
   - 0
@@ -19245,7 +19245,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 100
   - 0
   - 0
   - 0
@@ -19451,8 +19450,10 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 25
-  - 25
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0
@@ -19971,7 +19972,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 38.9
   - 0
   - 0
   - 0
@@ -19989,7 +19989,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 100
   - 0
   - 0
   - 0
@@ -20195,8 +20194,10 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 25
-  - 25
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0
@@ -20311,13 +20312,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 38.9
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 100
   - 0
   - 0
   - 0
@@ -20358,8 +20352,15 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 25
-  - 25
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0
@@ -21154,7 +21155,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 38.9
   - 0
   - 0
   - 0
@@ -21172,7 +21172,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 100
   - 0
   - 0
   - 0
@@ -21378,8 +21377,10 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 25
-  - 25
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0
@@ -21568,13 +21569,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 38.9
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 100
   - 0
   - 0
   - 0
@@ -21615,8 +21609,15 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 25
-  - 25
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0
@@ -21811,7 +21812,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 38.9
   - 0
   - 0
   - 0
@@ -21829,7 +21829,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 100
   - 0
   - 0
   - 0
@@ -22035,8 +22034,10 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 25
-  - 25
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0
@@ -22326,7 +22327,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 38.9
   - 0
   - 0
   - 0
@@ -22344,7 +22344,6 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 100
   - 0
   - 0
   - 0
@@ -22550,8 +22549,10 @@ SkinnedMeshRenderer:
   - 0
   - 0
   - 0
-  - 25
-  - 25
+  - 0
+  - 0
+  - 0
+  - 0
   - 0
   - 0
   - 0

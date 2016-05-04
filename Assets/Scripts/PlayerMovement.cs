@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
 	Vector3 movement;                   
 	Animator anim;                      
 	Rigidbody playerRigidbody;
-	bool attacking;
+	public bool attacking;
 
 	void Awake ()
 	{
@@ -17,30 +18,35 @@ public class PlayerMovement : MonoBehaviour
 		attacking = false;
 	}
 
+//	void Update(){
+//		if (this.anim.GetCurrentAnimatorStateInfo (0).IsName ("basicHit") ||
+//		   this.anim.GetCurrentAnimatorStateInfo (0).IsName ("bigHit") ||
+//		   this.anim.GetCurrentAnimatorStateInfo (0).IsName ("block") ||
+//		   this.anim.GetCurrentAnimatorStateInfo (0).IsName ("SuperCharge")) {
+//			// Avoid any reload.
+//			this.attacking = true;
+//		} else if (this.attacking) {
+//			this.attacking = false;
+//		}
+//	}
 
 	void FixedUpdate ()
 	{
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
 
-		if(	this.anim.GetCurrentAnimatorStateInfo(0).IsName("bigHit") ||
-			this.anim.GetCurrentAnimatorStateInfo(0).IsName("block") ||
-			this.anim.GetCurrentAnimatorStateInfo(0).IsName("SuperCharge"))
-		{
-			// Avoid any reload.
-			this.attacking = true;
-		}
-		else if (this.attacking)
-		{
-			this.attacking = false;
-			// You have just leaved your state!
-		}
-
 		if (!attacking) {
 			Move (h, v);
 			Animating (h, v);
 		}
+
+//		if (!((Input.GetButton ("Fire1") || Input.GetButton ("Fire2") || Input.GetButton ("Fire3") || Input.GetButton ("Fire4")))) {
+//			
+//		}
+
 	}
+
+
 
 	void Move (float h, float v)
 	{

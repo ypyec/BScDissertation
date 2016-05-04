@@ -8,7 +8,7 @@ public class PlayerAttack : MonoBehaviour
 	public GameObject basicShot;
 	public GameObject basicShotOrigin;
 	public int basicShotDMG = 5;                  
-	public float basicShotCD = 0.65f;
+	public float basicShotCD = 0.95f;
 
 	public GameObject skillTwo;
 	public GameObject skillTwoOrigin;
@@ -23,18 +23,36 @@ public class PlayerAttack : MonoBehaviour
 	public int superChargeDMG = 10;
 	public float superChargeCD = 10f;
 
+
+	Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
+	int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
+	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 	Animator anim;
-	float [] cooldowns;                                    
+	float [] cooldowns;
+	float [] activeCooldowns;
 	bool attacking;
+	PlayerMovement pm;
+	int activeSkill;
 
 	void Awake ()
 	{
+		floorMask = LayerMask.GetMask ("Floor");
 		anim = GetComponent <Animator> ();
+		playerRigidbody = GetComponent <Rigidbody> ();
+		pm = GetComponent <PlayerMovement> ();
+
+		activeSkill = 0;
 		cooldowns = new float[4];
 		cooldowns [0] = basicShotCD;
 		cooldowns [1] = skillTwoCD;
 		cooldowns [2] = blockCD;
 		cooldowns [3] = superChargeCD;
+
+		activeCooldowns = new float[4];
+		activeCooldowns [0] = basicShotCD;
+		activeCooldowns [1] = skillTwoCD;
+		activeCooldowns [2] = blockCD;
+		activeCooldowns [3] = superChargeCD;
 	}
 
 
@@ -44,29 +62,22 @@ public class PlayerAttack : MonoBehaviour
 			cooldowns [i] += Time.deltaTime;
 		}
 
-		if(	this.anim.GetCurrentAnimatorStateInfo(0).IsName("bigHit") ||
-			this.anim.GetCurrentAnimatorStateInfo(0).IsName("block") ||
-			this.anim.GetCurrentAnimatorStateInfo(0).IsName("SuperCharge"))
-		{
-			// Avoid any reload.
-			this.attacking = true;
-		}
-		else if (this.attacking)
-		{
-			this.attacking = false;
-			// You have just leaved your state!
+		if (Input.GetButton ("Skill 1")) {
+			activeSkill = 0;
+		} else if (Input.GetButton ("Skill 2")) {
+			activeSkill = 1;
+		} else if (Input.GetButton ("Skill 3")) {
+			activeSkill = 2;
+		} else if (Input.GetButton ("Skill 4")) {
+			activeSkill = 3;
 		}
 
+
 		if (!this.attacking) {
-			if(Input.GetButton ("Fire1") && cooldowns[0] >= basicShotCD)
-			{
-				StartCoroutine (animateAttack ());
-			} else if (Input.GetButton ("Fire2") && cooldowns[1] >= skillTwoCD) {
-				StartCoroutine (animateSkillTwo ());
-			} else if (Input.GetButton ("Fire3") && cooldowns[2] >= skillTwoCD) {
-				StartCoroutine(animateBlock ());
-			} else if (Input.GetButton ("Fire4") && cooldowns[3] >= superChargeCD) {
-				StartCoroutine(animateSuperCharge ());
+
+
+			if(Input.GetButton ("Fire") && cooldowns[activeSkill] >= activeCooldowns[activeSkill]){
+				attack (activeSkill);
 			} else {
 				anim.ResetTrigger ("Hit");
 				anim.ResetTrigger ("Hit2");
@@ -78,26 +89,48 @@ public class PlayerAttack : MonoBehaviour
 
 	}
 
-	IEnumerator animateAttack(){
+	void attack(int skill){
+		this.attacking = pm.attacking = true;
+		switch (skill) {
+		case 0:
+			StartCoroutine (Turning (0.5f));
+			StartCoroutine (animateSkillOne ());
+			break;
+		case 1:
+			StartCoroutine (Turning (1.8f));
+			StartCoroutine (animateSkillTwo ());
+			break;
+		case 2:
+			StartCoroutine (Turning (3.3f));
+			StartCoroutine (animateBlock ());
+			break;
+		case 3: 
+			StartCoroutine (Turning (2.5f));
+			StartCoroutine (animateSuperCharge ());
+			break;
+		default:
+			break;
+		}
+	}
+
+
+	IEnumerator animateSkillOne(){
+
 		cooldowns[0] = 0f;
 		anim.SetTrigger ("Hit");
 
 		yield return new WaitForSeconds (0.27f);
 
-		attack ();
+		useSkillOne();
 
 	}
 
-	void attack(){
+	void useSkillOne(){
 
-		Vector3 shotPosition = new Vector3 ();
-		shotPosition = basicShotOrigin.transform.position;
-		shotPosition.y = 0.2f;
-
-		GameObject s1 = (GameObject)Instantiate(basicShot, shotPosition, this.transform.rotation);
+		GameObject s1 = (GameObject)Instantiate(basicShot, basicShotOrigin.transform.position, this.transform.rotation);
 		s1.GetComponent<BeamParam>().SetBeamParam(this.GetComponent<BeamParam>());
 
-		GameObject wav = (GameObject)Instantiate(wave, this.transform.position, this.transform.rotation);
+		GameObject wav = (GameObject)Instantiate(wave, basicShotOrigin.transform.position, this.transform.rotation);
 		wav.transform.localScale *= 0.25f;
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
@@ -117,14 +150,10 @@ public class PlayerAttack : MonoBehaviour
 
 	void useSkillTwo(){
 
-		Vector3 shotPosition = new Vector3 ();
-		shotPosition = skillTwoOrigin.transform.position;
-		shotPosition.y = 0.2f;
-
-		GameObject s1 = (GameObject)Instantiate(skillTwo, shotPosition, this.transform.rotation);
+		GameObject s1 = (GameObject)Instantiate(skillTwo, skillTwoOrigin.transform.position, this.transform.rotation);
 		s1.GetComponent<BeamParam>().SetBeamParam(this.GetComponent<BeamParam>());
 
-		GameObject NowShot = (GameObject)Instantiate(wave, this.transform.position, this.transform.rotation);
+		GameObject NowShot = (GameObject)Instantiate(wave, skillTwoOrigin.transform.position, this.transform.rotation);
 		NowShot.transform.localScale *= 0.25f;
 		NowShot.transform.Rotate(Vector3.left, 90.0f);
 		NowShot.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
@@ -167,5 +196,34 @@ public class PlayerAttack : MonoBehaviour
 		scPos.y = 1;
 		GameObject sc = (GameObject)Instantiate (superChargeObj, scPos, this.transform.rotation);
 		Destroy (sc, 0.5f);
+	}
+
+	IEnumerator Turning (float duration)
+	{
+		// Create a ray from the mouse cursor on screen in the direction of the camera.
+		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+
+		// Create a RaycastHit variable to store information about what was hit by the ray.
+		RaycastHit floorHit;
+
+		// Perform the raycast and if it hits something on the floor layer...
+		if(Physics.Raycast (camRay, out floorHit, camRayLength, floorMask))
+		{
+			// Create a vector from the player to the point on the floor the raycast from the mouse hit.
+			Vector3 playerToMouse = floorHit.point - transform.position;
+
+			// Ensure the vector is entirely along the floor plane.
+			playerToMouse.y = 0f;
+
+			transform.forward = playerToMouse;
+
+
+		}
+
+
+
+		yield return new WaitForSeconds (duration);
+
+		this.attacking = pm.attacking = false;
 	}
 }
