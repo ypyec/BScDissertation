@@ -23,7 +23,7 @@ public class EnemySight : MonoBehaviour
 	{
 		// Setting up the references.
 		nav = GetComponent<NavMeshAgent>();
-		col = GetComponent<SphereCollider>();
+		col = GetComponentInChildren<SphereCollider>();
 		anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		playerAnim = player.GetComponent<Animator>();
