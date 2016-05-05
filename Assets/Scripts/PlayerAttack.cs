@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerAttack : MonoBehaviour
 {                 
@@ -9,19 +10,22 @@ public class PlayerAttack : MonoBehaviour
 	public GameObject basicShotOrigin;
 	public int basicShotDMG = 5;                  
 	public float basicShotCD = 0.95f;
+	public Image basicShotUI;
 
 	public GameObject skillTwo;
 	public GameObject skillTwoOrigin;
 	public int skillTwoDMG = 10;                  
 	public float skillTwoCD = 10f;
-
+	public Image skillTwoUI;
 
 	public GameObject blockObj;
 	public float blockCD = 10f;
+	public Image blockUI;
 
 	public GameObject superChargeObj;
 	public int superChargeDMG = 10;
 	public float superChargeCD = 10f;
+	public Image superChargeUI;
 
 
 	Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
@@ -33,6 +37,8 @@ public class PlayerAttack : MonoBehaviour
 	bool attacking;
 	PlayerMovement pm;
 	int activeSkill;
+	Vector2 activeSkillSize;
+	Vector2 unActiveSkillSize;
 
 	void Awake ()
 	{
@@ -42,6 +48,10 @@ public class PlayerAttack : MonoBehaviour
 		pm = GetComponent <PlayerMovement> ();
 
 		activeSkill = 0;
+
+		activeSkillSize = new Vector2 (60, 60);
+		unActiveSkillSize = new Vector2 (50, 50);
+
 		cooldowns = new float[4];
 		cooldowns [0] = basicShotCD;
 		cooldowns [1] = skillTwoCD;
@@ -62,14 +72,32 @@ public class PlayerAttack : MonoBehaviour
 			cooldowns [i] += Time.deltaTime;
 		}
 
+
+
 		if (Input.GetButton ("Skill 1")) {
 			activeSkill = 0;
+			basicShotUI.rectTransform.sizeDelta = activeSkillSize;
+			skillTwoUI.rectTransform.sizeDelta = unActiveSkillSize;
+			blockUI.rectTransform.sizeDelta = unActiveSkillSize;
+			superChargeUI.rectTransform.sizeDelta = unActiveSkillSize;
 		} else if (Input.GetButton ("Skill 2")) {
 			activeSkill = 1;
+			basicShotUI.rectTransform.sizeDelta = unActiveSkillSize;
+			skillTwoUI.rectTransform.sizeDelta = activeSkillSize;
+			blockUI.rectTransform.sizeDelta = unActiveSkillSize;
+			superChargeUI.rectTransform.sizeDelta = unActiveSkillSize;
 		} else if (Input.GetButton ("Skill 3")) {
 			activeSkill = 2;
+			basicShotUI.rectTransform.sizeDelta = unActiveSkillSize;
+			skillTwoUI.rectTransform.sizeDelta = unActiveSkillSize;
+			blockUI.rectTransform.sizeDelta = activeSkillSize;
+			superChargeUI.rectTransform.sizeDelta = unActiveSkillSize;
 		} else if (Input.GetButton ("Skill 4")) {
 			activeSkill = 3;
+			basicShotUI.rectTransform.sizeDelta = unActiveSkillSize;
+			skillTwoUI.rectTransform.sizeDelta = unActiveSkillSize;
+			blockUI.rectTransform.sizeDelta = unActiveSkillSize;
+			superChargeUI.rectTransform.sizeDelta = activeSkillSize;
 		}
 
 

@@ -14947,15 +14947,19 @@ MonoBehaviour:
   basicShotOrigin: {fileID: 105090}
   basicShotDMG: 5
   basicShotCD: 0.95
+  basicShotUI: {fileID: 0}
   skillTwo: {fileID: 100006, guid: 18e6997b0cea7f249bf0e687ba9da449, type: 2}
   skillTwoOrigin: {fileID: 147704}
   skillTwoDMG: 10
   skillTwoCD: 10
+  skillTwoUI: {fileID: 0}
   blockObj: {fileID: 100000, guid: 0211f56c1dcc00f479c8d7342db06c51, type: 2}
   blockCD: 10
+  blockUI: {fileID: 0}
   superChargeObj: {fileID: 100008, guid: c459dc8cf2a04624eb4d91f0b9ef9daa, type: 2}
   superChargeDMG: 10
   superChargeCD: 10
+  superChargeUI: {fileID: 0}
 --- !u!114 &11479050
 MonoBehaviour:
   m_ObjectHideFlags: 1
