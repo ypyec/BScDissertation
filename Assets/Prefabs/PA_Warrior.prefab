@@ -181,6 +181,7 @@ GameObject:
   - 195: {fileID: 19588600}
   - 114: {fileID: 11463394}
   - 114: {fileID: 11484346}
+  - 114: {fileID: 11479618}
   m_Layer: 0
   m_Name: PA_Warrior
   m_TagString: Untagged
@@ -979,6 +980,20 @@ MonoBehaviour:
   personalLastSighting: {x: 0, y: 0, z: 0}
   resetposition: {x: 1000, y: 1000, z: 1000}
   playerposition: {x: 1000, y: 1000, z: 1000}
+--- !u!114 &11479618
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 142710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51e7c4db81148417db68f5bb6d308661, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 15
+  currentHealth: 0
+  scoreValue: 10
 --- !u!114 &11484346
 MonoBehaviour:
   m_ObjectHideFlags: 1
