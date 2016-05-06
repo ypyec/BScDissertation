@@ -2,6 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
+ 
 public class PlayerAttack : MonoBehaviour
 {                 
 	public GameObject wave;
@@ -25,6 +27,7 @@ public class PlayerAttack : MonoBehaviour
 	public GameObject superChargeObj;
 	public int superChargeDMG = 10;
 	public float superChargeCD = 10f;
+	public float superChargeStunDuration = 2f;
 	public Image superChargeUI;
 
 	int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
@@ -266,6 +269,7 @@ public class PlayerAttack : MonoBehaviour
 
 	void superCharge(){
 
+		this.GetComponent <SphereCollider> ().enabled = true;
 		Vector3 scPos = new Vector3 ();
 		scPos = this.transform.position;
 		scPos.y = 1;
@@ -299,7 +303,7 @@ public class PlayerAttack : MonoBehaviour
 
 		yield return new WaitForSeconds (duration);
 
-		blocking = this.attacking = pm.attacking = false;
+		this.GetComponent <SphereCollider> ().enabled = blocking = this.attacking = pm.attacking = false;
 	}
 
 	IEnumerator skillCoolDown(Image skill, float cd, float time) {
@@ -314,6 +318,13 @@ public class PlayerAttack : MonoBehaviour
 				skillCD.fillAmount = Mathf.Lerp (1, 0, time);
 			}
 			yield return null;
+		}
+	}
+
+	void OnTriggerStay(Collider other) {
+		if (other.GetComponent <EnemyHealth> ()) {
+			other.GetComponent <EnemyHealth> ().TakeDamage (superChargeDMG, superChargeStunDuration);
+			other.attachedRigidbody.AddForce(other.transform.forward * -20);        
 		}
 	}
 }

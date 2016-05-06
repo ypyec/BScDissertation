@@ -38,7 +38,7 @@ public class EnemyAI : MonoBehaviour
 			Shooting();
 
 		// If the player has been sighted and isn't dead...
-		else */if(enemySight.personalLastSighting != enemySight.resetposition && !enemyHealth.dead() /*&& playerHealth.health > 0f*/)
+		else */if(enemySight.personalLastSighting != enemySight.resetposition && !enemyHealth.dead() && !enemyHealth.stuned /*&& playerHealth.health > 0f*/)
 			// ... chase.
 			Chasing();
 

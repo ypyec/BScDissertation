@@ -456,6 +456,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 10
+  stuned: 0
 --- !u!135 &13542042
 SphereCollider:
   m_ObjectHideFlags: 1

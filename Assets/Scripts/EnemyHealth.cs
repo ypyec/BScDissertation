@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 
 public class EnemyHealth : MonoBehaviour
 {
 	public int startingHealth = 100;           
 	public int currentHealth;                  
-	public int scoreValue = 10;                
+	public int scoreValue = 10;      
+	public bool stuned = false;
 
 
 	Animator anim;                             
@@ -22,17 +24,31 @@ public class EnemyHealth : MonoBehaviour
 	}
 
 
-	public void TakeDamage (int amount)
+	public void TakeDamage (int amount, float stunDuration = 0f)
 	{
 		if(isDead)
 			return;
 
-		currentHealth -= amount;
+		if (stunDuration == 0) {
+			currentHealth -= amount;
+		} else if (!stuned) {
+			currentHealth -= amount;
+			StartCoroutine (Stun (stunDuration));
+		}
+
 
 		if(currentHealth <= 0)
 		{
 			Death ();
 		}
+	}
+
+	IEnumerator Stun (float duration)
+	{
+		stuned = true;
+		anim.SetTrigger ("Stun");
+		yield return new WaitForSeconds (duration);
+		stuned = false;
 	}
 
 
