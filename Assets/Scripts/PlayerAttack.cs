@@ -40,13 +40,11 @@ public class PlayerAttack : MonoBehaviour
 	Vector2 activeSkillSize;
 	Vector2 unActiveSkillSize;
 	Ray shootRay;                                   // A ray from the gun end forwards.
-	RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
-	int shootableMask;
+	RaycastHit shootHit;
 
 	void Awake ()
 	{
 		floorMask = LayerMask.GetMask ("Floor");
-		shootableMask = LayerMask.GetMask ("Shootable");
 		anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
 		pm = GetComponent <PlayerMovement> ();
@@ -151,6 +149,9 @@ public class PlayerAttack : MonoBehaviour
 		cooldowns[0] = 0f;
 		anim.SetTrigger ("Hit");
 
+		basicShotUI.GetComponentsInChildren <Image> () [1].fillAmount = 1;
+		StartCoroutine(skillCoolDown (basicShotUI, basicShotCD, 0));
+
 		yield return new WaitForSeconds (0.27f);
 
 		useSkillOne();
@@ -187,6 +188,9 @@ public class PlayerAttack : MonoBehaviour
 		cooldowns[1] = 0f;
 		anim.SetTrigger ("Hit2");
 
+		skillTwoUI.GetComponentsInChildren <Image> () [1].fillAmount = 1;
+		StartCoroutine(skillCoolDown (skillTwoUI, skillTwoCD, 0));
+
 		yield return new WaitForSeconds (0.55f);
 
 		useSkillTwo ();
@@ -222,6 +226,9 @@ public class PlayerAttack : MonoBehaviour
 		cooldowns [2] = 0f;
 		anim.SetTrigger ("Block");
 
+		blockUI.GetComponentsInChildren <Image> () [1].fillAmount = 1;
+		StartCoroutine(skillCoolDown (blockUI, blockCD, 0));
+
 		yield return new WaitForSeconds (0.1f);
 
 		block ();
@@ -240,6 +247,9 @@ public class PlayerAttack : MonoBehaviour
 	IEnumerator animateSuperCharge(){
 		cooldowns [3] = 0f;
 		anim.SetTrigger ("Hit3");
+
+		superChargeUI.GetComponentsInChildren <Image> () [1].fillAmount = 1;
+		StartCoroutine(skillCoolDown (superChargeUI, superChargeCD, 0));
 
 		yield return new WaitForSeconds (2.2f);
 
@@ -283,5 +293,20 @@ public class PlayerAttack : MonoBehaviour
 		yield return new WaitForSeconds (duration);
 
 		this.attacking = pm.attacking = false;
+	}
+
+	IEnumerator skillCoolDown(Image skill, float cd, float time) {
+
+		Image skillCD = skill.GetComponentsInChildren <Image> () [1];
+
+		while (skillCD.fillAmount > 0) {
+			time += Time.deltaTime / cd;
+			if (skill.Equals (basicShotUI)) {
+				skillCD.fillAmount = Mathf.Lerp (1, 0, time + 0.1f);
+			} else {
+				skillCD.fillAmount = Mathf.Lerp (1, 0, time);
+			}
+			yield return null;
+		}
 	}
 }
