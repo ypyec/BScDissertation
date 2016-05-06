@@ -369,11 +369,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 13666502, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
-        type: 2}
     - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
       propertyPath: basicShotUI
       value: 
@@ -390,6 +385,11 @@ Prefab:
       propertyPath: superChargeUI
       value: 
       objectReference: {fileID: 1534373289}
+    - target: {fileID: 13666502, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
   m_IsPrefabParent: 0

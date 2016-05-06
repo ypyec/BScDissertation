@@ -27,14 +27,13 @@ public class PlayerAttack : MonoBehaviour
 	public float superChargeCD = 10f;
 	public Image superChargeUI;
 
-
-	Rigidbody playerRigidbody;          // Reference to the player's rigidbody.
 	int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
 	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
 	Animator anim;
 	float [] cooldowns;
 	float [] activeCooldowns;
 	bool attacking;
+	bool blocking;
 	PlayerMovement pm;
 	int activeSkill;
 	Vector2 activeSkillSize;
@@ -46,8 +45,9 @@ public class PlayerAttack : MonoBehaviour
 	{
 		floorMask = LayerMask.GetMask ("Floor");
 		anim = GetComponent <Animator> ();
-		playerRigidbody = GetComponent <Rigidbody> ();
 		pm = GetComponent <PlayerMovement> ();
+
+		blocking = false;
 
 		activeSkill = 0;
 
@@ -116,6 +116,12 @@ public class PlayerAttack : MonoBehaviour
 			}
 		}
 
+		if (blocking) {
+			GetComponent <CapsuleCollider> ().isTrigger = true;
+		} else {
+			GetComponent <CapsuleCollider> ().isTrigger = false;
+		}
+
 
 	}
 
@@ -131,7 +137,7 @@ public class PlayerAttack : MonoBehaviour
 			StartCoroutine (animateSkillTwo ());
 			break;
 		case 2:
-			StartCoroutine (Turning (3.3f));
+			StartCoroutine (Turning (3.5f));
 			StartCoroutine (animateBlock ());
 			break;
 		case 3: 
@@ -236,7 +242,7 @@ public class PlayerAttack : MonoBehaviour
 	}
 
 	void block(){
-
+		blocking = true;
 		Vector3 bPos = new Vector3 ();
 		bPos = this.transform.position;
 		bPos.y = 1;
@@ -292,7 +298,7 @@ public class PlayerAttack : MonoBehaviour
 
 		yield return new WaitForSeconds (duration);
 
-		this.attacking = pm.attacking = false;
+		blocking = this.attacking = pm.attacking = false;
 	}
 
 	IEnumerator skillCoolDown(Image skill, float cd, float time) {

@@ -14953,7 +14953,7 @@ MonoBehaviour:
   skillTwoDMG: 10
   skillTwoCD: 10
   skillTwoUI: {fileID: 0}
-  blockObj: {fileID: 100000, guid: 0211f56c1dcc00f479c8d7342db06c51, type: 2}
+  blockObj: {fileID: 100000, guid: 483405fce84da4e7d870b379d258f9f3, type: 2}
   blockCD: 10
   blockUI: {fileID: 0}
   superChargeObj: {fileID: 100008, guid: c459dc8cf2a04624eb4d91f0b9ef9daa, type: 2}
