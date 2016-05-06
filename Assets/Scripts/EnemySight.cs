@@ -57,9 +57,11 @@ public class EnemySight : MonoBehaviour
 
 	void OnTriggerStay (Collider other)
 	{
+		
 		// If the player has entered the trigger sphere...
 		if(other.gameObject == player)
 		{
+			
 			// By default the player is not in sight.
 			playerInSight = false;
 
@@ -70,11 +72,14 @@ public class EnemySight : MonoBehaviour
 			// If the angle between forward and where the player is, is less than half the angle of view...
 			if(angle < fieldOfViewAngle * 0.5f)
 			{
+				
 				RaycastHit hit;
 
+
 				// ... and if a raycast towards the player hits something...
-				if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius))
+				if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius*2))
 				{
+					
 					// ... and if the raycast hits the player...
 					if(hit.collider.gameObject == player)
 					{
