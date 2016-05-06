@@ -141,7 +141,7 @@ public class PlayerAttack : MonoBehaviour
 			StartCoroutine (animateBlock ());
 			break;
 		case 3: 
-			StartCoroutine (Turning (2.5f));
+			StartCoroutine (Turning (1.4f));
 			StartCoroutine (animateSuperCharge ());
 			break;
 		default:
@@ -226,6 +226,7 @@ public class PlayerAttack : MonoBehaviour
 			}
 		}
 
+
 	}
 
 	IEnumerator animateBlock(){
@@ -257,7 +258,7 @@ public class PlayerAttack : MonoBehaviour
 		superChargeUI.GetComponentsInChildren <Image> () [1].fillAmount = 1;
 		StartCoroutine(skillCoolDown (superChargeUI, superChargeCD, 0));
 
-		yield return new WaitForSeconds (2.2f);
+		yield return new WaitForSeconds (1.1f);
 
 		superCharge ();
 

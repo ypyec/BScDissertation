@@ -15953,9 +15953,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BeamColor: {r: 0.39446366, g: 0.9411765, b: 0.91855395, a: 1}
-  AnimationSpd: 0.1
-  Scale: 0.5
-  MaxLength: 6
+  AnimationSpd: 0.3
+  Scale: 0.4
+  MaxLength: 8
   bEnd: 0
   bGero: 0
 --- !u!114 &11488030
