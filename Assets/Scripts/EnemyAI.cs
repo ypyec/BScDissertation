@@ -9,7 +9,7 @@ public class EnemyAI : MonoBehaviour
 	public float patrolWaitTime = 1f;                       // The amount of time to wait when the patrol way point is reached.
 	public Transform[] patrolWayPoints;                     // An array of transforms for the patrol route.
 
-
+	private EnemyHealth enemyHealth;
 	private EnemySight enemySight;                          // Reference to the EnemySight script.
 	private NavMeshAgent nav;                               // Reference to the nav mesh agent.
 	private Transform player;                               // Reference to the player's transform.
@@ -22,6 +22,7 @@ public class EnemyAI : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up the references.
+		enemyHealth = GetComponent<EnemyHealth> ();
 		enemySight = GetComponent<EnemySight>();
 		nav = GetComponent<NavMeshAgent>();
 		player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -37,7 +38,7 @@ public class EnemyAI : MonoBehaviour
 			Shooting();
 
 		// If the player has been sighted and isn't dead...
-		else */if(enemySight.personalLastSighting != enemySight.resetposition /*&& playerHealth.health > 0f*/)
+		else */if(enemySight.personalLastSighting != enemySight.resetposition && !enemyHealth.dead() /*&& playerHealth.health > 0f*/)
 			// ... chase.
 			Chasing();
 

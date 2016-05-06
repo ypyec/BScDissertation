@@ -39,10 +39,14 @@ public class PlayerAttack : MonoBehaviour
 	int activeSkill;
 	Vector2 activeSkillSize;
 	Vector2 unActiveSkillSize;
+	Ray shootRay;                                   // A ray from the gun end forwards.
+	RaycastHit shootHit;                            // A raycast hit to get information about what was hit.
+	int shootableMask;
 
 	void Awake ()
 	{
 		floorMask = LayerMask.GetMask ("Floor");
+		shootableMask = LayerMask.GetMask ("Shootable");
 		anim = GetComponent <Animator> ();
 		playerRigidbody = GetComponent <Rigidbody> ();
 		pm = GetComponent <PlayerMovement> ();
@@ -163,6 +167,19 @@ public class PlayerAttack : MonoBehaviour
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
+		shootRay.origin = basicShotOrigin.transform.position;
+		shootRay.direction = transform.forward;
+
+
+		if (Physics.Raycast (shootRay, out shootHit, this.GetComponent <BeamParam> ().MaxLength)) {
+
+			EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+
+			if (enemyHealth != null) {
+				enemyHealth.TakeDamage (basicShotDMG);
+			}
+		}
+
 
 	}
 
@@ -185,6 +202,19 @@ public class PlayerAttack : MonoBehaviour
 		NowShot.transform.localScale *= 0.25f;
 		NowShot.transform.Rotate(Vector3.left, 90.0f);
 		NowShot.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
+
+		shootRay.origin = basicShotOrigin.transform.position;
+		shootRay.direction = transform.forward;
+
+
+		if (Physics.Raycast (shootRay, out shootHit, this.GetComponent <BeamParam> ().MaxLength)) {
+
+			EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
+
+			if (enemyHealth != null) {
+				enemyHealth.TakeDamage (skillTwoDMG);
+			}
+		}
 
 	}
 

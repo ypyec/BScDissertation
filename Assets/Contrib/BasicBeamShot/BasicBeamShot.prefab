@@ -11,7 +11,7 @@ GameObject:
   - 114: {fileID: 11400010}
   - 120: {fileID: 12000000}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BeamLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 114: {fileID: 11400014}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400012}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BasicBeamShot
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - 199: {fileID: 19900000}
   - 114: {fileID: 11400016}
   - 114: {fileID: 11400002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SphereParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 108: {fileID: 10800000}
   - 114: {fileID: 11400018}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: SimpleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,11 +173,7 @@ MonoBehaviour:
   MaxLength: 32
   StartSize: 1
   AnimationSpd: 0.1
-  BeamColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  BeamColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -249,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71ef404565ede2e4d8dc973934ceea24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Reflect: 0
   HitEffect: {fileID: 100004, guid: 3527b7adf635b674f8e4bd9ead5d14a0, type: 2}
 --- !u!114 &11400014
 MonoBehaviour:
@@ -261,11 +258,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efe3bc5e3edb3e42b0a9a45eec91b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeamColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  BeamColor: {r: 1, g: 1, b: 1, a: 1}
   AnimationSpd: 0.1
   Scale: 1
   MaxLength: 32

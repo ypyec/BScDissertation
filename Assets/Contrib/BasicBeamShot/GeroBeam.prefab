@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BeamFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ GameObject:
   - 4: {fileID: 400002}
   - 198: {fileID: 19800000}
   - 199: {fileID: 19900000}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GeroParticleA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400004}
   - 114: {fileID: 11400004}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GeroBeamHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ GameObject:
   - 114: {fileID: 11400006}
   - 120: {fileID: 12000000}
   - 114: {fileID: 11400014}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GeroBeam
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -80,7 +80,7 @@ GameObject:
   - 4: {fileID: 400008}
   - 198: {fileID: 19800002}
   - 199: {fileID: 19900002}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GeroParticleB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - 23: {fileID: 2300002}
   - 114: {fileID: 11400010}
   - 114: {fileID: 11400008}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BeamFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400012}
   - 114: {fileID: 11400012}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ShotParticle_Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,11 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 864ef5012ba97134e9e78cda872bdd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  col:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
+  col: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -377,11 +373,7 @@ MonoBehaviour:
   ShotPower: 0
   Disturbance: 45
   RldTime: 0
-  col:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  col: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &11400014
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -393,11 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5efe3bc5e3edb3e42b0a9a45eec91b94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BeamColor:
-    r: 1
-    g: 1
-    b: 1
-    a: 1
+  BeamColor: {r: 1, g: 1, b: 1, a: 1}
   AnimationSpd: 0.1
   Scale: 1
   MaxLength: 32

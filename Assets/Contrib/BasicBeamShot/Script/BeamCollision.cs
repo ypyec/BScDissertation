@@ -21,37 +21,36 @@ public class BeamCollision : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//RayCollision
-		RaycastHit hit;
-        int layerMask = ~(1 << LayerMask.NameToLayer("NoBeamHit") | 1 << 2);
-        if (HitEffect != null && !bHit && Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, layerMask))
-        {
-            GameObject hitobj = hit.collider.gameObject;
-			if(hit.distance < BL.GetNowLength())
-		    {
-				BL.StopLength(hit.distance);
-				bHit = true;
+		try{
+			RaycastHit hit;
+			int layerMask = ~(1 << LayerMask.NameToLayer("NoBeamHit") | 1 << 2);
+			if (HitEffect != null && !bHit && Physics.Raycast(transform.position, transform.forward, out hit, Mathf.Infinity, layerMask))
+			{
+				GameObject hitobj = hit.collider.gameObject;
+				if(hit.distance < BL.GetNowLength())
+				{
+					BL.StopLength(hit.distance);
+					bHit = true;
 
-                Quaternion Angle;
-                //Reflect to Normal
-                if (Reflect)
-                {
-                    Angle = Quaternion.LookRotation(Vector3.Reflect(transform.forward, hit.normal));
-                }
-                else
-                {
-                    Angle = Quaternion.AngleAxis(180.0f, transform.up) * this.transform.rotation;
-                }
-                GameObject obj = (GameObject)Instantiate(HitEffect,this.transform.position+this.transform.forward*hit.distance,Angle);
-				obj.GetComponent<BeamParam>().SetBeamParam(BP);
-				obj.transform.localScale = this.transform.localScale;
+					Quaternion Angle;
+					//Reflect to Normal
+					if (Reflect)
+					{
+						Angle = Quaternion.LookRotation(Vector3.Reflect(transform.forward, hit.normal));
+					}
+					else
+					{
+						Angle = Quaternion.AngleAxis(180.0f, transform.up) * this.transform.rotation;
+					}
+					GameObject obj = (GameObject)Instantiate(HitEffect,this.transform.position+this.transform.forward*hit.distance,Angle);
+					obj.GetComponent<BeamParam>().SetBeamParam(BP);
+					obj.transform.localScale = this.transform.localScale;
+				}
+				//print("find" + hit.collider.gameObject.name);
 			}
-			//print("find" + hit.collider.gameObject.name);
+		} catch(System.Exception e){
 		}
-		/*
-		if(bHit && BL != null)
-		{
-			BL.gameObject.renderer.material.SetFloat("_BeamLength",HitTimeLength / BL.GetNextLength() + 0.05f);
-		}
-		*/
+
+
 	}
 }
