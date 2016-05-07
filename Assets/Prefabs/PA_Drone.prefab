@@ -457,6 +457,7 @@ MonoBehaviour:
   currentHealth: 0
   scoreValue: 10
   stuned: 0
+  healingParticles: {fileID: 100004, guid: d9751637d4fc2de40a234b45e10cb88d, type: 2}
 --- !u!135 &13542042
 SphereCollider:
   m_ObjectHideFlags: 1

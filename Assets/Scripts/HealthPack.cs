@@ -4,12 +4,16 @@ using System.Collections;
 public class HealthPack : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
-		if (other.GetComponent <EnemyHealth> ()) {
-			other.GetComponent <EnemyHealth> ().Heal ();
-			Destroy (gameObject);
-		} else if(other.GetComponent <PlayerHealth> ()) {
-			other.GetComponent <PlayerHealth> ().Heal ();
-			Destroy (this.gameObject);    
+		if(other.GetComponent <PlayerHealth> ()) {
+			if (other.GetComponent <PlayerHealth> ().currentHealth < other.GetComponent <PlayerHealth> ().startingHealth) {
+				other.GetComponent <PlayerHealth> ().Heal ();
+				Destroy (gameObject);
+			}   
+		} else if (other.GetComponent <EnemyHealth> ()) {
+			if (other.GetComponent <EnemyHealth> ().currentHealth < other.GetComponent <EnemyHealth> ().startingHealth) {
+				other.GetComponent <EnemyHealth> ().Heal ();
+				Destroy (gameObject);
+			}
 		}
 	}
 }
