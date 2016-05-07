@@ -7,16 +7,15 @@ public class EnemyHealth : MonoBehaviour
 	public int currentHealth;                  
 	public int scoreValue = 10;      
 	public bool stuned = false;
+	public GameObject healingParticles;
 
 
-	Animator anim;                             
-	CapsuleCollider capsuleCollider;           
+	Animator anim;                           
 	bool isDead;    
 
 	void Awake ()
 	{
 		anim = GetComponent <Animator> ();
-		capsuleCollider = GetComponent <CapsuleCollider> ();
 
 
 		currentHealth = startingHealth;
@@ -61,7 +60,15 @@ public class EnemyHealth : MonoBehaviour
 
 	}
 
+
 	public bool dead(){
 		return isDead;
+	}
+
+	public void Heal(){
+		currentHealth = startingHealth;
+		GameObject recoveryEffect = Instantiate (healingParticles, transform.position, transform.rotation) as GameObject;
+		recoveryEffect.transform.parent = transform; 
+		Destroy (recoveryEffect, 1f);
 	}
 }
