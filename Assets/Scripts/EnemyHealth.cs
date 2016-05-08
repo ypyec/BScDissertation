@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
 	public int scoreValue = 10;      
 	public bool stuned = false;
 	public GameObject healingParticles;
+	public GameObject destroyParticles;
+	public GameObject stunParticles;
 
 
 	Animator anim;                           
@@ -32,7 +34,8 @@ public class EnemyHealth : MonoBehaviour
 			currentHealth -= amount;
 		} else if (!stuned) {
 			currentHealth -= amount;
-			StartCoroutine (Stun (stunDuration));
+			if(currentHealth > 0)
+				StartCoroutine (Stun (stunDuration));
 		}
 
 
@@ -46,6 +49,9 @@ public class EnemyHealth : MonoBehaviour
 	{
 		stuned = true;
 		anim.SetTrigger ("Stun");
+		GameObject stunEffect = Instantiate (stunParticles, transform.position, transform.rotation) as GameObject;
+		stunEffect.transform.parent = transform; 
+		Destroy (stunEffect, duration);
 		yield return new WaitForSeconds (duration);
 		stuned = false;
 	}
@@ -57,6 +63,8 @@ public class EnemyHealth : MonoBehaviour
 		anim.SetTrigger ("Dead");
 		GetComponent <NavMeshAgent> ().enabled = false;
 		Destroy (gameObject, 2f);
+		GameObject destroyEffect = Instantiate (destroyParticles, transform.position, transform.rotation) as GameObject;
+		destroyEffect.transform.parent = transform; 
 
 	}
 

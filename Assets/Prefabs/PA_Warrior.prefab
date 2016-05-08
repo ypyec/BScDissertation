@@ -996,6 +996,8 @@ MonoBehaviour:
   scoreValue: 10
   stuned: 0
   healingParticles: {fileID: 100004, guid: d9751637d4fc2de40a234b45e10cb88d, type: 2}
+  destroyParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
+  stunParticles: {fileID: 129520, guid: ac91bb3437f154fb4bf700446e8a24cd, type: 2}
 --- !u!114 &11484346
 MonoBehaviour:
   m_ObjectHideFlags: 1
