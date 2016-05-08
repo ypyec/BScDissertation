@@ -44,6 +44,7 @@ public class PlayerHealth : MonoBehaviour
 		GameObject recoveryEffect = Instantiate (healingParticles, transform.position, transform.rotation) as GameObject;
 		recoveryEffect.transform.parent = transform; 
 		Destroy (recoveryEffect, 1f);
+		healthSlider.value = currentHealth;
 	}
 
 

@@ -177,18 +177,7 @@ public class PlayerAttack : MonoBehaviour
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
-		shootRay.origin = basicShotOrigin.transform.position;
-		shootRay.direction = transform.forward;
-
-
-		if (Physics.Raycast (shootRay, out shootHit, this.GetComponent <BeamParam> ().MaxLength)) {
-
-			EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
-
-			if (enemyHealth != null) {
-				enemyHealth.TakeDamage (basicShotDMG);
-			}
-		}
+		MakeDamage (basicShotOrigin, basicShotDMG);
 
 
 	}
@@ -216,18 +205,7 @@ public class PlayerAttack : MonoBehaviour
 		NowShot.transform.Rotate(Vector3.left, 90.0f);
 		NowShot.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
-		shootRay.origin = basicShotOrigin.transform.position;
-		shootRay.direction = transform.forward;
-
-
-		if (Physics.Raycast (shootRay, out shootHit, this.GetComponent <BeamParam> ().MaxLength)) {
-
-			EnemyHealth enemyHealth = shootHit.collider.GetComponent <EnemyHealth> ();
-
-			if (enemyHealth != null) {
-				enemyHealth.TakeDamage (skillTwoDMG);
-			}
-		}
+		MakeDamage (skillTwoOrigin, skillTwoDMG);
 
 
 	}
@@ -325,6 +303,22 @@ public class PlayerAttack : MonoBehaviour
 		if (other.GetComponent <EnemyHealth> ()) {
 			other.GetComponent <EnemyHealth> ().TakeDamage (superChargeDMG, superChargeStunDuration);
 			other.attachedRigidbody.AddForce(other.transform.forward * -20);        
+		}
+	}
+
+	void MakeDamage(GameObject origin, int dmg){
+
+		shootRay.origin = origin.transform.position;
+		shootRay.direction = transform.forward;
+
+
+		if (Physics.Raycast (shootRay, out shootHit, this.GetComponent <BeamParam> ().MaxLength)) {
+
+			if (shootHit.collider.GetComponent <EnemyHealth> () != null) {
+				shootHit.collider.GetComponent <EnemyHealth> ().TakeDamage (dmg);
+			} else if (shootHit.collider.GetComponent <BoxHealth> () != null) {
+				shootHit.collider.GetComponent <BoxHealth> ().TakeDamage (dmg);
+			}
 		}
 	}
 }
