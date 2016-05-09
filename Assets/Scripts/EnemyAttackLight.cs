@@ -16,6 +16,8 @@ public class EnemyAttackLight : MonoBehaviour
 	private Transform player;
 	private float cooldown;  
 	private EnemyHealth enemyHealth;
+	Ray shootRay;                                   // A ray from the gun end forwards.
+	RaycastHit shootHit;
 
 	void Awake ()
 	{
@@ -67,5 +69,22 @@ public class EnemyAttackLight : MonoBehaviour
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
+		MakeDamage (basicShotOrigin, basicShotDMG);
+	}
+
+	void MakeDamage(GameObject origin, int dmg){
+
+		shootRay.origin = origin.transform.position;
+		shootRay.direction = transform.forward;
+
+
+		if (Physics.Raycast (shootRay, out shootHit, this.GetComponent <BeamParam> ().MaxLength)) {
+
+			if (shootHit.collider.GetComponent <PlayerHealth> () != null) {
+				shootHit.collider.GetComponent <PlayerHealth> ().TakeDamage (dmg);
+			} else if (shootHit.collider.GetComponent <BoxHealth> () != null) {
+				shootHit.collider.GetComponent <BoxHealth> ().TakeDamage (dmg);
+			}
+		}
 	}
 }
