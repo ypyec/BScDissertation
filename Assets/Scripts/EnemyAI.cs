@@ -9,11 +9,12 @@ public class EnemyAI : MonoBehaviour
 	public float patrolWaitTime = 1f;                       // The amount of time to wait when the patrol way point is reached.
 	public Transform[] patrolWayPoints;                     // An array of transforms for the patrol route.
 
+	private EnemyAttackLight enemyAttack;
 	private EnemyHealth enemyHealth;
 	private EnemySight enemySight;                          // Reference to the EnemySight script.
 	private NavMeshAgent nav;                               // Reference to the nav mesh agent.
 	private Transform player;                               // Reference to the player's transform.
-	//private PlayerHealth playerHealth;                      // Reference to the PlayerHealth script.
+	private PlayerHealth playerHealth;                      // Reference to the PlayerHealth script.
 	private float chaseTimer;                               // A timer for the chaseWaitTime.
 	private float patrolTimer;                              // A timer for the patrolWaitTime.
 	private int wayPointIndex;                              // A counter for the way point array.
@@ -22,26 +23,31 @@ public class EnemyAI : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up the references.
+		enemyAttack = GetComponent<EnemyAttackLight>();
 		enemyHealth = GetComponent<EnemyHealth> ();
 		enemySight = GetComponent<EnemySight>();
 		nav = GetComponent<NavMeshAgent>();
 		player = GameObject.FindGameObjectWithTag("Player").transform;
-		//playerHealth = player.GetComponent<PlayerHealth>();
+		playerHealth = player.GetComponent<PlayerHealth>();
 	}
 
 
 	void Update ()
 	{
 		// If the player is in sight and is alive...
-		/*if(enemySight.playerInSight && playerHealth.health > 0f)
+		if (enemySight.playerInSight &&
+			!enemyAttack.attacking &&
+			!enemyHealth.dead () && !enemyHealth.stuned &&
+		   Vector3.Distance (transform.position, player.position) < enemyAttack.attackRange)
 			// ... shoot.
-			Shooting();
+			Shooting ();
 
 		// If the player has been sighted and isn't dead...
-		else */if(enemySight.personalLastSighting != enemySight.resetposition && !enemyHealth.dead() && !enemyHealth.stuned /*&& playerHealth.health > 0f*/)
+		else if (enemySight.personalLastSighting != enemySight.resetposition && !enemyAttack.attacking && !enemyHealth.dead () && !enemyHealth.stuned /*&& playerHealth.health > 0f*/) {
 			// ... chase.
-			Chasing();
-
+			nav.Resume();
+			Chasing ();
+		}
 		// Otherwise...
 		//else
 			// ... patrol.

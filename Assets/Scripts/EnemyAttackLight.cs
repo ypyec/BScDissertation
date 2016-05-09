@@ -8,33 +8,47 @@ public class EnemyAttackLight : MonoBehaviour
 	public GameObject basicShot;
 	public GameObject basicShotOrigin;
 	public int basicShotDMG = 5;                  
-	public float basicShotCD = 0.65f;
+	public float basicShotCD = 1.2f;
+	public bool attacking;
+	public float attackRange = 4f;
 
-	Animator anim;
-	float cooldown;  
-	bool attacking;
+	private Animator anim;
+	private Transform player;
+	private float cooldown;  
+	private EnemyHealth enemyHealth;
 
 	void Awake ()
 	{
 		anim = GetComponent <Animator> ();
+		player = GameObject.FindGameObjectWithTag ("Player").transform;
 		cooldown = basicShotCD;
+		attacking = false;
+		enemyHealth = GetComponent <EnemyHealth> ();
+		//attackRange = 4f;
 	}
 
 
-	void FixedUpdate ()
+	void Update ()
 	{
 		cooldown += Time.deltaTime;
 
-		if(Input.GetButton ("Fire1") && cooldown >= basicShotCD)
+		if(!attacking && cooldown >= basicShotCD && Vector3.Distance(transform.position, player.position) < attackRange && !enemyHealth.dead () && !enemyHealth.stuned) 
 		{
 			StartCoroutine (animateAttack ());
+
 		} else {
+			attacking = false;
 			anim.ResetTrigger ("Hit");
 		}
 	}
 
 	IEnumerator animateAttack(){
+		attacking = true;
 		cooldown = 0f;
+		Vector3 playerDirection = player.position - transform.position;
+		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
+		if (angleBetween > 1)
+			transform.forward = playerDirection;
 		anim.SetTrigger ("Hit");
 
 		yield return new WaitForSeconds (0.27f);
@@ -44,7 +58,7 @@ public class EnemyAttackLight : MonoBehaviour
 	}
 
 	void attack(){
-
+		
 		GameObject s1 = (GameObject)Instantiate(basicShot, basicShotOrigin.transform.position, this.transform.rotation);
 		s1.GetComponent<BeamParam>().SetBeamParam(this.GetComponent<BeamParam>());
 
@@ -52,7 +66,6 @@ public class EnemyAttackLight : MonoBehaviour
 		wav.transform.localScale *= 0.25f;
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
-
 
 	}
 }
