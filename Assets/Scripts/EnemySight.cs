@@ -8,6 +8,7 @@ public class EnemySight : MonoBehaviour
 	public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
 	public Vector3 resetposition = new Vector3 (1000f, 1000f, 1000f);
 	public Vector3 playerposition = new Vector3 (1000f, 1000f, 1000f);
+	public bool isMelee = false;
 
 
 	//private NavMeshAgent nav;                       // Reference to the NavMeshAgent component.
@@ -18,6 +19,7 @@ public class EnemySight : MonoBehaviour
 	//private PlayerHealth playerHealth;              // Reference to the player's health script.
 	private Vector3 previousSighting;               // Where the player was sighted last frame.
 	private EnemyAttackLight enemyAttack;
+
 
 
 	void Awake ()
@@ -79,7 +81,7 @@ public class EnemySight : MonoBehaviour
 
 
 				// ... and if a raycast towards the player hits something...
-				if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius*2))
+				if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius * transform.lossyScale.x))
 				{
 					
 					// ... and if the raycast hits the player...

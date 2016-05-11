@@ -35,18 +35,17 @@ public class EnemyAI : MonoBehaviour
 	void Update ()
 	{
 		// If the player is in sight and is alive...
-		if (enemySight.playerInSight &&
-			!enemyAttack.attacking &&
-			!enemyHealth.dead () && !enemyHealth.stuned &&
-		   Vector3.Distance (transform.position, player.position) < enemyAttack.attackRange)
+		if (enemySight.playerInSight && !enemyAttack.attacking && !enemyHealth.dead () && !enemyHealth.stuned && Vector3.Distance (transform.position, player.position) < enemyAttack.attackRange && !enemyAttack.isMelee)
 			// ... shoot.
 			Shooting ();
 
 		// If the player has been sighted and isn't dead...
 		else if (enemySight.personalLastSighting != enemySight.resetposition && !enemyAttack.attacking && !enemyHealth.dead () && !enemyHealth.stuned /*&& playerHealth.health > 0f*/) {
 			// ... chase.
-			nav.Resume();
-			Chasing ();
+			if ((enemyAttack.isMelee && Vector3.Distance (transform.position, enemyAttack.attackposition) != 0) || !enemyAttack.isMelee) {
+				nav.Resume ();
+				Chasing ();
+			}
 		}
 		// Otherwise...
 		//else
