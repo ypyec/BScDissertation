@@ -185,7 +185,7 @@ GameObject:
   - 114: {fileID: 11462422}
   - 114: {fileID: 11494864}
   m_Layer: 0
-  m_Name: PA_Warrior
+  m_Name: R-SP
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
