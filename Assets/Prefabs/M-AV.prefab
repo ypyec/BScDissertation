@@ -132,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 148294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.32, y: 0, z: 6.35}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 438090}
   - {fileID: 457266}
@@ -447,7 +447,7 @@ MonoBehaviour:
   attackRange: 4
   isMelee: 1
   attackposition: {x: 0, y: 0, z: 0}
-  bounceForce: 8
+  bounceForce: 6
 --- !u!114 &11459194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -476,7 +476,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e7c4db81148417db68f5bb6d308661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 20
   currentHealth: 0
   scoreValue: 10
   stuned: 0
