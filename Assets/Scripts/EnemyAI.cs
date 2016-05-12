@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
 		// If the player has been sighted and isn't dead...
 		else if (enemySight.personalLastSighting != enemySight.resetposition && !enemyAttack.attacking && !enemyHealth.dead () && !enemyHealth.stuned /*&& playerHealth.health > 0f*/) {
 			// ... chase.
-			if ((enemyAttack.isMelee && Vector3.Distance (transform.position, enemyAttack.attackposition) != 0) || !enemyAttack.isMelee) {
+			if ((enemyAttack.isMelee && (Vector3.Distance (transform.position, enemyAttack.attackposition) < 1) || enemyAttack.attackposition == Vector3.zero) || !enemyAttack.isMelee) {
 				nav.Resume ();
 				Chasing ();
 			}

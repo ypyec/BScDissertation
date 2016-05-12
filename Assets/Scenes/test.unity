@@ -191,6 +191,10 @@ Prefab:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 748661038}
+    - target: {fileID: 13666502, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
   m_IsPrefabParent: 0
@@ -583,6 +587,62 @@ Prefab:
     - target: {fileID: 401034, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 19531774, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_Speed
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432994, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: attackRange
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 13676920, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19531774, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_AutoBraking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19531774, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_StoppingDistance
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 13676920, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 19531774, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429098, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_Drag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429098, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_AngularDrag
+      value: Infinity
+      objectReference: {fileID: 0}
+    - target: {fileID: 5429098, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_Constraints
+      value: 84
+      objectReference: {fileID: 0}
+    - target: {fileID: 13676920, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 13676920, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432994, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: bounceForce
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11432994, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
+      propertyPath: basicShotCD
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}

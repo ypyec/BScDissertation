@@ -13,10 +13,11 @@ public class EnemyAttackLight : MonoBehaviour
 	public float attackRange = 4f;
 	public bool isMelee = false;
 	public Vector3 attackposition;
+	public float bounceForce = 0f;
 
 	private NavMeshAgent nav;
 	private Animator anim;
-	private Transform player;
+	private GameObject player;
 	private float cooldown;  
 	private EnemyHealth enemyHealth;
 	Ray shootRay;                                   // A ray from the gun end forwards.
@@ -25,7 +26,7 @@ public class EnemyAttackLight : MonoBehaviour
 	void Awake ()
 	{
 		anim = GetComponent <Animator> ();
-		player = GameObject.FindGameObjectWithTag ("Player").transform;
+		player = GameObject.FindGameObjectWithTag ("Player");
 		cooldown = basicShotCD;
 		attacking = false;
 		enemyHealth = GetComponent <EnemyHealth> ();
@@ -37,15 +38,16 @@ public class EnemyAttackLight : MonoBehaviour
 	{
 		cooldown += Time.deltaTime;
 
-		if (!attacking && cooldown >= basicShotCD && Vector3.Distance (transform.position, player.position) < attackRange && !enemyHealth.dead () && !enemyHealth.stuned) {
+		if (!attacking && cooldown >= basicShotCD && Vector3.Distance (transform.position, player.transform.position) < attackRange && !enemyHealth.dead () && !enemyHealth.stuned) {
 			if (isMelee) {
 				attackMelee ();
 			} else {
 				StartCoroutine (animateAttack ());
 			}
 
-		} else if (attacking && Vector3.Distance (transform.position, attackposition) != 0 && isMelee) {
+		} else if (attacking && Vector3.Distance (transform.position, attackposition) < 1 && isMelee) {
 			attacking = false;
+			attackposition = Vector3.zero;
 			anim.ResetTrigger ("Hit");
 		} else if (!isMelee) {
 			attacking = false;
@@ -56,7 +58,7 @@ public class EnemyAttackLight : MonoBehaviour
 	IEnumerator animateAttack(){
 		attacking = true;
 		cooldown = 0f;
-		Vector3 playerDirection = player.position - transform.position;
+		Vector3 playerDirection = player.transform.position - transform.position;
 		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
 		if (angleBetween > 1)
 			transform.forward = playerDirection;
@@ -82,18 +84,26 @@ public class EnemyAttackLight : MonoBehaviour
 	}
 
 	void attackMelee(){
-		attackposition = player.position;
+		attackposition = player.transform.position;
 		attacking = true;
-		cooldown = 0;
-		Vector3 playerDirection = player.position - transform.position;
+		Vector3 playerDirection = player.transform.position - transform.position;
 		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
 		if (angleBetween > 1)
 			transform.forward = playerDirection;
-		nav.speed = 20f;
-		print (nav.speed);
+		nav.speed = 10f;
 		nav.SetDestination (attackposition);
 
-		MakeDamage (basicShotOrigin, basicShotDMG, 1f);
+//		MakeDamage (basicShotOrigin, basicShotDMG, 2f);
+	}
+
+	void OnCollisionStay(Collision collision) {
+		if (collision.gameObject == player){
+			if (cooldown >= basicShotCD) {
+				GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce*10), ForceMode.Impulse);
+				collision.gameObject.GetComponent <PlayerHealth> ().TakeDamage (basicShotDMG);
+				cooldown = 0;
+			}
+		}
 	}
 
 	void MakeDamage(GameObject origin, int dmg, float distance){
