@@ -36,6 +36,10 @@ public class PlayerHealth : MonoBehaviour
 		{
 			Death ();
 		}
+
+		if (!isDead) {
+			anim.SetTrigger ("Damaged");
+		}
 	}
 
 
@@ -58,6 +62,7 @@ public class PlayerHealth : MonoBehaviour
 
 		playerMovement.enabled = false;
 		playerAttack.enabled = false;
+		GetComponent<CapsuleCollider> ().enabled = false;
 	}      
 
 }

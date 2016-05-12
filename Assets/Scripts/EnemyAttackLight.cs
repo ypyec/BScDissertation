@@ -38,7 +38,7 @@ public class EnemyAttackLight : MonoBehaviour
 	{
 		cooldown += Time.deltaTime;
 
-		if (!attacking && cooldown >= basicShotCD && Vector3.Distance (transform.position, player.transform.position) < attackRange && !enemyHealth.dead () && !enemyHealth.stuned) {
+		if (!attacking && cooldown >= basicShotCD && Vector3.Distance (transform.position, player.transform.position) < attackRange && !enemyHealth.dead () && !enemyHealth.stuned && player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
 			if (isMelee) {
 				attackMelee ();
 			} else {
