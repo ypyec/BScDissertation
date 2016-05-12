@@ -98,8 +98,9 @@ public class EnemyAttackLight : MonoBehaviour
 
 	void OnCollisionStay(Collision collision) {
 		if (collision.gameObject == player){
+			GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce), ForceMode.Impulse);
 			if (cooldown >= basicShotCD) {
-				GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce*10), ForceMode.Impulse);
+				
 				collision.gameObject.GetComponent <PlayerHealth> ().TakeDamage (basicShotDMG);
 				cooldown = 0;
 			}

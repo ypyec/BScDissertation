@@ -615,7 +615,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 142710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.12, y: 0, z: -8.38}
+  m_LocalPosition: {x: 6.93, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 408198}
@@ -980,12 +980,13 @@ MonoBehaviour:
   wave: {fileID: 163602, guid: 2e71c373747c637418583232129f9bae, type: 2}
   basicShot: {fileID: 100002, guid: 5233ad8031c8bcc40a4ec895c2c8e74e, type: 2}
   basicShotOrigin: {fileID: 144850}
-  basicShotDMG: 5
+  basicShotDMG: 10
   basicShotCD: 1.2
   attacking: 0
   attackRange: 4
   isMelee: 0
   attackposition: {x: 0, y: 0, z: 0}
+  bounceForce: 0
 --- !u!114 &11463394
 MonoBehaviour:
   m_ObjectHideFlags: 1

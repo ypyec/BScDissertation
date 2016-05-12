@@ -131,8 +131,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 0, z: 10.32}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.32, y: 0, z: 6.35}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 438090}
   - {fileID: 457266}
@@ -387,7 +387,7 @@ Rigidbody:
   m_GameObject: {fileID: 148294}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: Infinity
+  m_Drag: 1
   m_AngularDrag: Infinity
   m_UseGravity: 1
   m_IsKinematic: 0
@@ -441,12 +441,13 @@ MonoBehaviour:
   wave: {fileID: 0}
   basicShot: {fileID: 0}
   basicShotOrigin: {fileID: 126138}
-  basicShotDMG: 5
-  basicShotCD: 1.2
+  basicShotDMG: 10
+  basicShotCD: 1
   attacking: 0
-  attackRange: 6
+  attackRange: 4
   isMelee: 1
   attackposition: {x: 0, y: 0, z: 0}
+  bounceForce: 8
 --- !u!114 &11459194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -492,7 +493,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 8
+  m_Radius: 4
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13676920
 CapsuleCollider:
@@ -506,7 +507,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &19531774
 NavMeshAgent:
   m_ObjectHideFlags: 1
@@ -515,11 +516,11 @@ NavMeshAgent:
   m_GameObject: {fileID: 148294}
   m_Enabled: 1
   m_Radius: 0.5
-  m_Speed: 200
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1.3
+  m_StoppingDistance: 0.8
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

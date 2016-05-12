@@ -334,6 +334,7 @@ MonoBehaviour:
   attackRange: 4
   isMelee: 0
   attackposition: {x: 0, y: 0, z: 0}
+  bounceForce: 0
 --- !u!114 &11419228
 MonoBehaviour:
   m_ObjectHideFlags: 1
