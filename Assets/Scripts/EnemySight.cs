@@ -3,7 +3,7 @@ using System.Collections;
 
 public class EnemySight : MonoBehaviour
 {
-	public float fieldOfViewAngle = 180f;           // Number of degrees, centred on forward, for the enemy see.
+	public float fieldOfViewAngle = 360f;           // Number of degrees, centred on forward, for the enemy see.
 	public bool playerInSight;                      // Whether or not the player is currently sighted.
 	public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
 	public Vector3 resetposition = new Vector3 (1000f, 1000f, 1000f);
@@ -36,6 +36,7 @@ public class EnemySight : MonoBehaviour
 		// Set the personal sighting and the previous sighting to the reset position.
 		personalLastSighting = resetposition;
 		previousSighting = resetposition;
+		col.radius *= 8;
 	}
 
 
