@@ -11,6 +11,7 @@ GameObject:
   - 114: {fileID: 11476146}
   - 114: {fileID: 11437286}
   - 114: {fileID: 11457518}
+  - 114: {fileID: 11456118}
   m_Layer: 0
   m_Name: EnemyManager
   m_TagString: Untagged
@@ -41,10 +42,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5249853e56d5477bba21431b9e48bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11482454, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+  playerHealth: {fileID: 0}
   enemy: {fileID: 142710, guid: b65c16f775ea3469cb9087053b31ef2c, type: 2}
+  spawnTime: 30
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &11456118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 109998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5249853e56d5477bba21431b9e48bf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealth: {fileID: 0}
+  enemy: {fileID: 153436, guid: 19fa8d4c4fd9b4ccdaeb797f6486e7c9, type: 2}
   spawnTime: 10
-  spawnPoints: []
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11457518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -56,10 +76,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5249853e56d5477bba21431b9e48bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11482454, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+  playerHealth: {fileID: 0}
   enemy: {fileID: 148294, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
-  spawnTime: 10
-  spawnPoints: []
+  spawnTime: 30
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &11476146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -71,10 +93,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5249853e56d5477bba21431b9e48bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11482454, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+  playerHealth: {fileID: 0}
   enemy: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
-  spawnTime: 3
-  spawnPoints: []
+  spawnTime: 10
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -26,8 +26,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130744}
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0.000000021855694}
-  m_LocalPosition: {x: 0.04, y: 0, z: 0}
-  m_LocalScale: {x: 0.0075575016, y: 0.025191674, z: 0.0039765555}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.4, y: 0.5, z: 0.25}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -90,7 +90,8 @@ MonoBehaviour:
   startingHealth: 15
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 50
+  respawnRate: 60
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   explodeParticles: {fileID: 198896, guid: d5f9650c5955947a6954ef82e5599763, type: 2}
   enemyToSpawn1: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
