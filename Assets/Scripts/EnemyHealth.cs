@@ -65,6 +65,7 @@ public class EnemyHealth : MonoBehaviour
 		Destroy (gameObject, 2f);
 		GameObject destroyEffect = Instantiate (destroyParticles, transform.position, transform.rotation) as GameObject;
 		destroyEffect.transform.parent = transform; 
+		ScoreManager.score += scoreValue;
 
 	}
 

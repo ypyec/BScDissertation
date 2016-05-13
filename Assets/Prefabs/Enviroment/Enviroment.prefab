@@ -208,8 +208,8 @@ GameObject:
   - 4: {fileID: 438758}
   - 33: {fileID: 3346436}
   - 23: {fileID: 2326448}
+  - 114: {fileID: 11447598}
   - 64: {fileID: 6423406}
-  - 114: {fileID: 11417130}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -852,27 +852,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 15
   currentHealth: 0
-  healthPackChance: 50
+  scoreValue: 1
+  healthPackChance: 25
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   explodeParticles: {fileID: 198896, guid: d5f9650c5955947a6954ef82e5599763, type: 2}
---- !u!114 &11417130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195256}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 30
-  currentHealth: 0
-  healthPackChance: 50
-  healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
-  explodeParticles: {fileID: 198896, guid: d5f9650c5955947a6954ef82e5599763, type: 2}
+  enemyToSpawn1: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
 --- !u!114 &11423980
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -884,11 +870,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 15
   currentHealth: 0
-  healthPackChance: 50
+  scoreValue: 1
+  healthPackChance: 25
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   explodeParticles: {fileID: 198896, guid: d5f9650c5955947a6954ef82e5599763, type: 2}
+  enemyToSpawn1: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
 --- !u!114 &11441004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -900,11 +888,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 15
   currentHealth: 0
-  healthPackChance: 50
+  scoreValue: 1
+  healthPackChance: 25
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   explodeParticles: {fileID: 198896, guid: d5f9650c5955947a6954ef82e5599763, type: 2}
+  enemyToSpawn1: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
+--- !u!114 &11447598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 15
+  currentHealth: 0
+  scoreValue: 1
+  healthPackChance: 25
+  healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
+  explodeParticles: {fileID: 198896, guid: d5f9650c5955947a6954ef82e5599763, type: 2}
+  enemyToSpawn1: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
 --- !u!114 &11478490
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -916,11 +924,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 15
   currentHealth: 0
-  healthPackChance: 50
+  scoreValue: 1
+  healthPackChance: 25
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   explodeParticles: {fileID: 198896, guid: d5f9650c5955947a6954ef82e5599763, type: 2}
+  enemyToSpawn1: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

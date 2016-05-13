@@ -87,11 +87,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 30
+  startingHealth: 15
   currentHealth: 0
-  healthPackChance: 50
+  scoreValue: 1
+  healthPackChance: 25
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   explodeParticles: {fileID: 198896, guid: d5f9650c5955947a6954ef82e5599763, type: 2}
+  enemyToSpawn1: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
