@@ -7,6 +7,7 @@ public class BoxHealth : MonoBehaviour {
 	public int currentHealth;
 	public int scoreValue = 1;      
 	public int healthPackChance = 25;
+	public float respawnRate = 60f;
 	public GameObject healthPackObj;
 	public GameObject explodeParticles;
 	public GameObject enemyToSpawn1;
@@ -40,11 +41,12 @@ public class BoxHealth : MonoBehaviour {
 	void Death ()
 	{
 		isDestroyed = true;
-		GameObject recoveryEffect = Instantiate (explodeParticles, transform.position, transform.rotation) as GameObject;
-		recoveryEffect.transform.parent = transform;
+		GameObject explodeEffect = Instantiate (explodeParticles, transform.position, transform.rotation) as GameObject;
 		DropHealthPack ();
-		Destroy (gameObject, 0.5f);
+		gameObject.SetActive(false);
+		Destroy (explodeEffect, 0.5f);
 		ScoreManager.score += scoreValue;
+		Invoke ("Respawn", respawnRate);
 
 	}
 		
@@ -58,5 +60,11 @@ public class BoxHealth : MonoBehaviour {
 		} else if (rng == 100) {
 			//GameObject enemyToSpawn = (GameObject)Instantiate (enemyToSpawn2, transform.position, enemyToSpawn2.transform.rotation);
 		}
+	}
+
+	void Respawn(){
+		gameObject.SetActive (true);
+		currentHealth = startingHealth;
+		isDestroyed = false;
 	}
 }
