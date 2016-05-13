@@ -45,6 +45,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   enemy: {fileID: 142710, guid: b65c16f775ea3469cb9087053b31ef2c, type: 2}
   spawnTime: 30
+  firstDelay: 45
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -62,6 +63,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   enemy: {fileID: 153436, guid: 19fa8d4c4fd9b4ccdaeb797f6486e7c9, type: 2}
   spawnTime: 10
+  firstDelay: 10
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -79,6 +81,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   enemy: {fileID: 148294, guid: 163f67053adcb42a486d5fbe50f4a5fc, type: 2}
   spawnTime: 30
+  firstDelay: 30
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -96,6 +99,7 @@ MonoBehaviour:
   playerHealth: {fileID: 0}
   enemy: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
   spawnTime: 10
+  firstDelay: 5
   spawnPoints:
   - {fileID: 0}
   - {fileID: 0}
