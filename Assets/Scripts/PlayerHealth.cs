@@ -8,12 +8,15 @@ public class PlayerHealth : MonoBehaviour
 	public int currentHealth;                                   // The current health the player has.
 	public Slider healthSlider;
 	public GameObject healingParticles;
+	public Image damageImage;
+	public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
+	public Color flashColour = new Color(1f, 0f, 0f, 0.1f); 
 
 	Animator anim;                                              // Reference to the Animator component.
 	PlayerMovement playerMovement;                              // Reference to the player's movement.
 	PlayerAttack playerAttack;                              // Reference to the PlayerShooting script.
 	bool isDead;                                                
-
+	bool damaged; 
 
 	void Awake ()
 	{
@@ -25,21 +28,38 @@ public class PlayerHealth : MonoBehaviour
 		currentHealth = startingHealth;
 	}
 
+	void Update ()
+	{
+		// If the player has just been damaged...
+		if(damaged)
+		{
+			// ... set the colour of the damageImage to the flash colour.
+			damageImage.color = flashColour;
+		}
+		// Otherwise...
+		else
+		{
+			// ... transition the colour back to clear.
+			damageImage.color = Color.Lerp (damageImage.color, Color.clear, flashSpeed * Time.deltaTime);
+		}
+
+		// Reset the damaged flag.
+		damaged = false;
+	}
 
 	public void TakeDamage (int amount)
 	{
 		
 		currentHealth -= amount;
 		healthSlider.value = currentHealth;
+		damaged = true;
 
 		if(currentHealth <= 0 && !isDead)
 		{
 			Death ();
 		}
 
-		if (!isDead) {
-			anim.SetTrigger ("Damaged");
-		}
+	
 	}
 
 

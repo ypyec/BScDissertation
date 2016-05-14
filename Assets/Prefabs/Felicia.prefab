@@ -15171,6 +15171,9 @@ MonoBehaviour:
   currentHealth: 0
   healthSlider: {fileID: 0}
   healingParticles: {fileID: 100004, guid: d9751637d4fc2de40a234b45e10cb88d, type: 2}
+  damageImage: {fileID: 0}
+  flashSpeed: 5
+  flashColour: {r: 1, g: 0, b: 0, a: 0.1}
 --- !u!114 &11483276
 MonoBehaviour:
   m_ObjectHideFlags: 1
