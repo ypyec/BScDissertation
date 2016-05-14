@@ -10,7 +10,8 @@ public class PlayerHealth : MonoBehaviour
 	public GameObject healingParticles;
 	public Image damageImage;
 	public float flashSpeed = 5f;                               // The speed the damageImage will fade at.
-	public Color flashColour = new Color(1f, 0f, 0f, 0.1f); 
+	public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
+	public bool blocking;
 
 	Animator anim;                                              // Reference to the Animator component.
 	PlayerMovement playerMovement;                              // Reference to the player's movement.
@@ -50,9 +51,11 @@ public class PlayerHealth : MonoBehaviour
 	public void TakeDamage (int amount)
 	{
 		
-		currentHealth -= amount;
-		healthSlider.value = currentHealth;
-		damaged = true;
+		if (!blocking) {
+			currentHealth -= amount;
+			healthSlider.value = currentHealth;
+			damaged = true;
+		}
 
 		if(currentHealth <= 0 && !isDead)
 		{

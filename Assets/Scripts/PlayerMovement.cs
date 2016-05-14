@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 	Animator anim;                      
 	Rigidbody playerRigidbody;
 	public bool attacking;
+	public bool blocking;
 
 	void Awake ()
 	{
@@ -17,32 +18,20 @@ public class PlayerMovement : MonoBehaviour
 		playerRigidbody = GetComponent <Rigidbody> ();
 		attacking = false;
 	}
-
-//	void Update(){
-//		if (this.anim.GetCurrentAnimatorStateInfo (0).IsName ("basicHit") ||
-//		   this.anim.GetCurrentAnimatorStateInfo (0).IsName ("bigHit") ||
-//		   this.anim.GetCurrentAnimatorStateInfo (0).IsName ("block") ||
-//		   this.anim.GetCurrentAnimatorStateInfo (0).IsName ("SuperCharge")) {
-//			// Avoid any reload.
-//			this.attacking = true;
-//		} else if (this.attacking) {
-//			this.attacking = false;
-//		}
-//	}
+		
 
 	void FixedUpdate ()
 	{
 		float h = Input.GetAxisRaw ("Horizontal");
 		float v = Input.GetAxisRaw ("Vertical");
 
+
 		if (!attacking) {
 			Move (h, v);
 			Animating (h, v);
+		} else if (blocking) {
+			Move (h,v); 
 		}
-
-//		if (!((Input.GetButton ("Fire1") || Input.GetButton ("Fire2") || Input.GetButton ("Fire3") || Input.GetButton ("Fire4")))) {
-//			
-//		}
 
 	}
 

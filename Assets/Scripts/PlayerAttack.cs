@@ -38,17 +38,21 @@ public class PlayerAttack : MonoBehaviour
 	bool attacking;
 	bool blocking;
 	PlayerMovement pm;
+	PlayerHealth ph;
 	int activeSkill;
 	Vector2 activeSkillSize;
 	Vector2 unActiveSkillSize;
 	Ray shootRay;                                   // A ray from the gun end forwards.
 	RaycastHit shootHit;
+	float originalSpeed;
 
 	void Awake ()
 	{
 		floorMask = LayerMask.GetMask ("Floor");
 		anim = GetComponent <Animator> ();
 		pm = GetComponent <PlayerMovement> ();
+		ph = GetComponent <PlayerHealth> ();
+		originalSpeed = pm.speed;
 
 		blocking = false;
 
@@ -120,9 +124,9 @@ public class PlayerAttack : MonoBehaviour
 		}
 
 		if (blocking) {
-			GetComponent <CapsuleCollider> ().isTrigger = true;
+			pm.speed = originalSpeed*2;
 		} else {
-			GetComponent <CapsuleCollider> ().isTrigger = false;
+			pm.speed = originalSpeed;
 		}
 
 
@@ -177,7 +181,7 @@ public class PlayerAttack : MonoBehaviour
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
-		MakeDamage (basicShotOrigin, basicShotDMG);
+		StartCoroutine(MakeDamage (basicShotOrigin, basicShotDMG));
 
 
 	}
@@ -200,12 +204,12 @@ public class PlayerAttack : MonoBehaviour
 		GameObject s1 = (GameObject)Instantiate(skillTwo, skillTwoOrigin.transform.position, this.transform.rotation);
 		s1.GetComponent<BeamParam>().SetBeamParam(this.GetComponent<BeamParam>());
 
-		GameObject NowShot = (GameObject)Instantiate(wave, skillTwoOrigin.transform.position, this.transform.rotation);
-		NowShot.transform.localScale *= 0.25f;
-		NowShot.transform.Rotate(Vector3.left, 90.0f);
-		NowShot.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
+		GameObject wav = (GameObject)Instantiate(wave, skillTwoOrigin.transform.position, this.transform.rotation);
+		wav.transform.localScale *= 0.25f;
+		wav.transform.Rotate(Vector3.left, 90.0f);
+		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
-		MakeDamage (skillTwoOrigin, skillTwoDMG);
+		StartCoroutine(MakeDamage (skillTwoOrigin, skillTwoDMG));
 
 
 	}
@@ -224,11 +228,12 @@ public class PlayerAttack : MonoBehaviour
 	}
 
 	void block(){
-		blocking = true;
+		ph.blocking = pm.blocking = blocking = true;
 		Vector3 bPos = new Vector3 ();
 		bPos = this.transform.position;
-		bPos.y = 1;
+		bPos.y = 1.4f;
 		GameObject b = (GameObject)Instantiate (blockObj, bPos, this.transform.rotation);
+		b.transform.parent = transform; 
 		Destroy (b, 3.3f);
 	}
 
@@ -281,7 +286,7 @@ public class PlayerAttack : MonoBehaviour
 
 		yield return new WaitForSeconds (duration);
 
-		this.GetComponent <SphereCollider> ().enabled = blocking = this.attacking = pm.attacking = false;
+		this.GetComponent <SphereCollider> ().enabled = ph.blocking = pm.blocking = blocking = this.attacking = pm.attacking = false;
 	}
 
 	IEnumerator skillCoolDown(Image skill, float cd, float time) {
@@ -301,24 +306,25 @@ public class PlayerAttack : MonoBehaviour
 
 	void OnTriggerStay(Collider other) {
 		if (other.GetComponent <EnemyHealth> ()) {
-			other.GetComponent <EnemyHealth> ().TakeDamage (superChargeDMG, superChargeStunDuration);
-			other.attachedRigidbody.AddForce(other.transform.forward * -20);        
+			other.GetComponent <EnemyHealth> ().TakeDamage (superChargeDMG, superChargeStunDuration);     
 		}
 	}
 
-	void MakeDamage(GameObject origin, int dmg){
+	IEnumerator MakeDamage(GameObject origin, int dmg){
+		while (attacking) {
+			shootRay.origin = origin.transform.position;
+			shootRay.direction = transform.forward;
 
-		shootRay.origin = origin.transform.position;
-		shootRay.direction = transform.forward;
 
+			if (Physics.Raycast (shootRay, out shootHit, this.GetComponent <BeamParam> ().MaxLength)) {
 
-		if (Physics.Raycast (shootRay, out shootHit, this.GetComponent <BeamParam> ().MaxLength)) {
-
-			if (shootHit.collider.GetComponent <EnemyHealth> () != null) {
-				shootHit.collider.GetComponent <EnemyHealth> ().TakeDamage (dmg);
-			} else if (shootHit.collider.GetComponent <BoxHealth> () != null) {
-				shootHit.collider.GetComponent <BoxHealth> ().TakeDamage (dmg);
+				if (shootHit.collider.GetComponent <EnemyHealth> () != null) {
+					shootHit.collider.GetComponent <EnemyHealth> ().TakeDamage (dmg);
+				} else if (shootHit.collider.GetComponent <BoxHealth> () != null) {
+					shootHit.collider.GetComponent <BoxHealth> ().TakeDamage (dmg);
+				}
 			}
+			yield return new WaitForSeconds(0.25f);
 		}
 	}
 }

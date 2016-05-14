@@ -12256,6 +12256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   attacking: 0
+  blocking: 0
 --- !u!114 &11426542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14952,11 +14953,11 @@ MonoBehaviour:
   basicShotUI: {fileID: 0}
   skillTwo: {fileID: 100006, guid: 18e6997b0cea7f249bf0e687ba9da449, type: 2}
   skillTwoOrigin: {fileID: 147704}
-  skillTwoDMG: 10
+  skillTwoDMG: 3
   skillTwoCD: 10
   skillTwoUI: {fileID: 0}
   blockObj: {fileID: 100000, guid: 483405fce84da4e7d870b379d258f9f3, type: 2}
-  blockCD: 10
+  blockCD: 7
   blockUI: {fileID: 0}
   superChargeObj: {fileID: 100008, guid: c459dc8cf2a04624eb4d91f0b9ef9daa, type: 2}
   superChargeDMG: 10
@@ -15174,6 +15175,7 @@ MonoBehaviour:
   damageImage: {fileID: 0}
   flashSpeed: 5
   flashColour: {r: 1, g: 0, b: 0, a: 0.1}
+  blocking: 0
 --- !u!114 &11483276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -18707,7 +18709,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &13666502
 CapsuleCollider:

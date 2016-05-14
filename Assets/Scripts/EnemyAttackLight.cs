@@ -20,7 +20,7 @@ public class EnemyAttackLight : MonoBehaviour
 	private GameObject player;
 	private float cooldown;  
 	private EnemyHealth enemyHealth;
-	Ray shootRay;                                   // A ray from the gun end forwards.
+	Ray shootRay;                                   
 	RaycastHit shootHit;
 
 	void Awake ()
@@ -92,14 +92,12 @@ public class EnemyAttackLight : MonoBehaviour
 			transform.forward = playerDirection;
 		nav.speed = 10f;
 		nav.SetDestination (attackposition);
-
-//		MakeDamage (basicShotOrigin, basicShotDMG, 2f);
 	}
 
 	void OnCollisionStay(Collision collision) {
-		if (collision.gameObject == player){
+		if (collision.gameObject == player && isMelee){
 			GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce), ForceMode.Impulse);
-			if (cooldown >= basicShotCD) {
+			if (cooldown >= basicShotCD && !enemyHealth.dead () && !enemyHealth.stuned && player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
 				
 				collision.gameObject.GetComponent <PlayerHealth> ().TakeDamage (basicShotDMG);
 				cooldown = 0;
