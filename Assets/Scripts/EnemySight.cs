@@ -9,6 +9,8 @@ public class EnemySight : MonoBehaviour
 	public Vector3 resetposition = new Vector3 (1000f, 1000f, 1000f);
 	public Vector3 playerposition = new Vector3 (1000f, 1000f, 1000f);
 	public bool isMelee = false;
+	public bool healthpackInSight;
+	public Vector3 healthpackposition = new Vector3 (1000f, 1000f, 1000f);
 
 
 	//private NavMeshAgent nav;                       // Reference to the NavMeshAgent component.
@@ -19,6 +21,7 @@ public class EnemySight : MonoBehaviour
 	//private PlayerHealth playerHealth;              // Reference to the player's health script.
 	private Vector3 previousSighting;               // Where the player was sighted last frame.
 	private EnemyAttackLight enemyAttack;
+	private GameObject healthpack;
 
 
 
@@ -30,6 +33,8 @@ public class EnemySight : MonoBehaviour
 		anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		enemyAttack = GetComponent<EnemyAttackLight> ();
+		healthpack = GameObject.FindGameObjectWithTag ("HealthPack");
+		healthpackInSight = false;
 		//playerAnim = player.GetComponent<Animator>();
 		//playerHealth = player.GetComponent<PlayerHealth>();
 
@@ -64,11 +69,12 @@ public class EnemySight : MonoBehaviour
 	{
 		
 		// If the player has entered the trigger sphere...
-		if(other.gameObject == player)
+		if(other.gameObject == player || other.gameObject == healthpack)
 		{
 			
 			// By default the player is not in sight.
 			playerInSight = false;
+			healthpackInSight = false;
 
 			// Create a vector from the enemy to the player and store the angle between it and forward.
 			Vector3 direction = other.transform.position - transform.position;
@@ -94,6 +100,10 @@ public class EnemySight : MonoBehaviour
 						// Set the last global sighting is the players current position.
 						playerposition = player.transform.position;
 					}
+					if (hit.collider.gameObject == healthpack) {
+						healthpackInSight = true;
+						healthpackposition = healthpack.transform.position;
+					}
 				}
 			}
 			if (Vector3.Distance (transform.position, other.transform.position) < enemyAttack.attackRange)
@@ -110,6 +120,8 @@ public class EnemySight : MonoBehaviour
 		if(other.gameObject == player)
 			// ... the player is not in sight.
 			playerInSight = false;
+		if (other.gameObject == healthpack)
+			healthpackInSight = false;
 	}
 
 	void Animating (bool walking)

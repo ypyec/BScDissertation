@@ -29,9 +29,10 @@ GameObject:
   - 23: {fileID: 2333766}
   - 64: {fileID: 6421788}
   - 114: {fileID: 11462892}
+  - 136: {fileID: 13670176}
   m_Layer: 0
   m_Name: healthPack
-  m_TagString: Untagged
+  m_TagString: HealthPack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -254,7 +255,7 @@ MeshRenderer:
   - {fileID: 2100000, guid: 2373532d000362b4f97187dbc5b89819, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 0
+  m_UseLightProbes: 1
   m_ReflectionProbeUsage: 1
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
@@ -297,6 +298,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8711932a7bf417dbd0447d5adb01fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &13670176
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 5.0786057
+  m_Height: 22
+  m_Direction: 2
+  m_Center: {x: 0.00000047683716, y: 0, z: 5.0786057}
 --- !u!198 &19815286
 ParticleSystem:
   m_ObjectHideFlags: 1
