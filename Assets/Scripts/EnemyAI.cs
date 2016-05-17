@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
 	private float chaseTimer;                               // A timer for the chaseWaitTime.
 	private float patrolTimer;                              // A timer for the patrolWaitTime.
 	private int wayPointIndex;                              // A counter for the way point array.
+	private float stoppingDistance;
 
 
 	void Awake ()
@@ -29,12 +30,12 @@ public class EnemyAI : MonoBehaviour
 		nav = GetComponent<NavMeshAgent>();
 		player = GameObject.FindGameObjectWithTag("Player").transform;
 		playerHealth = player.GetComponent<PlayerHealth>();
+		stoppingDistance = nav.stoppingDistance;
 	}
 
 
 	void Update ()
 	{
-		print (enemySight.healthpackposition);
 		// If the player is in sight and is alive...
 		if (enemySight.playerInSight && !enemyAttack.attacking && !enemyHealth.dead () && !enemyHealth.stuned && Vector3.Distance (transform.position, player.position) < enemyAttack.attackRange && !enemyAttack.isMelee)
 			// ... shoot.
@@ -68,6 +69,7 @@ public class EnemyAI : MonoBehaviour
 	}
 
 	void SearchHealthPack() {
+		nav.stoppingDistance = 0;
 		nav.SetDestination (enemySight.healthpackposition);
 		enemySight.healthpackposition = enemySight.resetposition;
 	}
@@ -75,6 +77,7 @@ public class EnemyAI : MonoBehaviour
 
 	void Chasing ()
 	{
+		nav.stoppingDistance = stoppingDistance;
 		// Create a vector from the enemy to the last sighting of the player.
 		Vector3 sightingDeltaPos = enemySight.personalLastSighting - transform.position;
 
