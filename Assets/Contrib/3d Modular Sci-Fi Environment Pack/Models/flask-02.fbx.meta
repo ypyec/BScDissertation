@@ -1,0 +1,343 @@
+fileFormatVersion: 2
+guid: 39c8b7bdfa309f14ba9986aa30121caa
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: box-d
+    100002: box-d-01
+    100004: box-d-02
+    100006: box-d-long
+    100008: box-e
+    100010: box-f
+    100012: box-f-01
+    100014: box-g-01
+    100016: box-h
+    100018: chair-01
+    100020: chip
+    100022: cylinder-01
+    100024: cylinder-02
+    100026: cylinder-03
+    100028: door-01
+    100030: door_01_a
+    100032: door_01_b
+    100034: flask set
+    100036: //RootNode
+    100038: flask-02
+    100040: flask-03
+    100042: floating capsule
+    100044: floor-01
+    100046: floor-04
+    100048: floor-05
+    100050: floor-07
+    100052: glass
+    100054: glass-02
+    100056: hologram1
+    100058: hologram2
+    100060: lamp-01
+    100062: lamp-01-lamp
+    100064: lamp-02
+    100066: lamp-02-lamp
+    100068: lamp-03
+    100070: lamp-03-lamp
+    100072: lamp-04
+    100074: lamp-04-lamp
+    100076: lamp-07
+    100078: lamp-07-lamp
+    100080: medikit
+    100082: stairs-01
+    100084: stand
+    100086: tablet
+    100088: teleport pad
+    100090: wall-01
+    100092: wall-02
+    100094: wall-03a
+    100096: wall-03b
+    100098: wall-04
+    100100: window-01
+    100102: window-02
+    100104: window-06
+    100106: window-06-left
+    100108: window-06-right
+    400000: box-d
+    400002: box-d-01
+    400004: box-d-02
+    400006: box-d-long
+    400008: box-e
+    400010: box-f
+    400012: box-f-01
+    400014: box-g-01
+    400016: box-h
+    400018: chair-01
+    400020: chip
+    400022: cylinder-01
+    400024: cylinder-02
+    400026: cylinder-03
+    400028: door-01
+    400030: door_01_a
+    400032: door_01_b
+    400034: flask set
+    400036: //RootNode
+    400038: flask-02
+    400040: flask-03
+    400042: floating capsule
+    400044: floor-01
+    400046: floor-04
+    400048: floor-05
+    400050: floor-07
+    400052: glass
+    400054: glass-02
+    400056: hologram1
+    400058: hologram2
+    400060: lamp-01
+    400062: lamp-01-lamp
+    400064: lamp-02
+    400066: lamp-02-lamp
+    400068: lamp-03
+    400070: lamp-03-lamp
+    400072: lamp-04
+    400074: lamp-04-lamp
+    400076: lamp-07
+    400078: lamp-07-lamp
+    400080: medikit
+    400082: stairs-01
+    400084: stand
+    400086: tablet
+    400088: teleport pad
+    400090: wall-01
+    400092: wall-02
+    400094: wall-03a
+    400096: wall-03b
+    400098: wall-04
+    400100: window-01
+    400102: window-02
+    400104: window-06
+    400106: window-06-left
+    400108: window-06-right
+    2300000: box-d
+    2300002: box-d-01
+    2300004: box-d-02
+    2300006: box-d-long
+    2300008: box-e
+    2300010: box-f
+    2300012: box-f-01
+    2300014: box-g-01
+    2300016: box-h
+    2300018: chair-01
+    2300020: chip
+    2300022: cylinder-01
+    2300024: cylinder-02
+    2300026: cylinder-03
+    2300028: door-01
+    2300030: door_01_a
+    2300032: door_01_b
+    2300034: flask set
+    2300036: flask-02
+    2300038: flask-03
+    2300040: floating capsule
+    2300042: floor-01
+    2300044: floor-04
+    2300046: floor-05
+    2300048: floor-07
+    2300050: glass
+    2300052: glass-02
+    2300054: hologram1
+    2300056: hologram2
+    2300058: lamp-01
+    2300060: lamp-01-lamp
+    2300062: lamp-02
+    2300064: lamp-02-lamp
+    2300066: lamp-03
+    2300068: lamp-03-lamp
+    2300070: lamp-04
+    2300072: lamp-04-lamp
+    2300074: lamp-07
+    2300076: lamp-07-lamp
+    2300078: medikit
+    2300080: stairs-01
+    2300082: stand
+    2300084: tablet
+    2300086: teleport pad
+    2300088: wall-01
+    2300090: wall-02
+    2300092: wall-03a
+    2300094: wall-03b
+    2300096: wall-04
+    2300098: window-01
+    2300100: window-02
+    2300102: window-06
+    2300104: window-06-left
+    2300106: window-06-right
+    2300108: //RootNode
+    3300000: box-d
+    3300002: box-d-01
+    3300004: box-d-02
+    3300006: box-d-long
+    3300008: box-e
+    3300010: box-f
+    3300012: box-f-01
+    3300014: box-g-01
+    3300016: box-h
+    3300018: chair-01
+    3300020: chip
+    3300022: cylinder-01
+    3300024: cylinder-02
+    3300026: cylinder-03
+    3300028: door-01
+    3300030: door_01_a
+    3300032: door_01_b
+    3300034: flask set
+    3300036: flask-02
+    3300038: flask-03
+    3300040: floating capsule
+    3300042: floor-01
+    3300044: floor-04
+    3300046: floor-05
+    3300048: floor-07
+    3300050: glass
+    3300052: glass-02
+    3300054: hologram1
+    3300056: hologram2
+    3300058: lamp-01
+    3300060: lamp-01-lamp
+    3300062: lamp-02
+    3300064: lamp-02-lamp
+    3300066: lamp-03
+    3300068: lamp-03-lamp
+    3300070: lamp-04
+    3300072: lamp-04-lamp
+    3300074: lamp-07
+    3300076: lamp-07-lamp
+    3300078: medikit
+    3300080: stairs-01
+    3300082: stand
+    3300084: tablet
+    3300086: teleport pad
+    3300088: wall-01
+    3300090: wall-02
+    3300092: wall-03a
+    3300094: wall-03b
+    3300096: wall-04
+    3300098: window-01
+    3300100: window-02
+    3300102: window-06
+    3300104: window-06-left
+    3300106: window-06-right
+    3300108: //RootNode
+    4300000: chair-01
+    4300002: flask-02
+    4300004: tablet
+    4300006: stand
+    4300008: flask-03
+    4300010: flask set
+    4300012: glass
+    4300014: glass-02
+    4300016: medikit
+    4300018: chip
+    4300020: cylinder-03
+    4300022: cylinder-02
+    4300024: cylinder-01
+    4300026: box-f
+    4300028: box-e
+    4300030: box-f-01
+    4300032: box-g-01
+    4300034: box-h
+    4300036: box-d-long
+    4300038: box-d-02
+    4300040: box-d-01
+    4300042: box-d
+    4300044: floor-07
+    4300046: floor-05
+    4300048: floor-04
+    4300050: floor-01
+    4300052: wall-03b
+    4300054: wall-01
+    4300056: wall-02
+    4300058: wall-03a
+    4300060: wall-04
+    4300064: door_01_b
+    4300066: door_01_a
+    4300068: window-01
+    4300070: window-02
+    4300072: window-06-right
+    4300074: window-06
+    4300076: window-06-left
+    4300078: lamp-07
+    4300080: lamp-07-lamp
+    4300082: lamp-01
+    4300084: lamp-01-lamp
+    4300086: lamp-02
+    4300088: lamp-02-lamp
+    4300090: lamp-03
+    4300092: lamp-03-lamp
+    4300094: lamp-04
+    4300096: lamp-04-lamp
+    4300098: stairs-01
+    4300100: floating capsule
+    4300102: hologram1
+    4300104: hologram2
+    4300106: teleport pad
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 1
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
