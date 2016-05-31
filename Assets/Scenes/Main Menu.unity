@@ -566,7 +566,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quitMenu: {fileID: 261922388}
-  startText: {fileID: 164864508}
+  campaignText: {fileID: 1368103739}
+  arcadeText: {fileID: 164864508}
   exitText: {fileID: 1856616424}
 --- !u!222 &783705033
 CanvasRenderer:
@@ -975,13 +976,13 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1368103740}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 783705031}
-        m_MethodName: StartArcade
+        m_MethodName: StartCampaign
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1016,7 +1017,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: 78536346ddc7c42e6bfbfc3db8dd8d57, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 75
     m_Alignment: 4
