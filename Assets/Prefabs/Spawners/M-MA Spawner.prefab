@@ -11,7 +11,7 @@ GameObject:
   - 135: {fileID: 13564960}
   - 114: {fileID: 11436908}
   m_Layer: 0
-  m_Name: R-MT Spawner
+  m_Name: M-MA Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055618a67992d4b00b2a21165bdcd7b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
+  enemy: {fileID: 153436, guid: 19fa8d4c4fd9b4ccdaeb797f6486e7c9, type: 2}
   particles: {fileID: 100704, guid: 2ddf03d38ce7f4890b2a3a5b214aed4a, type: 2}
 --- !u!135 &13564960
 SphereCollider:
