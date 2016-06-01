@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e7c4db81148417db68f5bb6d308661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 5
   currentHealth: 0
   scoreValue: 5
   stuned: 0
@@ -348,6 +348,8 @@ MonoBehaviour:
   resetposition: {x: 1000, y: 1000, z: 1000}
   playerposition: {x: 1000, y: 1000, z: 1000}
   isMelee: 0
+  healthpackInSight: 0
+  healthpackposition: {x: 1000, y: 1000, z: 1000}
 --- !u!114 &11424746
 MonoBehaviour:
   m_ObjectHideFlags: 1
