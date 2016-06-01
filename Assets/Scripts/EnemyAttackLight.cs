@@ -22,6 +22,7 @@ public class EnemyAttackLight : MonoBehaviour
 	private EnemyHealth enemyHealth;
 	Ray shootRay;                                   
 	RaycastHit shootHit;
+	AudioSource attackAudio;
 
 	void Awake ()
 	{
@@ -31,6 +32,7 @@ public class EnemyAttackLight : MonoBehaviour
 		attacking = false;
 		enemyHealth = GetComponent <EnemyHealth> ();
 		nav = GetComponent<NavMeshAgent> ();
+		attackAudio = GetComponent<AudioSource> ();
 	}
 
 
@@ -80,6 +82,8 @@ public class EnemyAttackLight : MonoBehaviour
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
+		attackAudio.Play ();
+
 		MakeDamage (basicShotOrigin, basicShotDMG, this.GetComponent <BeamParam> ().MaxLength);
 	}
 
@@ -91,6 +95,9 @@ public class EnemyAttackLight : MonoBehaviour
 		if (angleBetween > 1)
 			transform.forward = playerDirection;
 		nav.speed = 10f;
+
+		attackAudio.Play ();
+
 		nav.SetDestination (attackposition);
 	}
 

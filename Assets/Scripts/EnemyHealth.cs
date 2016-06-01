@@ -27,21 +27,19 @@ public class EnemyHealth : MonoBehaviour
 
 	public void TakeDamage (int amount, float stunDuration = 0f)
 	{
-		if(isDead)
-			return;
-
-		if (stunDuration == 0) {
-			currentHealth -= amount;
-		} else if (!stuned) {
-			currentHealth -= amount;
-			if(currentHealth > 0)
-				StartCoroutine (Stun (stunDuration));
-		}
+		if (!isDead) {
+			if (stunDuration == 0) {
+				currentHealth -= amount;
+			} else if (!stuned) {
+				currentHealth -= amount;
+				if(currentHealth > 0)
+					StartCoroutine (Stun (stunDuration));
+			}
 
 
-		if(currentHealth <= 0)
-		{
-			Death ();
+			if(currentHealth <= 0){
+				Death ();
+			}
 		}
 	}
 
@@ -62,7 +60,7 @@ public class EnemyHealth : MonoBehaviour
 		isDead = true;
 		anim.SetTrigger ("Dead");
 		GetComponent <NavMeshAgent> ().enabled = false;
-		Destroy (gameObject, 2f);
+		Destroy (gameObject, 1f);
 		GameObject destroyEffect = Instantiate (destroyParticles, transform.position, transform.rotation) as GameObject;
 		destroyEffect.transform.parent = transform; 
 		ScoreManager.score += scoreValue;

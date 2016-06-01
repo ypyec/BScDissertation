@@ -30,8 +30,12 @@ public class PlayerAttack : MonoBehaviour
 	public float superChargeStunDuration = 2f;
 	public Image superChargeUI;
 
-	int floorMask;                      // A layer mask so that a ray can be cast just at gameobjects on the floor layer.
-	float camRayLength = 100f;          // The length of the ray from the camera into the scene.
+	public bool empowered;
+	public float empowerTime = 5f;
+	public GameObject empowerParticles;
+
+	int floorMask;                      
+	float camRayLength = 100f;          
 	Animator anim;
 	float [] cooldowns;
 	float [] activeCooldowns;
@@ -42,9 +46,12 @@ public class PlayerAttack : MonoBehaviour
 	int activeSkill;
 	Vector2 activeSkillSize;
 	Vector2 unActiveSkillSize;
-	Ray shootRay;                                   // A ray from the gun end forwards.
+	Ray shootRay;                                   
 	RaycastHit shootHit;
 	float originalSpeed;
+	AudioSource basicShotAudio;
+	AudioSource bigShotAudio;
+
 
 	void Awake ()
 	{
@@ -52,6 +59,8 @@ public class PlayerAttack : MonoBehaviour
 		anim = GetComponent <Animator> ();
 		pm = GetComponent <PlayerMovement> ();
 		ph = GetComponent <PlayerHealth> ();
+		basicShotAudio = GetComponents<AudioSource> ()[0];
+		bigShotAudio = GetComponents<AudioSource> ()[1];
 		originalSpeed = pm.speed;
 
 		blocking = false;
@@ -80,9 +89,7 @@ public class PlayerAttack : MonoBehaviour
 		for (int i = 0; i < 4; i++) {
 			cooldowns [i] += Time.deltaTime;
 		}
-
-
-
+			
 		if (Input.GetButton ("Skill 1")) {
 			activeSkill = 0;
 			basicShotUI.rectTransform.sizeDelta = activeSkillSize;
@@ -181,6 +188,8 @@ public class PlayerAttack : MonoBehaviour
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
 
+		basicShotAudio.Play ();
+
 		StartCoroutine(MakeDamage (basicShotOrigin, basicShotDMG));
 
 
@@ -208,6 +217,8 @@ public class PlayerAttack : MonoBehaviour
 		wav.transform.localScale *= 0.25f;
 		wav.transform.Rotate(Vector3.left, 90.0f);
 		wav.GetComponent<BeamWave>().col = this.GetComponent<BeamParam>().BeamColor;
+
+		bigShotAudio.Play ();
 
 		StartCoroutine(MakeDamage (skillTwoOrigin, skillTwoDMG));
 
@@ -260,33 +271,19 @@ public class PlayerAttack : MonoBehaviour
 		Destroy (sc, 0.5f);
 	}
 
-	IEnumerator Turning (float duration)
-	{
-		// Create a ray from the mouse cursor on screen in the direction of the camera.
+	IEnumerator Turning (float duration){
 		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
-
-		// Create a RaycastHit variable to store information about what was hit by the ray.
 		RaycastHit floorHit;
 
-		// Perform the raycast and if it hits something on the floor layer...
-		if(Physics.Raycast (camRay, out floorHit, camRayLength, floorMask))
-		{
-			// Create a vector from the player to the point on the floor the raycast from the mouse hit.
+		if(Physics.Raycast (camRay, out floorHit, camRayLength, floorMask)){
 			Vector3 playerToMouse = floorHit.point - transform.position;
-
-			// Ensure the vector is entirely along the floor plane.
 			playerToMouse.y = 0f;
-
 			transform.forward = playerToMouse;
-
-
 		}
 
-
-
 		yield return new WaitForSeconds (duration);
-
 		this.GetComponent <SphereCollider> ().enabled = ph.blocking = pm.blocking = blocking = this.attacking = pm.attacking = false;
+		bigShotAudio.Stop ();
 	}
 
 	IEnumerator skillCoolDown(Image skill, float cd, float time) {
@@ -326,5 +323,25 @@ public class PlayerAttack : MonoBehaviour
 			}
 			yield return new WaitForSeconds(0.25f);
 		}
+	}
+
+	public void Empower(){
+		basicShotDMG = basicShotDMG * 2;
+		skillTwoDMG = skillTwoDMG * 2;
+		superChargeDMG = superChargeDMG * 2;
+		empowered = true;
+
+		GameObject empowerEffect = Instantiate (empowerParticles, transform.position, transform.rotation) as GameObject;
+		empowerEffect.transform.parent = transform; 
+		Destroy (empowerEffect, empowerTime);
+		Invoke ("UnEmpower", empowerTime);
+	}
+
+
+	public void UnEmpower(){
+		basicShotDMG = basicShotDMG / 2;
+		skillTwoDMG = skillTwoDMG / 2;
+		superChargeDMG = superChargeDMG / 2;
+		empowered = false;
 	}
 }
