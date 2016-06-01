@@ -566,6 +566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   quitMenu: {fileID: 261922388}
+  continueText: {fileID: 1242868370}
   campaignText: {fileID: 1368103739}
   arcadeText: {fileID: 164864508}
   exitText: {fileID: 1856616424}
@@ -856,7 +857,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 783705031}
-        m_MethodName: StartArcade
+        m_MethodName: Continue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

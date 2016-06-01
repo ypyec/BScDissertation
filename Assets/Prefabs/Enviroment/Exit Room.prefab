@@ -169,6 +169,7 @@ GameObject:
   - 23: {fileID: 2317420}
   - 95: {fileID: 9597050}
   - 64: {fileID: 6499294}
+  - 114: {fileID: 11461678}
   m_Layer: 0
   m_Name: teleport pad (particle)
   m_TagString: Untagged
@@ -817,10 +818,10 @@ MeshCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 163500}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Convex: 0
+  m_Convex: 1
   m_Mesh: {fileID: 4300000, guid: 0b68b91aeea540b489704f2b31b9757b, type: 3}
 --- !u!95 &9517704
 Animator:
@@ -890,6 +891,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11461678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3086a6c737e0943c294b7192bab4c7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &19897712
 ParticleSystem:
   m_ObjectHideFlags: 1

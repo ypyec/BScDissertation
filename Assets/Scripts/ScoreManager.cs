@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -22,11 +23,15 @@ public class ScoreManager : MonoBehaviour
 
 	void Update ()
 	{
-		// Set the displayed text to be the word "Score" followed by the score value.
-		if (score > highscore) {
-			PlayerPrefs.SetInt ("High Score", score);
+		if (SceneManager.GetActiveScene ().name == "Arcade") {
+			if (score > highscore) {
+				PlayerPrefs.SetInt ("High Score", score);
+			}
+			text.text = "Puntaje actual: " + score;
+		} else {
+			text.text = "Puntaje: " + score;
 		}
-		text.text = "Puntaje actual: " + score;
+
 
 	}
 }
