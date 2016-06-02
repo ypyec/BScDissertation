@@ -21,7 +21,7 @@ public class MenuScript : MonoBehaviour {
 		exitText = exitText.GetComponent<Button> ();
 		quitMenu.enabled = false;
 
-		if (PlayerPrefs.GetInt ("Current Level") >= 0) {
+		if (PlayerPrefs.GetInt ("Current Level") > 0) {
 			continueText.interactable = true;
 		} else {
 			continueText.interactable = false;

@@ -46,6 +46,8 @@ GameObject:
   - 23: {fileID: 2300004}
   - 95: {fileID: 9500000}
   - 64: {fileID: 6466724}
+  - 114: {fileID: 11440306}
+  - 135: {fileID: 13586858}
   m_Layer: 0
   m_Name: door-04
   m_TagString: Untagged
@@ -214,7 +216,7 @@ Animator:
   m_GameObject: {fileID: 100004}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 7565864e564fdfa4baaf7d4185389ac4, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5320c0bdbceb14ac6be442960e7fbbba, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -222,6 +224,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11440306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 209eac64ccd0a472793f20479aafd0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &13586858
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0.5, z: -0.5}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
