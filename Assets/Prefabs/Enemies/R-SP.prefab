@@ -1073,7 +1073,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e248dfb683440f3bd2a3273a1bacbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldOfViewAngle: 270
+  fieldOfViewAngle: 180
   playerInSight: 0
   personalLastSighting: {x: 0, y: 0, z: 0}
   resetposition: {x: 1000, y: 1000, z: 1000}
