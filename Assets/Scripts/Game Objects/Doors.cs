@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Doors : MonoBehaviour {
 
+	public int keysNeeded = 0;
+
 	private GameObject player;
 	private CapsuleCollider col;
 	private Animator anim;
