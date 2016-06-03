@@ -602,16 +602,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 444714, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
       propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 186732, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
-      propertyPath: m_Name
-      value: Felicia
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
       propertyPath: basicShotUI
       value: 
-      objectReference: {fileID: 2066760510}
+      objectReference: {fileID: 1266333344}
     - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
       propertyPath: skillTwoUI
       value: 
@@ -9359,7 +9355,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 498542, guid: fc04ca6bd2c7243daaacdb4f80fae906, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11401888, guid: fc04ca6bd2c7243daaacdb4f80fae906, type: 2}
       propertyPath: target
@@ -28191,6 +28187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209eac64ccd0a472793f20479aafd0b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  keyLocked: 0
 --- !u!1 &982115987
 GameObject:
   m_ObjectHideFlags: 0
@@ -38171,6 +38168,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1266333344 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11448794, guid: 973febb5348cf443ca678d89d77d4735,
+    type: 2}
+  m_PrefabInternal: {fileID: 1266333343}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1269825077
 GameObject:
   m_ObjectHideFlags: 0
@@ -54626,7 +54629,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 463622, guid: 8481387c4dbb8477fa6c002a8142b53a, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 491336, guid: 8481387c4dbb8477fa6c002a8142b53a, type: 2}
       propertyPath: m_RootOrder
@@ -63115,12 +63118,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2063897800}
   m_Mesh: {fileID: 4300000, guid: 7aeb5bf5912290a41b463176351282bf, type: 3}
---- !u!114 &2066760510 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11480430, guid: 973febb5348cf443ca678d89d77d4735,
-    type: 2}
-  m_PrefabInternal: {fileID: 1266333343}
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &2066991614
 GameObject:
   m_ObjectHideFlags: 0

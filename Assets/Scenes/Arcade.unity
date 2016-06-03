@@ -394,7 +394,7 @@ Prefab:
     - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
       propertyPath: basicShotUI
       value: 
-      objectReference: {fileID: 311364960}
+      objectReference: {fileID: 1820958297}
     - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
       propertyPath: skillTwoUI
       value: 
@@ -423,12 +423,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &311364960 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 11480430, guid: 973febb5348cf443ca678d89d77d4735,
-    type: 2}
-  m_PrefabInternal: {fileID: 1820958296}
-  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &350627387
 Prefab:
   m_ObjectHideFlags: 0
@@ -1286,6 +1280,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1820958297 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11448794, guid: 973febb5348cf443ca678d89d77d4735,
+    type: 2}
+  m_PrefabInternal: {fileID: 1820958296}
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1001 &1824741919
 Prefab:
   m_ObjectHideFlags: 0
