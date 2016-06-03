@@ -3,11 +3,7 @@ using System.Collections;
 
 public class EnemyAI : MonoBehaviour
 {
-	public float patrolSpeed = 2f;                          // The nav mesh agent's speed when patrolling.
-	public float chaseSpeed = 5f;                           // The nav mesh agent's speed when chasing.
 	public float chaseWaitTime = 5f;                        // The amount of time to wait when the last sighting is reached.
-	public float patrolWaitTime = 1f;                       // The amount of time to wait when the patrol way point is reached.
-	public Transform[] patrolWayPoints;                     // An array of transforms for the patrol route.
 
 	private EnemyAttackLight enemyAttack;
 	private EnemyHealth enemyHealth;
@@ -16,7 +12,6 @@ public class EnemyAI : MonoBehaviour
 	private Transform player;                               // Reference to the player's transform.
 	private PlayerHealth playerHealth;                      // Reference to the PlayerHealth script.
 	private float chaseTimer;                               // A timer for the chaseWaitTime.
-	private float patrolTimer;                              // A timer for the patrolWaitTime.
 	private int wayPointIndex;                              // A counter for the way point array.
 	private float stoppingDistance;
 
@@ -55,10 +50,6 @@ public class EnemyAI : MonoBehaviour
 		}
 		else if (enemySight.healthpackposition != enemySight.resetposition && enemyHealth.currentHealth <= (enemyHealth.startingHealth / 2) && enemySight.healthpackInSight && Vector3.Distance (transform.position, player.position) > Vector3.Distance (transform.position, enemySight.healthpackposition))
 			SearchHealthPack();
-		// Otherwise...
-		//else
-			// ... patrol.
-		//	Patrolling();
 	}
 
 
@@ -85,9 +76,6 @@ public class EnemyAI : MonoBehaviour
 		if(sightingDeltaPos.sqrMagnitude > 4f)
 			// ... set the destination for the NavMeshAgent to the last personal sighting of the player.
 			nav.destination = enemySight.personalLastSighting;
-
-		// Set the appropriate speed for the NavMeshAgent.
-		nav.speed = chaseSpeed;
 
 		// If near the last personal sighting...
 		if(nav.remainingDistance < nav.stoppingDistance)

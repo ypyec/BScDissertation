@@ -20,12 +20,14 @@ public class EnemyAttackLight : MonoBehaviour
 	private GameObject player;
 	private float cooldown;  
 	private EnemyHealth enemyHealth;
-	Ray shootRay;                                   
-	RaycastHit shootHit;
-	AudioSource attackAudio;
+	private Ray shootRay;                                   
+	private RaycastHit shootHit;
+	private AudioSource attackAudio;
+	private float normalspeed;
 
 	void Awake ()
 	{
+		//PlayerPrefs.GetInt ("Difficulty");
 		anim = GetComponent <Animator> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		cooldown = basicShotCD;
@@ -33,6 +35,7 @@ public class EnemyAttackLight : MonoBehaviour
 		enemyHealth = GetComponent <EnemyHealth> ();
 		nav = GetComponent<NavMeshAgent> ();
 		attackAudio = GetComponent<AudioSource> ();
+		normalspeed = nav.speed;
 	}
 
 
@@ -40,7 +43,7 @@ public class EnemyAttackLight : MonoBehaviour
 	{
 		cooldown += Time.deltaTime;
 
-		if (!attacking && cooldown >= basicShotCD && Vector3.Distance (transform.position, player.transform.position) < attackRange && !enemyHealth.dead () && !enemyHealth.stuned && player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
+		if (!attacking && cooldown >= basicShotCD && Vector3.Distance (transform.position, player.transform.position) <= attackRange && !enemyHealth.dead () && !enemyHealth.stuned && player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
 			if (isMelee) {
 				attackMelee ();
 			} else {
@@ -50,6 +53,7 @@ public class EnemyAttackLight : MonoBehaviour
 		} else if (attacking && Vector3.Distance (transform.position, attackposition) < 1 && isMelee) {
 			attacking = false;
 			attackposition = Vector3.zero;
+			nav.speed = normalspeed;
 			anim.ResetTrigger ("Hit");
 		} else if (!isMelee) {
 			attacking = false;

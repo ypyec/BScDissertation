@@ -8,9 +8,9 @@ public class EnemySight : MonoBehaviour
 	public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
 	public Vector3 resetposition = new Vector3 (1000f, 1000f, 1000f);
 	public Vector3 playerposition = new Vector3 (1000f, 1000f, 1000f);
-	public bool isMelee = false;
 	public bool healthpackInSight;
 	public Vector3 healthpackposition = new Vector3 (1000f, 1000f, 1000f);
+	public int timesradius = 8;
 
 	private SphereCollider col;                     // Reference to the sphere collider trigger component.
 	private Animator anim;                          // Reference to the Animator.
@@ -34,7 +34,7 @@ public class EnemySight : MonoBehaviour
 		// Set the personal sighting and the previous sighting to the reset position.
 		personalLastSighting = resetposition;
 		previousSighting = resetposition;
-		col.radius *= 8;
+		col.radius *= timesradius;
 	}
 
 
@@ -47,14 +47,6 @@ public class EnemySight : MonoBehaviour
 
 		// Set the previous sighting to the be the sighting from this frame.
 		previousSighting = playerposition;
-
-		// If the player is alive...
-		//if(playerHealth.health > 0f)
-			// ... set the animator parameter to whether the player is in sight or not.
-		//	anim.SetBool(hash.playerInSightBool, playerInSight);
-		//else
-			// ... set the animator parameter to false.
-		//	anim.SetBool(hash.playerInSightBool, false);
 	}
 
 
@@ -76,9 +68,7 @@ public class EnemySight : MonoBehaviour
 			// If the angle between forward and where the player is, is less than half the angle of view...
 			if(angle < fieldOfViewAngle * 0.5f)
 			{
-				
 				RaycastHit hit;
-
 
 				// ... and if a raycast towards the player hits something...
 				if(Physics.Raycast(transform.position + transform.up, direction.normalized, out hit, col.radius * transform.lossyScale.x))
@@ -99,7 +89,7 @@ public class EnemySight : MonoBehaviour
 					}
 				}
 			}
-			if (Vector3.Distance (transform.position, other.transform.position) < enemyAttack.attackRange)
+			if (Vector3.Distance (transform.position, other.transform.position) < enemyAttack.attackRange && enemyAttack.isMelee)
 				Animating (!playerInSight);
 			else
 				Animating (playerInSight);

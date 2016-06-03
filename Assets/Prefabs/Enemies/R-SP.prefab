@@ -1078,9 +1078,9 @@ MonoBehaviour:
   personalLastSighting: {x: 0, y: 0, z: 0}
   resetposition: {x: 1000, y: 1000, z: 1000}
   playerposition: {x: 1000, y: 1000, z: 1000}
-  isMelee: 0
   healthpackInSight: 0
   healthpackposition: {x: 1000, y: 1000, z: 1000}
+  timesradius: 8
 --- !u!114 &11479618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1110,11 +1110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b02d6faaea4e4320915b05e7fe4c657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 2
-  chaseSpeed: 5
   chaseWaitTime: 5
-  patrolWaitTime: 1
-  patrolWayPoints: []
 --- !u!114 &11494864
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1237,7 +1233,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 0.6
   m_BaseOffset: 0
