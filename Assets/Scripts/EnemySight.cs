@@ -12,13 +12,9 @@ public class EnemySight : MonoBehaviour
 	public bool healthpackInSight;
 	public Vector3 healthpackposition = new Vector3 (1000f, 1000f, 1000f);
 
-
-	//private NavMeshAgent nav;                       // Reference to the NavMeshAgent component.
 	private SphereCollider col;                     // Reference to the sphere collider trigger component.
 	private Animator anim;                          // Reference to the Animator.
 	private GameObject player;                      // Reference to the player.
-	//private Animator playerAnim;                    // Reference to the player's animator component.
-	//private PlayerHealth playerHealth;              // Reference to the player's health script.
 	private Vector3 previousSighting;               // Where the player was sighted last frame.
 	private EnemyAttackLight enemyAttack;
 	private GameObject healthpack;
@@ -28,15 +24,12 @@ public class EnemySight : MonoBehaviour
 	void Awake ()
 	{
 		// Setting up the references.
-		//nav = GetComponent<NavMeshAgent>();
 		col = GetComponentInChildren<SphereCollider>();
 		anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		enemyAttack = GetComponent<EnemyAttackLight> ();
 		healthpack = GameObject.FindGameObjectWithTag ("HealthPack");
 		healthpackInSight = false;
-		//playerAnim = player.GetComponent<Animator>();
-		//playerHealth = player.GetComponent<PlayerHealth>();
 
 		// Set the personal sighting and the previous sighting to the reset position.
 		personalLastSighting = resetposition;
