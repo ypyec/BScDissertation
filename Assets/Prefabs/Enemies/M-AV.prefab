@@ -132,7 +132,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 148294}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.8854303, y: 0.3, z: 31.293747}
+  m_LocalPosition: {x: 1.89, y: 0, z: -0.71}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 438090}
@@ -522,7 +522,7 @@ MonoBehaviour:
   attackRange: 4
   isMelee: 1
   attackposition: {x: 0, y: 0, z: 0}
-  bounceForce: 6
+  bounceForce: 5
 --- !u!114 &11459194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -584,7 +584,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &19531774
 NavMeshAgent:
   m_ObjectHideFlags: 1

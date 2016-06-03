@@ -461,7 +461,7 @@ MonoBehaviour:
   attackRange: 4
   isMelee: 1
   attackposition: {x: 0, y: 0, z: 0}
-  bounceForce: 6
+  bounceForce: 2
 --- !u!135 &13579188
 SphereCollider:
   m_ObjectHideFlags: 1
