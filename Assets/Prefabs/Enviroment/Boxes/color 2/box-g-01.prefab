@@ -91,12 +91,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 25
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
