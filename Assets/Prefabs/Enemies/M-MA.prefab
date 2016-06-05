@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e7c4db81148417db68f5bb6d308661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 5
+  startingHealth: 8
   currentHealth: 0
   scoreValue: 5
   stuned: 0

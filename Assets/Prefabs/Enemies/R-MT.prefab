@@ -421,11 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b02d6faaea4e4320915b05e7fe4c657, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  patrolSpeed: 2
-  chaseSpeed: 5
   chaseWaitTime: 5
-  patrolWaitTime: 1
-  patrolWayPoints: []
 --- !u!114 &11431254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51e7c4db81148417db68f5bb6d308661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  startingHealth: 13
   currentHealth: 0
   scoreValue: 5
   stuned: 0
@@ -460,9 +456,9 @@ MonoBehaviour:
   personalLastSighting: {x: 0, y: 0, z: 0}
   resetposition: {x: 1000, y: 1000, z: 1000}
   playerposition: {x: 1000, y: 1000, z: 1000}
-  isMelee: 0
   healthpackInSight: 0
   healthpackposition: {x: 1000, y: 1000, z: 1000}
+  timesradius: 8
 --- !u!114 &11486912
 MonoBehaviour:
   m_ObjectHideFlags: 1
