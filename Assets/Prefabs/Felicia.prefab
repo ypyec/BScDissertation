@@ -15115,7 +15115,7 @@ MonoBehaviour:
   superChargeStunDuration: 2
   superChargeUI: {fileID: 0}
   empowered: 0
-  empowerTime: 5
+  empowerTime: 15
   empowerParticles: {fileID: 119922, guid: fdc79402e02544916a538fbbad11077e, type: 2}
 --- !u!114 &11479050
 MonoBehaviour:
