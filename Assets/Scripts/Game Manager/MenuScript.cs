@@ -6,6 +6,7 @@ using System;
 
 public class MenuScript : MonoBehaviour {
 
+	public Canvas missionSelect;
 	public Canvas difficultyMenu;
 	public Canvas quitMenu;
 	public Button continueText;
@@ -19,6 +20,7 @@ public class MenuScript : MonoBehaviour {
 	public Button mediumText;
 	public Button hardText;
 
+
 	private int index;
 	private float timer;
 
@@ -27,6 +29,7 @@ public class MenuScript : MonoBehaviour {
 		index = 0;
 		timer = 0.5f;
 		PlayerPrefs.SetInt ("Difficulty", 2);
+		missionSelect = missionSelect.GetComponent<Canvas> ();
 		difficultyMenu = difficultyMenu.GetComponent<Canvas> ();
 		quitMenu = quitMenu.GetComponent<Canvas> ();
 		continueText = continueText.GetComponent<Button> ();
@@ -41,6 +44,7 @@ public class MenuScript : MonoBehaviour {
 		hardText = hardText.GetComponent<Button> ();
 		difficultyMenu.enabled = false;
 		quitMenu.enabled = false;
+		missionSelect.enabled = false;
 		arcadeText.Select ();
 
 		if (PlayerPrefs.GetInt ("Current Level") > 0) {
@@ -217,7 +221,13 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void StartCampaign() {
-		SceneManager.LoadScene ("Level-0");
+		if (PlayerPrefs.GetInt ("Current Level") == 0)
+			SceneManager.LoadScene ("Level-0");
+		else {
+			missionSelect.enabled = true;
+		}
+			
+			
 	}
 
 	public void StartArcade() {
