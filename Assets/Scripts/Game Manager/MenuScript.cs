@@ -24,7 +24,6 @@ public class MenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		PlayerPrefs.SetInt ("Current Level", 0);
 		index = 0;
 		timer = 0.5f;
 		PlayerPrefs.SetInt ("Difficulty", 2);
