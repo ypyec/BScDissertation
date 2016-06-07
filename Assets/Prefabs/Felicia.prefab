@@ -15095,6 +15095,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c54b008096aa54531af27843cbe7fe6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursor: {fileID: 0}
   wave: {fileID: 163602, guid: 2e71c373747c637418583232129f9bae, type: 2}
   basicShot: {fileID: 100002, guid: 5233ad8031c8bcc40a4ec895c2c8e74e, type: 2}
   basicShotOrigin: {fileID: 105090}

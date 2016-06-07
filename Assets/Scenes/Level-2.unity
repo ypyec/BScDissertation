@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 5060572c8f2c9b04e9d890f1a8aa0051, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -10658,6 +10658,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &795828184 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196218, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
+  m_PrefabInternal: {fileID: 795828183}
 --- !u!4 &796863696 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: c3aa9f6c7f3127d488c84acec771092f, type: 2}
@@ -19375,6 +19379,10 @@ Prefab:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1036027758}
+    - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 795828184}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
   m_IsPrefabParent: 0

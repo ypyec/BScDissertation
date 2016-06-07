@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1884fcf83e73348a0b9614631c8fce10, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1700,9 +1700,21 @@ Prefab:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1829898443}
+    - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &72603635 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196218, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
+  m_PrefabInternal: {fileID: 72603634}
 --- !u!1001 &73099174
 Prefab:
   m_ObjectHideFlags: 0
@@ -43516,6 +43528,10 @@ Prefab:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 257550140}
+    - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 72603635}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
   m_IsPrefabParent: 0

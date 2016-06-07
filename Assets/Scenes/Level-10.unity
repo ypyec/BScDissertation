@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 1884fcf83e73348a0b9614631c8fce10, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -5974,6 +5974,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 256297869}
   m_Mesh: {fileID: 4300000, guid: a962496e1e860cf41ab8f6077973521e, type: 3}
+--- !u!1 &256351435 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196218, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
+  m_PrefabInternal: {fileID: 1944771633}
 --- !u!1 &259353659
 GameObject:
   m_ObjectHideFlags: 0
@@ -39444,6 +39448,10 @@ Prefab:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 256351435}
+    - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
       propertyPath: basicShotUI
       value: 
       objectReference: {fileID: 399430666}
@@ -50018,10 +50026,6 @@ Prefab:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1990186000}
-    - target: {fileID: 137474, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_AnchorMax.x
       value: 0

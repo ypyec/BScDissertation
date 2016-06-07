@@ -2493,6 +2493,10 @@ Prefab:
       propertyPath: damageImage
       value: 
       objectReference: {fileID: 810260867}
+    - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 1630055090}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
   m_IsPrefabParent: 0
@@ -17054,10 +17058,6 @@ Prefab:
       propertyPath: playerHealth
       value: 
       objectReference: {fileID: 1409285041}
-    - target: {fileID: 22378800, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17069,6 +17069,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1630055090 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196218, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
+  m_PrefabInternal: {fileID: 1630055089}
 --- !u!4 &1631045235 stripped
 Transform:
   m_PrefabParentObject: {fileID: 450586, guid: ddf1f08a011b845068b4216426d968bb, type: 2}

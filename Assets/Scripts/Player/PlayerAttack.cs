@@ -6,6 +6,8 @@ using UnityEngine.UI;
  
 public class PlayerAttack : MonoBehaviour
 {                 
+	public GameObject cursor;
+
 	public GameObject wave;
 
 	public GameObject basicShot;
@@ -272,7 +274,7 @@ public class PlayerAttack : MonoBehaviour
 	}
 
 	IEnumerator Turning (float duration){
-		Ray camRay = Camera.main.ScreenPointToRay (Input.mousePosition);
+		Ray camRay = Camera.main.ScreenPointToRay (cursor.GetComponent<RectTransform> ().anchoredPosition);
 		RaycastHit floorHit;
 
 		if(Physics.Raycast (camRay, out floorHit, camRayLength, floorMask)){
