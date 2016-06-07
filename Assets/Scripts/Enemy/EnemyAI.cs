@@ -32,23 +32,47 @@ public class EnemyAI : MonoBehaviour
 	void Update ()
 	{
 		// If the player is in sight and is alive...
-		if (enemySight.playerInSight && !enemyAttack.attacking && !enemyHealth.dead () && !enemyHealth.stuned && Vector3.Distance (transform.position, player.position) < enemyAttack.attackRange && !enemyAttack.isMelee)
+		if (enemySight.playerInSight && 
+			!enemyAttack.attacking && 
+			!enemyHealth.dead () && 
+			!enemyHealth.stuned && 
+			Vector3.Distance (transform.position, player.position) < enemyAttack.attackRange && 
+			!enemyAttack.isMelee)
+
 			// ... shoot.
 			Shooting ();
 
 		// If the player has been sighted and isn't dead...
-		else if (enemySight.personalLastSighting != enemySight.resetposition && !enemyAttack.attacking && !enemyHealth.dead () && !enemyHealth.stuned && playerHealth.currentHealth > 0f) {
+		else if (enemySight.personalLastSighting != enemySight.resetposition &&
+			!enemyAttack.attacking && 
+			!enemyHealth.dead () && 
+			!enemyHealth.stuned && 
+			playerHealth.currentHealth > 0f) {
 			// ... chase.
-			if ((enemyAttack.isMelee && (Vector3.Distance (transform.position, enemyAttack.attackposition) < 1) || enemyAttack.attackposition == Vector3.zero) || !enemyAttack.isMelee) {
-				if (enemySight.healthpackposition != enemySight.resetposition && enemyHealth.currentHealth <= (enemyHealth.startingHealth / 2) && enemySight.healthpackInSight && Vector3.Distance (transform.position, player.position) > Vector3.Distance (transform.position, enemySight.healthpackposition))
+			if ((enemyAttack.isMelee &&
+				(Vector3.Distance (transform.position, enemyAttack.attackposition) < 1) || 
+				enemyAttack.attackposition == Vector3.zero) || 
+				!enemyAttack.isMelee) {
+				if (enemySight.healthpackposition !=
+					enemySight.resetposition && 
+					enemyHealth.currentHealth <= (enemyHealth.startingHealth / 2) &&
+					enemySight.healthpackInSight && 
+					Vector3.Distance (transform.position, player.position) > Vector3.Distance (transform.position, enemySight.healthpackposition))
+
 					SearchHealthPack ();
 				else {
+
 					nav.Resume ();
 					Chasing ();
 				}
 			}
 		}
-		else if (enemySight.healthpackposition != enemySight.resetposition && enemyHealth.currentHealth <= (enemyHealth.startingHealth / 2) && enemySight.healthpackInSight && Vector3.Distance (transform.position, player.position) > Vector3.Distance (transform.position, enemySight.healthpackposition))
+		else if (enemySight.healthpackposition != 
+			enemySight.resetposition && 
+			enemyHealth.currentHealth <= (enemyHealth.startingHealth / 2) && 
+			enemySight.healthpackInSight && 
+			Vector3.Distance (transform.position, player.position) > Vector3.Distance (transform.position, enemySight.healthpackposition))
+
 			SearchHealthPack();
 	}
 

@@ -3,33 +3,48 @@ using System.Collections;
 
 public class EnemySight : MonoBehaviour
 {
-	public float fieldOfViewAngle = 360f;           // Number of degrees, centred on forward, for the enemy see.
 	public bool playerInSight;                      // Whether or not the player is currently sighted.
 	public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
 	public Vector3 resetposition = new Vector3 (1000f, 1000f, 1000f);
 	public Vector3 playerposition = new Vector3 (1000f, 1000f, 1000f);
 	public bool healthpackInSight;
 	public Vector3 healthpackposition = new Vector3 (1000f, 1000f, 1000f);
-	public int timesradius = 8;
+	public bool boxInSight;
+	public Vector3 boxposition = new Vector3 (1000f, 1000f, 1000f);
 
+	private float fieldOfViewAngle;           // Number of degrees, centred on forward, for the enemy see.
+	private int timesradius;
 	private SphereCollider col;                     // Reference to the sphere collider trigger component.
 	private Animator anim;                          // Reference to the Animator.
 	private GameObject player;                      // Reference to the player.
 	private Vector3 previousSighting;               // Where the player was sighted last frame.
 	private EnemyAttackLight enemyAttack;
-	private GameObject healthpack;
 
 
 
 	void Awake ()
 	{
+		switch (PlayerPrefs.GetInt ("Difficulty")) {
+		case 1:
+			fieldOfViewAngle = 120;
+			timesradius = 2;
+			break;
+		case 2:
+			fieldOfViewAngle = 240;
+			timesradius = 4;
+			break;
+		case 3:
+			fieldOfViewAngle = 360;
+			timesradius = 8;
+			break;
+		}
 		// Setting up the references.
 		col = GetComponentInChildren<SphereCollider>();
 		anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		enemyAttack = GetComponent<EnemyAttackLight> ();
-		healthpack = GameObject.FindGameObjectWithTag ("HealthPack");
 		healthpackInSight = false;
+		boxInSight = false;
 
 		// Set the personal sighting and the previous sighting to the reset position.
 		personalLastSighting = resetposition;
@@ -54,12 +69,14 @@ public class EnemySight : MonoBehaviour
 	{
 		
 		// If the player has entered the trigger sphere...
-		if(other.gameObject == player || other.gameObject == healthpack)
+		if(other.gameObject == player || other.GetComponent <HealthPack> () || other.GetComponent <BoxHealth> ())
 		{
 			
 			// By default the player is not in sight.
 			playerInSight = false;
 			healthpackInSight = false;
+			boxInSight = false;
+
 
 			// Create a vector from the enemy to the player and store the angle between it and forward.
 			Vector3 direction = other.transform.position - transform.position;
@@ -83,9 +100,13 @@ public class EnemySight : MonoBehaviour
 						// Set the last global sighting is the players current position.
 						playerposition = player.transform.position;
 					}
-					if (hit.collider.gameObject == healthpack) {
+					else if (hit.collider.gameObject.GetComponent <HealthPack>()) {
 						healthpackInSight = true;
-						healthpackposition = healthpack.transform.position;
+						healthpackposition = hit.collider.gameObject.transform.position;
+					}
+					else if (hit.collider.gameObject.GetComponent <BoxHealth>()) {
+						boxInSight = true;
+						boxposition = hit.collider.gameObject.transform.position;
 					}
 				}
 			}
@@ -103,7 +124,7 @@ public class EnemySight : MonoBehaviour
 		if(other.gameObject == player)
 			// ... the player is not in sight.
 			playerInSight = false;
-		if (other.gameObject == healthpack)
+		if (other.gameObject.GetComponent<HealthPack>())
 			healthpackInSight = false;
 	}
 

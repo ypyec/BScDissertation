@@ -9,8 +9,8 @@ public class EnemyAttackLight : MonoBehaviour
 	public GameObject basicShotOrigin;
 	public int basicShotDMG = 5;                  
 	public float basicShotCD = 1.2f;
+	public float attackRange;
 	public bool attacking;
-	public float attackRange = 4f;
 	public bool isMelee = false;
 	public Vector3 attackposition;
 	public float bounceForce = 0f;
@@ -27,7 +27,17 @@ public class EnemyAttackLight : MonoBehaviour
 
 	void Awake ()
 	{
-		//PlayerPrefs.GetInt ("Difficulty");
+		switch (PlayerPrefs.GetInt ("Difficulty")) {
+		case 1:
+			attackRange = 3f;
+			break;
+		case 2:
+			attackRange = 4f;
+			break;
+		case 3:
+			attackRange = 5f;
+			break;
+		}
 		anim = GetComponent <Animator> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		cooldown = basicShotCD;

@@ -6925,7 +6925,7 @@ MonoBehaviour:
   startingHealth: 15
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 100
   powerPackChance: 15
   respawnRate: 60
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -17060,11 +17060,11 @@ Prefab:
       objectReference: {fileID: 1409285041}
     - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973febb5348cf443ca678d89d77d4735, type: 2}

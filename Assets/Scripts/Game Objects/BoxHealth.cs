@@ -15,8 +15,9 @@ public class BoxHealth : MonoBehaviour {
 	public GameObject enemyToSpawn1;
 	public GameObject enemyToSpawn2;
 
-	                         
+
 	bool isDestroyed;    
+	                    
 
 	void Awake ()
 	{
