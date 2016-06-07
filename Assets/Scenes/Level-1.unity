@@ -768,6 +768,10 @@ Prefab:
       propertyPath: damageImage
       value: 
       objectReference: {fileID: 211437307}
+    - target: {fileID: 11478488, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 1266333345}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85e54059996cf47478c70fc061db05b4, type: 2}
   m_IsPrefabParent: 0
@@ -40266,6 +40270,10 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1266333343}
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!1 &1266333345 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 196218, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
+  m_PrefabInternal: {fileID: 1266333343}
 --- !u!1 &1266949803
 GameObject:
   m_ObjectHideFlags: 0
