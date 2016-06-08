@@ -19,15 +19,19 @@ public class MenuScript : MonoBehaviour {
 	public Button easyText;
 	public Button mediumText;
 	public Button hardText;
+	public Button atrasText;
 
+	public RectTransform[] levels;
 
 	private int index;
+	private int hIndex;
 	private float timer;
 
 	// Use this for initialization
 	void Start () {
 		index = 0;
-		timer = 0.5f;
+		hIndex = 0;
+		timer = 0.25f;
 		PlayerPrefs.SetInt ("Difficulty", 2);
 		missionSelect = missionSelect.GetComponent<Canvas> ();
 		difficultyMenu = difficultyMenu.GetComponent<Canvas> ();
@@ -42,6 +46,7 @@ public class MenuScript : MonoBehaviour {
 		easyText = easyText.GetComponent<Button> ();
 		mediumText = mediumText.GetComponent<Button> ();
 		hardText = hardText.GetComponent<Button> ();
+		atrasText = atrasText.GetComponent<Button> ();
 		difficultyMenu.enabled = false;
 		quitMenu.enabled = false;
 		missionSelect.enabled = false;
@@ -56,53 +61,81 @@ public class MenuScript : MonoBehaviour {
 
 	void Update() {
 		timer += Time.deltaTime;
-		if (!quitMenu.enabled && !difficultyMenu.enabled) {
-			if (Input.GetAxisRaw ("Vertical") == -1 && timer >= 0.3f) {
+		if (!quitMenu.enabled && !difficultyMenu.enabled && !missionSelect.enabled) {
+			if (Input.GetAxisRaw ("Vertical") == -1 && timer >= 0.25f) {
 				if (index == 4)
 					index = 0;
 				else
 					index++;
 				MenuSelect (index, "down");
-			} else if (Input.GetAxisRaw ("Vertical") == 1 && timer >= 0.3f) {
+			} else if (Input.GetAxisRaw ("Vertical") == 1 && timer >= 0.25f) {
 				if (index == 0)
 					index = 4;
 				else
 					index--;
 				MenuSelect (index, "up");
 			} 
-		} else if (quitMenu.enabled && !difficultyMenu.enabled) {
-			if (Input.GetAxisRaw ("Vertical") == -1 && timer >= 0.3f) {
+		} else if (quitMenu.enabled && !difficultyMenu.enabled  && !missionSelect.enabled) {
+			if (Input.GetAxisRaw ("Vertical") == -1 && timer >= 0.25f) {
 				if (index >= 1)
 					index = 0;
 				else
 					index++;
 				quitMenuSelect (index);
-			} else if (Input.GetAxisRaw ("Vertical") == 1 && timer >= 0.3f) {
+			} else if (Input.GetAxisRaw ("Vertical") == 1 && timer >= 0.25f) {
 				if (index == 0)
 					index = 1;
 				else
 					index--;
 				quitMenuSelect (index);
 			} 
-		} else if (!quitMenu.enabled && difficultyMenu.enabled) {
-			if (Input.GetAxisRaw ("Vertical") == -1 && timer >= 0.3f) {
+		} else if (!quitMenu.enabled && difficultyMenu.enabled && !missionSelect.enabled) {
+			if (Input.GetAxisRaw ("Vertical") == -1 && timer >= 0.25f) {
 				if (index >= 2)
 					index = 0;
 				else
 					index++;
 				difficultyMenuSelect (index);
-			} else if (Input.GetAxisRaw ("Vertical") == 1 && timer >= 0.3f) {
+			} else if (Input.GetAxisRaw ("Vertical") == 1 && timer >= 0.25f) {
 				if (index == 0)
 					index = 2;
 				else
 					index--;
 				difficultyMenuSelect (index);
 			}
+		} else if (!quitMenu.enabled && !difficultyMenu.enabled && missionSelect.enabled) {
+			if (Input.GetAxisRaw ("Vertical") == -1 && timer >= 0.25f) {
+				if (index >= 1)
+					index = 0;
+				else
+					index++;
+				missionMenuSelect (index, hIndex);
+			} else if (Input.GetAxisRaw ("Vertical") == 1 && timer >= 0.25f) {
+				if (index == 0)
+					index = 1;
+				else
+					index--;
+				missionMenuSelect (index, hIndex);
+			} else if (Input.GetAxisRaw ("Horizontal") == -1 && timer >= 0.25f && index == 1) {
+				if (hIndex <= 0)
+					hIndex = PlayerPrefs.GetInt ("Current Level");
+				else
+					hIndex--;
+				
+				missionMenuSelect (index, hIndex);
+			} else if (Input.GetAxisRaw ("Horizontal") == 1 && timer >= 0.25f  && index == 1) {
+				if (hIndex >= PlayerPrefs.GetInt ("Current Level"))
+					hIndex = 0;
+				else
+					hIndex++;
+				missionMenuSelect (index, hIndex);
+			}
 		}
 			
 	}
 
 	void MenuSelect(int menuIndex, string direction) {
+		this.GetComponents<AudioSource> ()[0].Play ();
 		if (index == 1 && !continueText.interactable && direction == "down") {
 			index++;
 			menuIndex++;
@@ -131,6 +164,7 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	void quitMenuSelect(int menuIndex) {
+		this.GetComponents<AudioSource> ()[0].Play ();
 		switch (menuIndex) {
 		case 0:
 			yesText.Select ();
@@ -143,6 +177,7 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	void difficultyMenuSelect(int menuIndex) {
+		this.GetComponents<AudioSource> ()[0].Play ();
 		switch (menuIndex) {
 		case 0:
 			easyText.Select ();
@@ -156,9 +191,31 @@ public class MenuScript : MonoBehaviour {
 		}
 		timer = 0f;
 	}
+
+	void missionMenuSelect(int menuIndex, int missionIndex) {
+		this.GetComponents<AudioSource> ()[0].Play ();
+		switch (menuIndex) {
+		case 0:
+			atrasText.Select ();
+			break;
+		case 1:
+			for (int i = 0; i < levels.Length; i++) {
+				if (i == missionIndex) {
+					levels [i].gameObject.SetActive (true);
+					levels [i].GetComponent <Button> ().Select ();
+				} else {
+					levels [i].gameObject.SetActive (false);
+				}
+			}
+			break;
+		}
+		timer = 0f;
+	}
 		
 	public void DifficultyPress() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		difficultyMenu.enabled = true;
+		this.GetComponent<Canvas> ().sortingOrder = -1;
 		difficultyText.enabled = false;
 		continueText.enabled = false;
 		campaignText.enabled = false;
@@ -167,8 +224,10 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void ExitPress() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		difficultyText.enabled = false;
 		quitMenu.enabled = true;
+		this.GetComponent<Canvas> ().sortingOrder = -1;
 		continueText.enabled = false;
 		campaignText.enabled = false;
 		arcadeText.enabled = false;
@@ -176,8 +235,11 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void NoPress() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		difficultyText.enabled = true;
 		quitMenu.enabled = false;
+		missionSelect.enabled = false;
+		this.GetComponent<Canvas> ().sortingOrder = 1;
 		campaignText.enabled = true;
 		arcadeText.enabled = true;
 		exitText.enabled = true;
@@ -185,7 +247,9 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void EasyPress() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		PlayerPrefs.SetInt ("Difficulty", 1);
+		this.GetComponent<Canvas> ().sortingOrder = 1;
 		difficultyText.enabled = true;
 		difficultyMenu.enabled = false;
 		campaignText.enabled = true;
@@ -195,7 +259,9 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void MediumPress() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		PlayerPrefs.SetInt ("Difficulty", 2);
+		this.GetComponent<Canvas> ().sortingOrder = 1;
 		difficultyText.enabled = true;
 		difficultyMenu.enabled = false;
 		campaignText.enabled = true;
@@ -205,7 +271,9 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void HardPress() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		PlayerPrefs.SetInt ("Difficulty", 3);
+		this.GetComponent<Canvas> ().sortingOrder = 1;
 		difficultyText.enabled = true;
 		difficultyMenu.enabled = false;
 		campaignText.enabled = true;
@@ -215,26 +283,43 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void Continue() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		if (Application.CanStreamedLevelBeLoaded ("Level-" + PlayerPrefs.GetInt ("Current Level"))) {
 			SceneManager.LoadScene ("Level-" + PlayerPrefs.GetInt ("Current Level"));
 		}
 	}
 
 	public void StartCampaign() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		if (PlayerPrefs.GetInt ("Current Level") == 0)
 			SceneManager.LoadScene ("Level-0");
 		else {
+			this.GetComponent<Canvas> ().sortingOrder = -1;
+			difficultyText.enabled = false;
+			continueText.enabled = false;
+			campaignText.enabled = false;
+			arcadeText.enabled = false;
+			exitText.enabled = false;
 			missionSelect.enabled = true;
 		}
 			
 			
 	}
 
+	public void StartLevel() {
+		this.GetComponents<AudioSource> ()[1].Play ();
+		if (Application.CanStreamedLevelBeLoaded ("Level-" + hIndex)) {
+			SceneManager.LoadScene ("Level-" + hIndex);
+		}
+	}
+
 	public void StartArcade() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		SceneManager.LoadScene ("Arcade");
 	}
 
 	public void ExitGame() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		Application.Quit ();
 	}
 }
