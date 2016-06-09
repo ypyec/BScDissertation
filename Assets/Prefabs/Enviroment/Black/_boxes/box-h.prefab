@@ -12,6 +12,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 64: {fileID: 6420076}
   - 114: {fileID: 11418614}
+  - 65: {fileID: 6583084}
   m_Layer: 0
   m_Name: box-h
   m_TagString: Box
@@ -81,6 +82,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 91ee8bb2deaf6b84ab58ff8c54d4b2e1, type: 3}
+--- !u!65 &6583084
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000002, y: 0.99999994, z: 1.5}
+  m_Center: {x: 0, y: 0.49999997, z: 0}
 --- !u!114 &11418614
 MonoBehaviour:
   m_ObjectHideFlags: 1

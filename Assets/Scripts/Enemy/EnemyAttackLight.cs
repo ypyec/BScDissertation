@@ -12,18 +12,16 @@ public class EnemyAttackLight : MonoBehaviour
 	public float attackRange;
 	public bool attacking;
 	public bool isMelee = false;
-	public Vector3 attackposition;
 	public float bounceForce = 0f;
 
 	private NavMeshAgent nav;
-	private Animator anim;
 	private GameObject player;
-	private float cooldown;  
+	private GameObject box;
 	private EnemyHealth enemyHealth;
 	private Ray shootRay;                                   
 	private RaycastHit shootHit;
 	private AudioSource attackAudio;
-	private float normalspeed;
+	private EnemyAI enemyAI;
 
 	void Awake ()
 	{
@@ -38,47 +36,22 @@ public class EnemyAttackLight : MonoBehaviour
 			attackRange = 5f;
 			break;
 		}
-		anim = GetComponent <Animator> ();
+		enemyAI = GetComponent <EnemyAI> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
-		cooldown = basicShotCD;
 		attacking = false;
 		enemyHealth = GetComponent <EnemyHealth> ();
 		nav = GetComponent<NavMeshAgent> ();
 		attackAudio = GetComponent<AudioSource> ();
-		normalspeed = nav.speed;
 	}
-
-
-	void Update ()
-	{
-		cooldown += Time.deltaTime;
-
-		if (!attacking && cooldown >= basicShotCD && Vector3.Distance (transform.position, player.transform.position) <= attackRange && !enemyHealth.dead () && !enemyHealth.stuned && player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
-			if (isMelee) {
-				attackMelee ();
-			} else {
-				StartCoroutine (animateAttack ());
-			}
-
-		} else if (attacking && Vector3.Distance (transform.position, attackposition) < 1 && isMelee) {
-			attacking = false;
-			attackposition = Vector3.zero;
-			nav.speed = normalspeed;
-			anim.ResetTrigger ("Hit");
-		} else if (!isMelee) {
-			attacking = false;
-			anim.ResetTrigger ("Hit");
-		}
-	}
-
-	IEnumerator animateAttack(){
+		
+	public IEnumerator animateAttack(){
 		attacking = true;
-		cooldown = 0f;
-		Vector3 playerDirection = player.transform.position - transform.position;
+		enemyAI.cooldown = 0f;
+		Vector3 playerDirection = enemyAI.target - transform.position;
 		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
 		if (angleBetween > 1)
 			transform.forward = playerDirection;
-		anim.SetTrigger ("Hit");
+		enemyAI.anim.SetTrigger ("Hit");
 
 		yield return new WaitForSeconds (0.27f);
 
@@ -101,27 +74,22 @@ public class EnemyAttackLight : MonoBehaviour
 		MakeDamage (basicShotOrigin, basicShotDMG, this.GetComponent <BeamParam> ().MaxLength);
 	}
 
-	void attackMelee(){
-		attackposition = player.transform.position;
-		attacking = true;
-		Vector3 playerDirection = player.transform.position - transform.position;
-		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
-		if (angleBetween > 1)
-			transform.forward = playerDirection;
-		nav.speed = 10f;
-
-		attackAudio.Play ();
-
-		nav.SetDestination (attackposition);
-	}
-
 	void OnCollisionStay(Collision collision) {
-		if (collision.gameObject == player && isMelee){
+		if (collision.gameObject == player && isMelee) {
 			GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce), ForceMode.Impulse);
-			if (cooldown >= basicShotCD && !enemyHealth.dead () && !enemyHealth.stuned && player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
+			if (enemyAI.cooldown >= basicShotCD && !enemyHealth.dead () && !enemyHealth.stuned && player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
 				
 				collision.gameObject.GetComponent <PlayerHealth> ().TakeDamage (basicShotDMG);
-				cooldown = 0;
+				attackAudio.Play ();
+				enemyAI.cooldown = 0;
+			}
+		} else if (collision.gameObject.GetComponent <BoxHealth> () && isMelee) {
+			GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce*3), ForceMode.Impulse);
+			if (enemyAI.cooldown >= basicShotCD && !enemyHealth.dead () && !enemyHealth.stuned && collision.gameObject.GetComponent <BoxHealth> ().currentHealth > 0f) {
+
+				attackAudio.Play ();
+				collision.gameObject.GetComponent <BoxHealth> ().TakeDamage (basicShotDMG);
+				enemyAI.cooldown = 0;
 			}
 		}
 	}

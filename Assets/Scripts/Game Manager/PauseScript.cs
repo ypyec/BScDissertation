@@ -53,7 +53,6 @@ public class PauseScript : MonoBehaviour {
 	}
 
 	private void PauseSelect(int MenuIndex) {
-		print (index);
 		switch (MenuIndex) {
 		case 0:
 			continueText.Select ();

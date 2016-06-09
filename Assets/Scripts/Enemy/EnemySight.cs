@@ -27,15 +27,15 @@ public class EnemySight : MonoBehaviour
 		switch (PlayerPrefs.GetInt ("Difficulty")) {
 		case 1:
 			fieldOfViewAngle = 120;
-			timesradius = 2;
+			timesradius = 1;
 			break;
 		case 2:
 			fieldOfViewAngle = 240;
-			timesradius = 4;
+			timesradius = 2;
 			break;
 		case 3:
 			fieldOfViewAngle = 360;
-			timesradius = 8;
+			timesradius = 3;
 			break;
 		}
 		// Setting up the references.
@@ -100,11 +100,11 @@ public class EnemySight : MonoBehaviour
 						// Set the last global sighting is the players current position.
 						playerposition = player.transform.position;
 					}
-					else if (hit.collider.gameObject.GetComponent <HealthPack>()) {
+					if (hit.collider.gameObject.GetComponent <HealthPack>()) {
 						healthpackInSight = true;
 						healthpackposition = hit.collider.gameObject.transform.position;
 					}
-					else if (hit.collider.gameObject.GetComponent <BoxHealth>()) {
+					if (hit.collider.gameObject.GetComponent <BoxHealth>()) {
 						boxInSight = true;
 						boxposition = hit.collider.gameObject.transform.position;
 					}

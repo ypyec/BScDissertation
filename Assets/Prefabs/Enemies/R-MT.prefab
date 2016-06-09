@@ -405,10 +405,9 @@ MonoBehaviour:
   basicShotOrigin: {fileID: 156014}
   basicShotDMG: 5
   basicShotCD: 1.2
-  attacking: 0
   attackRange: 4
+  attacking: 0
   isMelee: 0
-  attackposition: {x: 0, y: 0, z: 0}
   bounceForce: 0
 --- !u!114 &11419228
 MonoBehaviour:
@@ -422,6 +421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseWaitTime: 5
+  cooldown: 0
+  anim: {fileID: 0}
+  attackposition: {x: 0, y: 0, z: 0}
 --- !u!114 &11431254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,14 +453,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e248dfb683440f3bd2a3273a1bacbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldOfViewAngle: 180
   playerInSight: 0
   personalLastSighting: {x: 0, y: 0, z: 0}
   resetposition: {x: 1000, y: 1000, z: 1000}
   playerposition: {x: 1000, y: 1000, z: 1000}
   healthpackInSight: 0
   healthpackposition: {x: 1000, y: 1000, z: 1000}
-  timesradius: 8
+  boxInSight: 0
+  boxposition: {x: 1000, y: 1000, z: 1000}
 --- !u!114 &11486912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -513,7 +515,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 0

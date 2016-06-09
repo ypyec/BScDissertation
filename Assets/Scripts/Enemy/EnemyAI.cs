@@ -4,45 +4,102 @@ using System.Collections;
 public class EnemyAI : MonoBehaviour
 {
 	public float chaseWaitTime = 5f;                        // The amount of time to wait when the last sighting is reached.
+	public float cooldown; 
+	public Animator anim;
+	public Vector3 attackposition;
+	public Vector3 target;
 
 	private EnemyAttackLight enemyAttack;
 	private EnemyHealth enemyHealth;
 	private EnemySight enemySight;                          // Reference to the EnemySight script.
 	private NavMeshAgent nav;                               // Reference to the nav mesh agent.
-	private Transform player;                               // Reference to the player's transform.
+	private GameObject player;                               // Reference to the player's transform.
 	private PlayerHealth playerHealth;                      // Reference to the PlayerHealth script.
 	private float chaseTimer;                               // A timer for the chaseWaitTime.
 	private int wayPointIndex;                              // A counter for the way point array.
 	private float stoppingDistance;
-
+	private float normalspeed;
 
 	void Awake ()
 	{
 		// Setting up the references.
 		enemyAttack = GetComponent<EnemyAttackLight>();
 		enemyHealth = GetComponent<EnemyHealth> ();
-		enemySight = GetComponent<EnemySight>();
+		enemySight = GetComponent<EnemySight> ();
+		anim = GetComponent<Animator> ();
 		nav = GetComponent<NavMeshAgent>();
-		player = GameObject.FindGameObjectWithTag("Player").transform;
+		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent<PlayerHealth>();
 		stoppingDistance = nav.stoppingDistance;
+		cooldown = enemyAttack.basicShotCD;
+		normalspeed = nav.speed;
+		attackposition = Vector3.zero;
 	}
 
 
 	void Update ()
 	{
-		// If the player is in sight and is alive...
-		if (enemySight.playerInSight && 
+		cooldown += Time.deltaTime;
+		switch (PlayerPrefs.GetInt ("Difficulty")) {
+		case 1:
+			GameEasy ();
+			break;
+		case 2:
+			GameMedium ();
+			break;
+		case 3:
+			GameHard ();
+			break;
+		}
+	}
+
+	void GameEasy() {
+		target = enemySight.playerposition;
+		attackposition = player.transform.position;
+		if (enemySight.playerInSight &&
+		    !enemyAttack.attacking &&
+		    !enemyHealth.dead () &&
+		    !enemyHealth.stuned &&
+		    Vector3.Distance (transform.position, target) <= enemyAttack.attackRange) {
+			Shooting ();
+		}
+
+		else if (enemySight.personalLastSighting != enemySight.resetposition &&
 			!enemyAttack.attacking && 
 			!enemyHealth.dead () && 
-			!enemyHealth.stuned && 
-			Vector3.Distance (transform.position, player.position) < enemyAttack.attackRange && 
-			!enemyAttack.isMelee)
+			!enemyHealth.stuned &&
+			playerHealth.currentHealth > 0f) {
+			// ... chase.
+			if ((enemyAttack.isMelee &&
+				(Vector3.Distance (transform.position, attackposition) < 1) || 
+				attackposition == Vector3.zero) || 
+				!enemyAttack.isMelee) {
+					nav.Resume ();
+					Chasing ();
+				}
+			nav.Resume ();
+			Chasing ();
+			}
+	}
 
-			// ... shoot.
+	void GameMedium() {
+		target = enemySight.playerposition;
+		attackposition = player.transform.position;
+		if (enemyHealth.currentHealth < enemyHealth.startingHealth &&
+		    enemySight.healthpackInSight &&
+		    !enemyHealth.dead () &&
+		    !enemyHealth.stuned) {
+			nav.Resume ();
+			SearchHealthPack ();
+		
+		} else if (enemySight.playerInSight &&
+		         !enemyAttack.attacking &&
+		         !enemyHealth.dead () &&
+		         !enemyHealth.stuned &&
+		         Vector3.Distance (transform.position, target) <= enemyAttack.attackRange) {
 			Shooting ();
+		}
 
-		// If the player has been sighted and isn't dead...
 		else if (enemySight.personalLastSighting != enemySight.resetposition &&
 			!enemyAttack.attacking && 
 			!enemyHealth.dead () && 
@@ -50,43 +107,104 @@ public class EnemyAI : MonoBehaviour
 			playerHealth.currentHealth > 0f) {
 			// ... chase.
 			if ((enemyAttack.isMelee &&
-				(Vector3.Distance (transform.position, enemyAttack.attackposition) < 1) || 
-				enemyAttack.attackposition == Vector3.zero) || 
+				(Vector3.Distance (transform.position, attackposition) < 10) || 
+				attackposition == Vector3.zero) || 
 				!enemyAttack.isMelee) {
-				if (enemySight.healthpackposition !=
-					enemySight.resetposition && 
-					enemyHealth.currentHealth <= (enemyHealth.startingHealth / 2) &&
-					enemySight.healthpackInSight && 
-					Vector3.Distance (transform.position, player.position) > Vector3.Distance (transform.position, enemySight.healthpackposition))
-
-					SearchHealthPack ();
-				else {
-
-					nav.Resume ();
-					Chasing ();
-				}
+				nav.Resume ();
+				Chasing ();
 			}
+			nav.Resume ();
+			Chasing ();
 		}
-		else if (enemySight.healthpackposition != 
-			enemySight.resetposition && 
-			enemyHealth.currentHealth <= (enemyHealth.startingHealth / 2) && 
-			enemySight.healthpackInSight && 
-			Vector3.Distance (transform.position, player.position) > Vector3.Distance (transform.position, enemySight.healthpackposition))
-
-			SearchHealthPack();
 	}
 
+	void GameHard() {
+		target = enemySight.playerposition;
+		if (enemyHealth.currentHealth < enemyHealth.startingHealth &&
+		    enemySight.healthpackInSight &&
+		    !enemyHealth.dead () &&
+		    !enemyHealth.stuned) {
+			nav.Resume ();
+			SearchHealthPack ();
+		
+		} else if (enemyHealth.currentHealth < enemyHealth.startingHealth &&
+		        enemySight.boxInSight &&
+		        !enemyAttack.attacking &&
+		        !enemyHealth.dead () &&
+		        !enemyHealth.stuned) {
+			target = enemySight.boxposition;
+			Shooting ();
+		}
+
+		else if (enemySight.playerInSight &&
+			!enemyAttack.attacking &&
+			!enemyHealth.dead () &&
+			!enemyHealth.stuned &&
+			Vector3.Distance (transform.position, target) <= enemyAttack.attackRange) {
+			Shooting ();
+		}
+
+		else if (enemySight.personalLastSighting != enemySight.resetposition &&
+			!enemyAttack.attacking && 
+			!enemyHealth.dead () && 
+			!enemyHealth.stuned && 
+			playerHealth.currentHealth > 0f) {
+			// ... chase.
+			if ((enemyAttack.isMelee &&
+				(Vector3.Distance (transform.position, attackposition) < 1) || 
+				attackposition == Vector3.zero) || 
+				!enemyAttack.isMelee) {
+				nav.Resume ();
+				Chasing ();
+			}
+			nav.Resume ();
+			Chasing ();
+		}		
+	}
 
 	void Shooting ()
 	{
-		// Stop the enemy where it is.
-		nav.Stop();
+		if (!enemyAttack.attacking && 
+			cooldown >= enemyAttack.basicShotCD &&
+			!enemyHealth.dead () &&
+			!enemyHealth.stuned &&
+			player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
+			if (enemyAttack.isMelee) {
+				AttackMelee ();
+				if (enemyAttack.attacking &&
+				    Vector3.Distance (transform.position, attackposition) < 1) {
+					enemyAttack.attacking = false;
+					attackposition = Vector3.zero;
+					nav.speed = normalspeed;
+					anim.ResetTrigger ("Hit");
+				}
+			} else {
+				nav.Stop();
+				StartCoroutine (enemyAttack.animateAttack ());
+				enemyAttack.attacking = false;
+				anim.ResetTrigger ("Hit");
+			}
+		}
+	}
+
+	void AttackMelee() {
+		attackposition = target;
+		Vector3 playerDirection = target - transform.position;
+		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
+		if (angleBetween > 1)
+			transform.forward = playerDirection;
+		nav.speed = 10f;
+
+		nav.SetDestination (attackposition);
 	}
 
 	void SearchHealthPack() {
 		nav.stoppingDistance = 0;
 		nav.SetDestination (enemySight.healthpackposition);
-		enemySight.healthpackposition = enemySight.resetposition;
+		if (transform.position == nav.destination) {
+			enemySight.healthpackposition = enemySight.resetposition;
+			nav.stoppingDistance = stoppingDistance;
+		}
 	}
 
 
