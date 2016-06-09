@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class EnemyAttackLight : MonoBehaviour
-{                 
+{                  
 	public GameObject wave;
 
 	public GameObject basicShot;
@@ -43,11 +43,11 @@ public class EnemyAttackLight : MonoBehaviour
 		nav = GetComponent<NavMeshAgent> ();
 		attackAudio = GetComponent<AudioSource> ();
 	}
-		
+
 	public IEnumerator animateAttack(){
 		attacking = true;
 		enemyAI.cooldown = 0f;
-		Vector3 playerDirection = enemyAI.target - transform.position;
+		Vector3 playerDirection = enemyAI.target.transform.position - transform.position;
 		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
 		if (angleBetween > 1)
 			transform.forward = playerDirection;
@@ -60,7 +60,7 @@ public class EnemyAttackLight : MonoBehaviour
 	}
 
 	void attack(){
-		
+
 		GameObject s1 = (GameObject)Instantiate(basicShot, basicShotOrigin.transform.position, this.transform.rotation);
 		s1.GetComponent<BeamParam>().SetBeamParam(this.GetComponent<BeamParam>());
 
@@ -78,13 +78,13 @@ public class EnemyAttackLight : MonoBehaviour
 		if (collision.gameObject == player && isMelee) {
 			GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce), ForceMode.Impulse);
 			if (enemyAI.cooldown >= basicShotCD && !enemyHealth.dead () && !enemyHealth.stuned && player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
-				
+
 				collision.gameObject.GetComponent <PlayerHealth> ().TakeDamage (basicShotDMG);
 				attackAudio.Play ();
 				enemyAI.cooldown = 0;
 			}
-		} else if (collision.gameObject.GetComponent <BoxHealth> () && isMelee) {
-			GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce*3), ForceMode.Impulse);
+		}  else if (collision.gameObject.GetComponent <BoxHealth> () && isMelee) {
+			GetComponent <Rigidbody> ().AddForce (transform.forward * (-bounceForce*4), ForceMode.Impulse);
 			if (enemyAI.cooldown >= basicShotCD && !enemyHealth.dead () && !enemyHealth.stuned && collision.gameObject.GetComponent <BoxHealth> ().currentHealth > 0f) {
 
 				attackAudio.Play ();
@@ -104,7 +104,7 @@ public class EnemyAttackLight : MonoBehaviour
 
 			if (shootHit.collider.GetComponent <PlayerHealth> () != null) {
 				shootHit.collider.GetComponent <PlayerHealth> ().TakeDamage (dmg);
-			} else if (shootHit.collider.GetComponent <BoxHealth> () != null) {
+			}  else if (shootHit.collider.GetComponent <BoxHealth> () != null) {
 				shootHit.collider.GetComponent <BoxHealth> ().TakeDamage (dmg);
 			}
 		}

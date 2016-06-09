@@ -24,6 +24,12 @@ public class EnemyHealth : MonoBehaviour
 		isDead = false;
 	}
 
+	void Update () {
+		if (currentHealth == startingHealth) {
+			GetComponent<EnemySight> ().healthpackInSight = false;
+			GetComponent<EnemyAI> ().nav.speed = GetComponent<EnemyAI> ().normalspeed;
+		}
+	}
 
 	public void TakeDamage (int amount, float stunDuration = 0f)
 	{

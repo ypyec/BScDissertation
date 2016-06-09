@@ -7,21 +7,21 @@ public class EnemyAI : MonoBehaviour
 	public float cooldown; 
 	public Animator anim;
 	public Vector3 attackposition;
-	public Vector3 target;
+	public GameObject target;
+	public NavMeshAgent nav;                               // Reference to the nav mesh agent.
+	public float normalspeed;
 
 	private EnemyAttackLight enemyAttack;
 	private EnemyHealth enemyHealth;
 	private EnemySight enemySight;                          // Reference to the EnemySight script.
-	private NavMeshAgent nav;                               // Reference to the nav mesh agent.
 	private GameObject player;                               // Reference to the player's transform.
 	private PlayerHealth playerHealth;                      // Reference to the PlayerHealth script.
 	private float chaseTimer;                               // A timer for the chaseWaitTime.
-	private int wayPointIndex;                              // A counter for the way point array.
 	private float stoppingDistance;
-	private float normalspeed;
 
 	void Awake ()
 	{
+		PlayerPrefs.SetInt ("Difficulty", 3);
 		// Setting up the references.
 		enemyAttack = GetComponent<EnemyAttackLight>();
 		enemyHealth = GetComponent<EnemyHealth> ();
@@ -54,13 +54,13 @@ public class EnemyAI : MonoBehaviour
 	}
 
 	void GameEasy() {
-		target = enemySight.playerposition;
+		target = player;
 		attackposition = player.transform.position;
 		if (enemySight.playerInSight &&
-		    !enemyAttack.attacking &&
-		    !enemyHealth.dead () &&
-		    !enemyHealth.stuned &&
-		    Vector3.Distance (transform.position, target) <= enemyAttack.attackRange) {
+			!enemyAttack.attacking &&
+			!enemyHealth.dead () &&
+			!enemyHealth.stuned &&
+			Vector3.Distance (transform.position, target.transform.position) <= enemyAttack.attackRange) {
 			Shooting ();
 		}
 
@@ -74,29 +74,29 @@ public class EnemyAI : MonoBehaviour
 				(Vector3.Distance (transform.position, attackposition) < 1) || 
 				attackposition == Vector3.zero) || 
 				!enemyAttack.isMelee) {
-					nav.Resume ();
-					Chasing ();
-				}
+				nav.Resume ();
+				Chasing ();
+			}
 			nav.Resume ();
 			Chasing ();
-			}
+		}
 	}
 
 	void GameMedium() {
-		target = enemySight.playerposition;
+		target = player;
 		attackposition = player.transform.position;
 		if (enemyHealth.currentHealth < enemyHealth.startingHealth &&
-		    enemySight.healthpackInSight &&
-		    !enemyHealth.dead () &&
-		    !enemyHealth.stuned) {
+			enemySight.healthpackInSight &&
+			!enemyHealth.dead () &&
+			!enemyHealth.stuned) {
 			nav.Resume ();
 			SearchHealthPack ();
-		
-		} else if (enemySight.playerInSight &&
-		         !enemyAttack.attacking &&
-		         !enemyHealth.dead () &&
-		         !enemyHealth.stuned &&
-		         Vector3.Distance (transform.position, target) <= enemyAttack.attackRange) {
+
+		}  else if (enemySight.playerInSight &&
+			!enemyAttack.attacking &&
+			!enemyHealth.dead () &&
+			!enemyHealth.stuned &&
+			Vector3.Distance (transform.position, target.transform.position) <= enemyAttack.attackRange) {
 			Shooting ();
 		}
 
@@ -119,28 +119,33 @@ public class EnemyAI : MonoBehaviour
 	}
 
 	void GameHard() {
-		target = enemySight.playerposition;
+		target = player;
 		if (enemyHealth.currentHealth < enemyHealth.startingHealth &&
-		    enemySight.healthpackInSight &&
-		    !enemyHealth.dead () &&
-		    !enemyHealth.stuned) {
+			enemySight.healthpackInSight &&
+			!enemyHealth.dead () &&
+			!enemyHealth.stuned) {
 			nav.Resume ();
 			SearchHealthPack ();
-		
-		} else if (enemyHealth.currentHealth < enemyHealth.startingHealth &&
-		        enemySight.boxInSight &&
-		        !enemyAttack.attacking &&
-		        !enemyHealth.dead () &&
-		        !enemyHealth.stuned) {
-			target = enemySight.boxposition;
-			Shooting ();
+
+		}  else if (enemyHealth.currentHealth <= (enemyHealth.startingHealth / 2) &&
+			enemySight.boxInSight &&
+			!enemyAttack.attacking &&
+			!enemyHealth.dead () &&
+			!enemyHealth.stuned) {
+
+			target = enemySight.box;
+			if (Vector3.Distance (transform.position, target.transform.position) >= enemyAttack.attackRange) {
+				nav.SetDestination (target.transform.position);
+				nav.Resume ();
+			} else 
+				Shooting ();
 		}
 
 		else if (enemySight.playerInSight &&
 			!enemyAttack.attacking &&
 			!enemyHealth.dead () &&
 			!enemyHealth.stuned &&
-			Vector3.Distance (transform.position, target) <= enemyAttack.attackRange) {
+			Vector3.Distance (transform.position, target.transform.position) <= enemyAttack.attackRange) {
 			Shooting ();
 		}
 
@@ -164,11 +169,11 @@ public class EnemyAI : MonoBehaviour
 
 	void Shooting ()
 	{
-		if (!enemyAttack.attacking && 
-			cooldown >= enemyAttack.basicShotCD &&
-			!enemyHealth.dead () &&
-			!enemyHealth.stuned &&
-			player.GetComponent<PlayerHealth> ().currentHealth > 0f) {
+		if (!enemyAttack.attacking &&
+		    cooldown >= enemyAttack.basicShotCD &&
+		    !enemyHealth.dead () &&
+		    !enemyHealth.stuned &&
+		    ((target.gameObject.GetComponent<PlayerHealth> ()) ? target.GetComponent<PlayerHealth> ().currentHealth > 0 : target.GetComponent<BoxHealth> ().currentHealth > 0)) {
 			if (enemyAttack.isMelee) {
 				AttackMelee ();
 				if (enemyAttack.attacking &&
@@ -179,17 +184,23 @@ public class EnemyAI : MonoBehaviour
 					anim.ResetTrigger ("Hit");
 				}
 			} else {
-				nav.Stop();
+				nav.Stop ();
 				StartCoroutine (enemyAttack.animateAttack ());
 				enemyAttack.attacking = false;
 				anim.ResetTrigger ("Hit");
 			}
+		} else if (target.gameObject.GetComponent<PlayerHealth> ()) {
+			if(target.gameObject.GetComponent<PlayerHealth> ().currentHealth <= 0)
+				enemySight.playerInSight = false;
+		} else if (target.gameObject.GetComponent<BoxHealth> ()) {
+			if(!target.gameObject.activeSelf)
+				enemySight.boxInSight = false;
 		}
 	}
 
 	void AttackMelee() {
-		attackposition = target;
-		Vector3 playerDirection = target - transform.position;
+		attackposition = target.transform.position;
+		Vector3 playerDirection = target.transform.position - transform.position;
 		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
 		if (angleBetween > 1)
 			transform.forward = playerDirection;
@@ -200,10 +211,11 @@ public class EnemyAI : MonoBehaviour
 
 	void SearchHealthPack() {
 		nav.stoppingDistance = 0;
+		nav.speed = 10;
 		nav.SetDestination (enemySight.healthpackposition);
-		if (transform.position == nav.destination) {
-			enemySight.healthpackposition = enemySight.resetposition;
-			nav.stoppingDistance = stoppingDistance;
+		if (Vector3.Distance(transform.position, enemySight.healthpackposition) < 5) {
+			enemySight.healthpackInSight = false;
+			nav.speed = normalspeed;
 		}
 	}
 
@@ -238,5 +250,5 @@ public class EnemyAI : MonoBehaviour
 			// If not near the last sighting personal sighting of the player, reset the timer.
 			chaseTimer = 0f;
 	}
-		
+
 }

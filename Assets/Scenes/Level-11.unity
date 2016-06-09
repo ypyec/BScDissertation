@@ -1480,6 +1480,7 @@ GameObject:
   - 23: {fileID: 27306421}
   - 64: {fileID: 27306420}
   - 114: {fileID: 27306419}
+  - 136: {fileID: 27306423}
   m_Layer: 0
   m_Name: box-e (1)
   m_TagString: Untagged
@@ -1514,7 +1515,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 30
   powerPackChance: 15
   respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -1571,6 +1572,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 27306417}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &27306423
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 27306417}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.0000076293945, y: 0.49999997, z: 0.000011444092}
 --- !u!1001 &31089911
 Prefab:
   m_ObjectHideFlags: 0
@@ -1938,6 +1952,7 @@ GameObject:
   - 23: {fileID: 46319762}
   - 64: {fileID: 46319761}
   - 114: {fileID: 46319760}
+  - 136: {fileID: 46319764}
   m_Layer: 0
   m_Name: box-e (1)
   m_TagString: Untagged
@@ -1972,7 +1987,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 30
   powerPackChance: 15
   respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -2029,6 +2044,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 46319758}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &46319764
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 46319758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.49999997, z: 0.000015258789}
 --- !u!1 &46424657
 GameObject:
   m_ObjectHideFlags: 0
@@ -8173,6 +8201,7 @@ GameObject:
   - 23: {fileID: 176556837}
   - 64: {fileID: 176556836}
   - 114: {fileID: 176556835}
+  - 136: {fileID: 176556839}
   m_Layer: 0
   m_Name: box-e
   m_TagString: Untagged
@@ -8204,12 +8233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 30
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
@@ -8264,6 +8293,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 176556833}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &176556839
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 176556833}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.0000038146973, y: 0.49999997, z: -0.0000076293945}
 --- !u!1 &177914077
 GameObject:
   m_ObjectHideFlags: 0
@@ -12790,6 +12832,7 @@ GameObject:
   - 23: {fileID: 297693239}
   - 64: {fileID: 297693238}
   - 114: {fileID: 297693237}
+  - 136: {fileID: 297693241}
   m_Layer: 0
   m_Name: box-e
   m_TagString: Untagged
@@ -12824,7 +12867,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 30
   powerPackChance: 15
   respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -12881,6 +12924,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 297693235}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &297693241
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 297693235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.49999997, z: 0.000011444092}
 --- !u!1 &301331508
 GameObject:
   m_ObjectHideFlags: 0
@@ -13144,6 +13200,7 @@ GameObject:
   - 23: {fileID: 309192855}
   - 64: {fileID: 309192854}
   - 114: {fileID: 309192853}
+  - 136: {fileID: 309192857}
   m_Layer: 0
   m_Name: box-e
   m_TagString: Untagged
@@ -13178,7 +13235,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 30
   powerPackChance: 15
   respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -13235,6 +13292,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 309192851}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &309192857
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 309192851}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.00000047683716, y: 0.49999997, z: 0.0000076293945}
 --- !u!4 &309258801 stripped
 Transform:
   m_PrefabParentObject: {fileID: 433568, guid: 6dc67546af5924ad8906bb40491b98f1, type: 2}
@@ -18287,6 +18357,7 @@ GameObject:
   - 23: {fileID: 467918581}
   - 64: {fileID: 467918580}
   - 114: {fileID: 467918579}
+  - 136: {fileID: 467918583}
   m_Layer: 0
   m_Name: box-f-01
   m_TagString: Untagged
@@ -18318,12 +18389,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 30
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
@@ -18378,6 +18449,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 467918577}
   m_Mesh: {fileID: 4300000, guid: 6706fe0391eb9654ebbd5dd6efe19cf7, type: 3}
+--- !u!136 &467918583
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 467918577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: -0.0000076293945, y: 0.49999997, z: 0.000011444092}
 --- !u!1 &470584208
 GameObject:
   m_ObjectHideFlags: 0
@@ -24050,6 +24134,7 @@ GameObject:
   - 23: {fileID: 621440012}
   - 64: {fileID: 621440011}
   - 114: {fileID: 621440010}
+  - 136: {fileID: 621440014}
   m_Layer: 0
   m_Name: box-e (1)
   m_TagString: Untagged
@@ -24084,7 +24169,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 30
   powerPackChance: 15
   respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -24141,6 +24226,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 621440008}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &621440014
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 621440008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.0000019073486, y: 0.49999997, z: 0}
 --- !u!1 &622300658
 GameObject:
   m_ObjectHideFlags: 0
@@ -32218,6 +32316,7 @@ GameObject:
   - 23: {fileID: 805513396}
   - 64: {fileID: 805513395}
   - 114: {fileID: 805513394}
+  - 136: {fileID: 805513398}
   m_Layer: 0
   m_Name: box-d-01
   m_TagString: Untagged
@@ -32249,12 +32348,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 30
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
@@ -32309,6 +32408,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 805513392}
   m_Mesh: {fileID: 4300000, guid: b927bd3da9661fc4facbad61bb59085c, type: 3}
+--- !u!136 &805513398
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 805513392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.0000076293945, y: 0.49999997, z: 0.0000023841858}
 --- !u!1 &808506562
 GameObject:
   m_ObjectHideFlags: 0
@@ -33120,10 +33232,10 @@ Transform:
   - {fileID: 626154128}
   - {fileID: 286238714}
   - {fileID: 1218420418}
-  - {fileID: 1613240937}
   - {fileID: 129357307}
-  - {fileID: 1234902181}
+  - {fileID: 1613240937}
   - {fileID: 447577972}
+  - {fileID: 1234902181}
   - {fileID: 401792745}
   - {fileID: 1807166182}
   - {fileID: 1148923857}
@@ -37162,6 +37274,7 @@ GameObject:
   - 23: {fileID: 914863915}
   - 64: {fileID: 914863914}
   - 114: {fileID: 914863913}
+  - 136: {fileID: 914863917}
   m_Layer: 0
   m_Name: box-d-01 (1)
   m_TagString: Untagged
@@ -37193,12 +37306,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 30
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
@@ -37253,6 +37366,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 914863911}
   m_Mesh: {fileID: 4300000, guid: b927bd3da9661fc4facbad61bb59085c, type: 3}
+--- !u!136 &914863917
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 914863911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: -0.00000071525574, y: 0.49999997, z: 0.0000076293945}
 --- !u!4 &917868190 stripped
 Transform:
   m_PrefabParentObject: {fileID: 450586, guid: ddf1f08a011b845068b4216426d968bb, type: 2}
@@ -37484,6 +37610,7 @@ GameObject:
   - 23: {fileID: 924819941}
   - 64: {fileID: 924819940}
   - 114: {fileID: 924819939}
+  - 136: {fileID: 924819943}
   m_Layer: 0
   m_Name: box-e (1)
   m_TagString: Untagged
@@ -37518,7 +37645,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 30
   powerPackChance: 15
   respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -37575,6 +37702,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 924819937}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &924819943
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 924819937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: -0.00000047683716, y: 0.49999997, z: 0.0000076293945}
 --- !u!1001 &926183572
 Prefab:
   m_ObjectHideFlags: 0
@@ -40020,6 +40160,7 @@ GameObject:
   - 23: {fileID: 968710712}
   - 64: {fileID: 968710711}
   - 114: {fileID: 968710710}
+  - 136: {fileID: 968710714}
   m_Layer: 0
   m_Name: box-e
   m_TagString: Untagged
@@ -40054,7 +40195,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 30
   powerPackChance: 15
   respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -40111,6 +40252,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 968710708}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &968710714
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 968710708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.0000038146973, y: 0.49999997, z: 0.0000019073486}
 --- !u!1001 &969466713
 Prefab:
   m_ObjectHideFlags: 0
@@ -81994,6 +82148,7 @@ GameObject:
   - 23: {fileID: 2017036434}
   - 64: {fileID: 2017036433}
   - 114: {fileID: 2017036432}
+  - 136: {fileID: 2017036436}
   m_Layer: 0
   m_Name: box-e
   m_TagString: Untagged
@@ -82028,7 +82183,7 @@ MonoBehaviour:
   startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 25
+  healthPackChance: 30
   powerPackChance: 15
   respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
@@ -82085,6 +82240,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2017036430}
   m_Mesh: {fileID: 4300000, guid: 075f95042cb139449a79f00dd9922a30, type: 3}
+--- !u!136 &2017036436
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2017036430}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0.0000076293945, y: 0.49999997, z: 0.000015258789}
 --- !u!1 &2020022841
 GameObject:
   m_ObjectHideFlags: 0
@@ -86787,14 +86955,14 @@ Transform:
   - {fileID: 862164214}
   - {fileID: 1496456666}
   - {fileID: 1396866751}
-  - {fileID: 2133809664}
   - {fileID: 1892385102}
   - {fileID: 1605808548}
-  - {fileID: 1986710113}
+  - {fileID: 2133809664}
   - {fileID: 425878285}
   - {fileID: 574273}
-  - {fileID: 1437048037}
+  - {fileID: 1986710113}
   - {fileID: 1035428371}
+  - {fileID: 1437048037}
   - {fileID: 494759213}
   - {fileID: 1808254896}
   - {fileID: 1488329170}
