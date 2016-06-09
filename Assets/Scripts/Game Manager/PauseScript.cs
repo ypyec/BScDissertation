@@ -53,6 +53,7 @@ public class PauseScript : MonoBehaviour {
 	}
 
 	private void PauseSelect(int MenuIndex) {
+		this.GetComponents<AudioSource> ()[0].Play ();
 		switch (MenuIndex) {
 		case 0:
 			continueText.Select ();
@@ -66,11 +67,13 @@ public class PauseScript : MonoBehaviour {
 	}
 
 	public void Continue() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		pauseMenu.enabled = paused = false;
 		Time.timeScale = 1;
 	}
 
 	public void ExitGame() {
+		this.GetComponents<AudioSource> ()[1].Play ();
 		Time.timeScale = 1;
 		SceneManager.LoadScene ("Main Menu");
 	}
