@@ -192,7 +192,6 @@ public class EnemyAI : MonoBehaviour
 					enemyAttack.attacking = false;
 					attackposition = Vector3.zero;
 					nav.speed = normalspeed;
-					anim.ResetTrigger ("Hit");
 				}
 			} else {
 				nav.Stop ();
