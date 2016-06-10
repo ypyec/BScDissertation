@@ -7,8 +7,15 @@ public class EndLevel : MonoBehaviour {
 
 	public GameObject particles;
 
+	private bool changingLevel;
+
+	void Awake(){
+		changingLevel = false;
+	}
+
 	void OnTriggerEnter(Collider other) {
-		if(other.GetComponent <PlayerHealth> ()) {
+		if(other.GetComponent <PlayerHealth> () && !changingLevel) {
+			changingLevel = true;
 			other.GetComponent <PlayerMovement> ().enabled = false;
 			other.GetComponent <PlayerAttack> ().enabled = false;
 			other.transform.position.Set (transform.position.x, transform.position.y + 0.05f, transform.position.z + 0.05f);

@@ -21,7 +21,6 @@ public class EnemyAI : MonoBehaviour
 
 	void Awake ()
 	{
-		PlayerPrefs.SetInt ("Difficulty", 3);
 		// Setting up the references.
 		enemyAttack = GetComponent<EnemyAttackLight>();
 		enemyHealth = GetComponent<EnemyHealth> ();
