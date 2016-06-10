@@ -31,10 +31,11 @@ public class MenuScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		if(PlayerPrefs.GetInt("Difficulty") != null)
+			PlayerPrefs.SetInt ("Difficulty", 2); 
 		index = 0;
 		hIndex = 0;
 		timer = 0.25f;
-		PlayerPrefs.SetInt ("Difficulty", 2);
 		missionSelect = missionSelect.GetComponent<Canvas> ();
 		difficultyMenu = difficultyMenu.GetComponent<Canvas> ();
 		quitMenu = quitMenu.GetComponent<Canvas> ();

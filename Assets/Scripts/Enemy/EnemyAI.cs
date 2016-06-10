@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -39,16 +40,27 @@ public class EnemyAI : MonoBehaviour
 	void Update ()
 	{
 		cooldown += Time.deltaTime;
-		switch (PlayerPrefs.GetInt ("Difficulty")) {
-		case 1:
-			GameEasy ();
-			break;
-		case 2:
-			GameMedium ();
-			break;
-		case 3:
-			GameHard ();
-			break;
+		if (SceneManager.GetActiveScene ().name == "Arcade") {
+			switch(Random.Range(1,2)) {
+			case 1:
+				GameMedium ();
+				break;
+			case 2:
+				GameHard ();
+				break;
+			}
+		} else {
+			switch (PlayerPrefs.GetInt ("Difficulty")) {
+			case 1:
+				GameEasy ();
+				break;
+			case 2:
+				GameMedium ();
+				break;
+			case 3:
+				GameHard ();
+				break;
+			}
 		}
 	}
 

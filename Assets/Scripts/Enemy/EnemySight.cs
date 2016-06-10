@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using using UnityEngine.SceneManagement;
 
 public class EnemySight : MonoBehaviour
 {
@@ -23,17 +24,6 @@ public class EnemySight : MonoBehaviour
 
 	void Awake ()
 	{
-		switch (PlayerPrefs.GetInt ("Difficulty")) {
-		case 1:
-			fieldOfViewAngle = 180;
-			break;
-		case 2:
-			fieldOfViewAngle = 270;
-			break;
-		case 3:
-			fieldOfViewAngle = 360;
-			break;
-		}
 		// Setting up the references.
 		col = GetComponentInChildren<SphereCollider>();
 		anim = GetComponent<Animator>();
@@ -45,6 +35,24 @@ public class EnemySight : MonoBehaviour
 		// Set the personal sighting and the previous sighting to the reset position.
 		personalLastSighting = resetposition;
 		previousSighting = resetposition;
+
+		if (SceneManager.GetActiveScene ().name == "Arcade") {
+			fieldOfViewAngle = 360;
+			col.radius = col.radius * 10;
+		} else {
+			switch (PlayerPrefs.GetInt ("Difficulty")) {
+			case 1:
+				fieldOfViewAngle = 180;
+				break;
+			case 2:
+				fieldOfViewAngle = 270;
+				break;
+			case 3:
+				fieldOfViewAngle = 360;
+				break;
+			}
+		}
+
 	}
 
 
