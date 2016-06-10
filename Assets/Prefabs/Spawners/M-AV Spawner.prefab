@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 412808}
   - 135: {fileID: 13564960}
   - 114: {fileID: 11436908}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: M-AV Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 5228209130450103505, guid: 0000000000000000d000000000000000, type: 0}

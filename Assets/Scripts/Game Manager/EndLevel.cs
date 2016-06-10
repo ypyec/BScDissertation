@@ -2,15 +2,23 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.Text.RegularExpressions;
+using UnityEngine.UI;
 
 public class EndLevel : MonoBehaviour {
 
 	public GameObject particles;
 
 	private bool changingLevel;
+	private Image splashScreen; 
+	private Color color;
 
 	void Awake(){
 		changingLevel = false;
+		splashScreen = GameObject.FindGameObjectWithTag("SplashScreen").GetComponent<Image> ();
+		color = splashScreen.color;
+		color.a = 0;
+		splashScreen.color = color;
+
 	}
 
 	void OnTriggerEnter(Collider other) {
@@ -28,6 +36,8 @@ public class EndLevel : MonoBehaviour {
 	}
 
 	void changeLevel(){
+		color.a = 255;
+		splashScreen.color = color;
 		string resultString = Regex.Match(SceneManager.GetActiveScene().name, @"\d+").Value;
 		int currentLevel = System.Int32.Parse (resultString);
 		int nextLevel = currentLevel + 1;

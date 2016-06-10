@@ -26,6 +26,8 @@ public class MenuScript : MonoBehaviour {
 	private int index;
 	private int hIndex;
 	private float timer;
+	private Image splashScreen; 
+	private Color color;
 
 	// Use this for initialization
 	void Start () {
@@ -57,6 +59,11 @@ public class MenuScript : MonoBehaviour {
 		} else {
 			continueText.interactable = false;
 		}
+
+		splashScreen = GameObject.FindGameObjectWithTag("SplashScreen").GetComponent<Image> ();
+		color = splashScreen.color;
+		color.a = 0;
+		splashScreen.color = color;
 	}
 
 	void Update() {
@@ -285,15 +292,19 @@ public class MenuScript : MonoBehaviour {
 	public void Continue() {
 		this.GetComponents<AudioSource> ()[1].Play ();
 		if (Application.CanStreamedLevelBeLoaded ("Level-" + PlayerPrefs.GetInt ("Current Level"))) {
+			color.a = 255;
+			splashScreen.color = color;
 			SceneManager.LoadScene ("Level-" + PlayerPrefs.GetInt ("Current Level"));
 		}
 	}
 
 	public void StartCampaign() {
 		this.GetComponents<AudioSource> ()[1].Play ();
-		if (PlayerPrefs.GetInt ("Current Level") == 0)
+		if (PlayerPrefs.GetInt ("Current Level") == 0) {
+			color.a = 255;
+			splashScreen.color = color;
 			SceneManager.LoadScene ("Level-0");
-		else {
+		} else {
 			this.GetComponent<Canvas> ().sortingOrder = -1;
 			difficultyText.enabled = false;
 			continueText.enabled = false;
@@ -309,11 +320,16 @@ public class MenuScript : MonoBehaviour {
 	public void StartLevel() {
 		this.GetComponents<AudioSource> ()[1].Play ();
 		if (Application.CanStreamedLevelBeLoaded ("Level-" + hIndex)) {
+			this.GetComponent<Canvas> ().sortingOrder = 1;
+			color.a = 255;
+			splashScreen.color = color;
 			SceneManager.LoadScene ("Level-" + hIndex);
 		}
 	}
 
 	public void StartArcade() {
+		color.a = 255;
+		splashScreen.color = color;
 		this.GetComponents<AudioSource> ()[1].Play ();
 		SceneManager.LoadScene ("Arcade");
 	}

@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - shield
   - Box
+  - SplashScreen
   layers:
   - Default
   - TransparentFX

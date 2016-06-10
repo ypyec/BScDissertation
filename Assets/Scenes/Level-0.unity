@@ -11494,6 +11494,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 11461678, guid: ce2e7be09bcfd4927b35d53a199d76a7, type: 2}
+      propertyPath: splashScreen
+      value: 
+      objectReference: {fileID: 1609323550}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce2e7be09bcfd4927b35d53a199d76a7, type: 2}
   m_IsPrefabParent: 0
@@ -17775,6 +17779,10 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1609323550 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 125092, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
+  m_PrefabInternal: {fileID: 198460084}
 --- !u!1 &1614187195
 GameObject:
   m_ObjectHideFlags: 0
