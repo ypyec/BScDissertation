@@ -40,7 +40,7 @@ public class EnemySight : MonoBehaviour
 
 		if (SceneManager.GetActiveScene ().name == "Arcade") {
 			fieldOfViewAngle = 360;
-			col.radius = col.radius * 10;
+			col.radius = col.radius * 4f;
 		} else {
 			switch (PlayerPrefs.GetInt ("Difficulty")) {
 			case 1:
@@ -98,6 +98,8 @@ public class EnemySight : MonoBehaviour
 			}
 		}
 
+
+			
 		if (other.gameObject.GetComponent<BoxHealth> ()) {
 			if (other.gameObject.activeSelf) {
 				Vector3 direction = other.transform.position - transform.position;
@@ -112,6 +114,7 @@ public class EnemySight : MonoBehaviour
 				}
 			}
 		}
+
 	}
 
 
