@@ -181,17 +181,18 @@ public class EnemyAI : MonoBehaviour
 	void Shooting ()
 	{
 		if (!enemyAttack.attacking &&
-		    cooldown >= enemyAttack.basicShotCD &&
-		    !enemyHealth.dead () &&
-		    !enemyHealth.stuned &&
-		    ((target.gameObject.GetComponent<PlayerHealth> ()) ? target.GetComponent<PlayerHealth> ().currentHealth > 0 : target.GetComponent<BoxHealth> ().currentHealth > 0)) {
+			cooldown >= enemyAttack.basicShotCD &&
+			!enemyHealth.dead () &&
+			!enemyHealth.stuned &&
+			((target.gameObject.GetComponent<PlayerHealth> ()) ? target.GetComponent<PlayerHealth> ().currentHealth > 0 : target.GetComponent<BoxHealth> ().currentHealth > 0)) {
 			if (enemyAttack.isMelee) {
 				AttackMelee ();
 				if (enemyAttack.attacking &&
-				    Vector3.Distance (transform.position, attackposition) < 1) {
+					Vector3.Distance (transform.position, attackposition) < 1) {
 					enemyAttack.attacking = false;
 					attackposition = Vector3.zero;
 					nav.speed = normalspeed;
+					anim.ResetTrigger ("Hit");
 				}
 			} else {
 				nav.Stop ();
