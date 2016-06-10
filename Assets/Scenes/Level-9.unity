@@ -47760,6 +47760,22 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11457576, guid: 96f7a5c3cfa724ad19d3762e025189c8, type: 2}
+      propertyPath: text1
+      value: 
+      objectReference: {fileID: 1944771636}
+    - target: {fileID: 11457576, guid: 96f7a5c3cfa724ad19d3762e025189c8, type: 2}
+      propertyPath: text2
+      value: 
+      objectReference: {fileID: 1944771635}
+    - target: {fileID: 11457576, guid: 96f7a5c3cfa724ad19d3762e025189c8, type: 2}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1920818528}
+    - target: {fileID: 11457576, guid: 96f7a5c3cfa724ad19d3762e025189c8, type: 2}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 1990186000}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 96f7a5c3cfa724ad19d3762e025189c8, type: 2}
   m_IsPrefabParent: 0
@@ -73090,6 +73106,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a5cc4141ef5704bffac638f1e49864dc, type: 2}
   m_IsPrefabParent: 0
+--- !u!82 &1920818528 stripped
+AudioSource:
+  m_PrefabParentObject: {fileID: 8291320, guid: a5cc4141ef5704bffac638f1e49864dc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1920818527}
 --- !u!1 &1922085618
 GameObject:
   m_ObjectHideFlags: 0
@@ -74127,6 +74148,18 @@ Prefab:
 GameObject:
   m_PrefabParentObject: {fileID: 196218, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
   m_PrefabInternal: {fileID: 1944771633}
+--- !u!114 &1944771635 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11464430, guid: 973febb5348cf443ca678d89d77d4735,
+    type: 2}
+  m_PrefabInternal: {fileID: 1944771633}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+--- !u!114 &1944771636 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 11481236, guid: 973febb5348cf443ca678d89d77d4735,
+    type: 2}
+  m_PrefabInternal: {fileID: 1944771633}
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
 --- !u!1 &1946081635
 GameObject:
   m_ObjectHideFlags: 0
