@@ -51,9 +51,8 @@ public class EnemyAttackLight : MonoBehaviour
 		float angleBetween = Vector3.Angle(transform.forward, playerDirection);
 		if (angleBetween > 1)
 			transform.forward = playerDirection;
-		enemyAI.anim.SetTrigger ("Hit");
 
-		yield return new WaitForSeconds (0.27f);
+		yield return new WaitForSeconds (0.29f);
 
 		attack ();
 

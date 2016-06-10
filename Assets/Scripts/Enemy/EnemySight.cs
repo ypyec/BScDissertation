@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class EnemySight : MonoBehaviour
 {
@@ -19,6 +19,7 @@ public class EnemySight : MonoBehaviour
 	private GameObject player;                      // Reference to the player.
 	private Vector3 previousSighting;               // Where the player was sighted last frame.
 	private EnemyAttackLight enemyAttack;
+	private EnemyAI enemyAI;
 
 
 
@@ -29,6 +30,7 @@ public class EnemySight : MonoBehaviour
 		anim = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag("Player");
 		enemyAttack = GetComponent<EnemyAttackLight> ();
+		enemyAI = GetComponent<EnemyAI> ();
 		healthpackInSight = false;
 		boxInSight = false;
 
@@ -81,11 +83,6 @@ public class EnemySight : MonoBehaviour
 			} else {
 				playerInSight = false;
 			}
-				
-			if (Vector3.Distance (transform.position, other.transform.position) < enemyAttack.attackRange && enemyAttack.isMelee)
-				Animating (!playerInSight);
-			else
-				Animating (playerInSight);
 		}
 
 		if (other.gameObject.GetComponent<HealthPack> ()) {
@@ -130,8 +127,14 @@ public class EnemySight : MonoBehaviour
 			boxInSight = false;
 	}
 
-	void Animating (bool walking)
+	public void Animating ()
 	{
-		anim.SetBool ("isWalking", walking);	
+		if (Vector3.Distance (transform.position, enemyAI.target.transform.position) <= enemyAttack.attackRange) {
+			anim.SetBool ("isWalking", false);	
+			anim.SetTrigger ("Hit");
+		} else {
+			anim.ResetTrigger ("Hit");
+			anim.SetBool ("isWalking", true);
+		}
 	}
 }

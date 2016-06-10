@@ -196,9 +196,9 @@ public class EnemyAI : MonoBehaviour
 				}
 			} else {
 				nav.Stop ();
+				enemySight.Animating ();
 				StartCoroutine (enemyAttack.animateAttack ());
 				enemyAttack.attacking = false;
-				anim.ResetTrigger ("Hit");
 			}
 		} else if (target.gameObject.GetComponent<PlayerHealth> ()) {
 			if(target.gameObject.GetComponent<PlayerHealth> ().currentHealth <= 0)
@@ -233,6 +233,7 @@ public class EnemyAI : MonoBehaviour
 
 	void Chasing ()
 	{
+		enemySight.Animating ();
 		nav.stoppingDistance = stoppingDistance;
 		// Create a vector from the enemy to the last sighting of the player.
 		Vector3 sightingDeltaPos = enemySight.personalLastSighting - transform.position;
