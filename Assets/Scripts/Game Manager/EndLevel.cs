@@ -44,7 +44,7 @@ public class EndLevel : MonoBehaviour {
 		if (Application.CanStreamedLevelBeLoaded ("Level-" + nextLevel.ToString ())) {
 			SceneManager.LoadScene ("Level-" + nextLevel.ToString ());
 		} else {
-			SceneManager.LoadScene ("Main Menu");
+			SceneManager.LoadScene ("Credits");
 		}
 	}
 
