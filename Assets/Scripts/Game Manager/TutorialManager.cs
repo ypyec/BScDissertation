@@ -147,7 +147,7 @@ public class TutorialManager : MonoBehaviour {
 		if(Input.GetJoystickNames().Length > 0)
 			tutorialText.text = "Utiliza el análogo derecho/R3 para mover la mira de disparo del jugador y el botón R2 para usar la habilidad";
 		else
-			tutorialText.text = "Utiliza el ratón para mover la mira de disparo del jugador y click derecho para usar la habilidad";
+			tutorialText.text = "Utiliza el ratón para mover la mira de disparo del jugador y click izquierdo para usar la habilidad";
 		if (Input.GetAxisRaw ("Fire") == 1) {
 			tutorial.gameObject.SetActive (false);
 			Time.timeScale = 1;
