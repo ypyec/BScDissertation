@@ -2005,6 +2005,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 13564960, guid: 585fb9b7228a24a02af39dbf13663c38, type: 2}
+      propertyPath: m_Radius
+      value: 4.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 585fb9b7228a24a02af39dbf13663c38, type: 2}
   m_IsPrefabParent: 0
@@ -2471,11 +2475,11 @@ Prefab:
       objectReference: {fileID: 1409285041}
     - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 22427180, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_RootOrder
@@ -4685,11 +4689,11 @@ GameObject:
   - 23: {fileID: 408700096}
   - 95: {fileID: 408700095}
   - 64: {fileID: 408700094}
-  - 135: {fileID: 408700093}
   - 114: {fileID: 408700092}
   - 82: {fileID: 408700091}
   - 82: {fileID: 408700090}
   - 82: {fileID: 408700089}
+  - 65: {fileID: 408700093}
   m_Layer: 0
   m_Name: door-03
   m_TagString: Untagged
@@ -4949,18 +4953,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyLocked: 0
---- !u!135 &408700093
-SphereCollider:
+--- !u!65 &408700093
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13558920, guid: fe320443175114ba0a637557a2761d4d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 408700087}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: -1}
 --- !u!64 &408700094
 MeshCollider:
@@ -6311,11 +6314,11 @@ GameObject:
   - 23: {fileID: 521182692}
   - 95: {fileID: 521182691}
   - 64: {fileID: 521182690}
-  - 135: {fileID: 521182689}
   - 114: {fileID: 521182688}
   - 82: {fileID: 521182687}
   - 82: {fileID: 521182686}
   - 82: {fileID: 521182685}
+  - 65: {fileID: 521182689}
   m_Layer: 0
   m_Name: door-03
   m_TagString: Untagged
@@ -6575,18 +6578,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyLocked: 0
---- !u!135 &521182689
-SphereCollider:
+--- !u!65 &521182689
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13541910, guid: fe320443175114ba0a637557a2761d4d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 521182683}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: -1}
 --- !u!64 &521182690
 MeshCollider:
@@ -10893,11 +10895,11 @@ GameObject:
   - 23: {fileID: 971536515}
   - 95: {fileID: 971536514}
   - 64: {fileID: 971536513}
-  - 135: {fileID: 971536512}
   - 114: {fileID: 971536511}
   - 82: {fileID: 971536510}
   - 82: {fileID: 971536509}
   - 82: {fileID: 971536508}
+  - 65: {fileID: 971536512}
   m_Layer: 0
   m_Name: door-03
   m_TagString: Untagged
@@ -11157,18 +11159,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyLocked: 0
---- !u!135 &971536512
-SphereCollider:
+--- !u!65 &971536512
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13541910, guid: fe320443175114ba0a637557a2761d4d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 971536506}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: -1}
 --- !u!64 &971536513
 MeshCollider:
@@ -24169,6 +24170,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 13564960, guid: 13038d0d565044ac69cc5ba2efd1f74e, type: 2}
+      propertyPath: m_Radius
+      value: 4.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13038d0d565044ac69cc5ba2efd1f74e, type: 2}
   m_IsPrefabParent: 0
@@ -24384,11 +24389,11 @@ GameObject:
   - 23: {fileID: 2048487623}
   - 95: {fileID: 2048487622}
   - 64: {fileID: 2048487621}
-  - 135: {fileID: 2048487620}
   - 114: {fileID: 2048487619}
   - 82: {fileID: 2048487618}
   - 82: {fileID: 2048487617}
   - 82: {fileID: 2048487616}
+  - 65: {fileID: 2048487620}
   m_Layer: 0
   m_Name: door-03 (1)
   m_TagString: Untagged
@@ -24648,18 +24653,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyLocked: 0
---- !u!135 &2048487620
-SphereCollider:
+--- !u!65 &2048487620
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13592370, guid: fe320443175114ba0a637557a2761d4d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2048487614}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: -1}
 --- !u!64 &2048487621
 MeshCollider:
