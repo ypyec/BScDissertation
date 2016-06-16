@@ -33,6 +33,7 @@ public class Doors : MonoBehaviour {
 			GameObject.Find ("R-MT(Clone)") != null ||
 			GameObject.Find ("R-SP(Clone)") != null) {
 			enemyLocked = true;
+			anim.SetBool ("Open", false);
 		} else {
 			enemyLocked = false;
 		}
