@@ -50,7 +50,7 @@ GameObject:
   - 95: {fileID: 9572866}
   - 64: {fileID: 6499894}
   - 114: {fileID: 11421644}
-  - 135: {fileID: 13527940}
+  - 65: {fileID: 6564050}
   - 82: {fileID: 8205320}
   - 82: {fileID: 8261382}
   - 82: {fileID: 8241892}
@@ -1317,7 +1317,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 149260}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 424024}
@@ -3992,6 +3992,18 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: d660790b200acb64eae01879968174f1, type: 3}
+--- !u!65 &6564050
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 104638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
 --- !u!82 &8205320
 AudioSource:
   m_ObjectHideFlags: 1
@@ -4616,18 +4628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72968bda185448e98e59e3cbcce55df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &13527940
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 104638}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: -1}
 --- !u!136 &13663018
 CapsuleCollider:
   m_ObjectHideFlags: 1

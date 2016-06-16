@@ -266,6 +266,7 @@ GameObject:
   - 23: {fileID: 2386614}
   - 64: {fileID: 6449148}
   - 114: {fileID: 11421024}
+  - 136: {fileID: 13673270}
   m_Layer: 0
   m_Name: box-f-01
   m_TagString: Untagged
@@ -285,6 +286,7 @@ GameObject:
   - 23: {fileID: 2334134}
   - 64: {fileID: 6458760}
   - 114: {fileID: 11473616}
+  - 136: {fileID: 13660514}
   m_Layer: 0
   m_Name: box-d-01 (1)
   m_TagString: Untagged
@@ -1054,6 +1056,7 @@ GameObject:
   - 23: {fileID: 2385714}
   - 64: {fileID: 6426214}
   - 114: {fileID: 11492644}
+  - 136: {fileID: 13656776}
   m_Layer: 0
   m_Name: box-e
   m_TagString: Untagged
@@ -2155,8 +2158,8 @@ GameObject:
   - 23: {fileID: 2340248}
   - 95: {fileID: 9586742}
   - 64: {fileID: 6465910}
-  - 135: {fileID: 13568758}
   - 114: {fileID: 11408300}
+  - 65: {fileID: 6500840}
   - 82: {fileID: 8265924}
   - 82: {fileID: 8208342}
   - 82: {fileID: 8208130}
@@ -2179,6 +2182,7 @@ GameObject:
   - 23: {fileID: 2335524}
   - 64: {fileID: 6480162}
   - 114: {fileID: 11410136}
+  - 136: {fileID: 13625116}
   m_Layer: 0
   m_Name: box-d-01
   m_TagString: Untagged
@@ -2198,8 +2202,8 @@ GameObject:
   - 23: {fileID: 2398302}
   - 95: {fileID: 9590530}
   - 64: {fileID: 6447628}
-  - 135: {fileID: 13514158}
   - 114: {fileID: 11457912}
+  - 65: {fileID: 6507302}
   - 82: {fileID: 8256244}
   - 82: {fileID: 8280746}
   - 82: {fileID: 8235668}
@@ -2829,8 +2833,8 @@ GameObject:
   - 23: {fileID: 2304078}
   - 95: {fileID: 9554650}
   - 64: {fileID: 6498616}
-  - 135: {fileID: 13591984}
   - 114: {fileID: 11464970}
+  - 65: {fileID: 6581108}
   - 82: {fileID: 8207644}
   - 82: {fileID: 8267826}
   - 82: {fileID: 8244654}
@@ -3072,8 +3076,8 @@ GameObject:
   - 23: {fileID: 2317952}
   - 95: {fileID: 9546906}
   - 64: {fileID: 6456804}
-  - 135: {fileID: 13508856}
   - 114: {fileID: 11435712}
+  - 65: {fileID: 6551230}
   - 82: {fileID: 8249374}
   - 82: {fileID: 8249854}
   - 82: {fileID: 8237894}
@@ -13498,6 +13502,54 @@ MeshCollider:
   serializedVersion: 2
   m_Convex: 0
   m_Mesh: {fileID: 4300000, guid: 736bf537e332f5d42a2d378356a605d2, type: 3}
+--- !u!65 &6500840
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
+--- !u!65 &6507302
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 170806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
+--- !u!65 &6551230
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 193366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
+--- !u!65 &6581108
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 189516}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
 --- !u!82 &8207644
 AudioSource:
   m_ObjectHideFlags: 1
@@ -15973,12 +16025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 30
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
@@ -15995,12 +16047,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 30
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
@@ -16053,12 +16105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 30
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
@@ -16075,65 +16127,69 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25970e23998ad40248e1aef2a9b487dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 10
   currentHealth: 0
   scoreValue: 1
-  healthPackChance: 50
+  healthPackChance: 30
   powerPackChance: 15
-  respawnRate: 60
+  respawnRate: 30
   healthPackObj: {fileID: 115576, guid: 5d4f351e5e7104897badaf4b21eb5e05, type: 2}
   powerPackObj: {fileID: 174026, guid: 43d22188fcff44112be85824dfcfd04c, type: 2}
   explodeParticles: {fileID: 102904, guid: d5f0acb39e7e442d6ad0312e22186ed5, type: 2}
   enemyToSpawn1: {fileID: 169352, guid: 119bfab2c127040309d1b49a66dbcd92, type: 2}
   enemyToSpawn2: {fileID: 153436, guid: 19fa8d4c4fd9b4ccdaeb797f6486e7c9, type: 2}
---- !u!135 &13508856
-SphereCollider:
+--- !u!136 &13625116
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 193366}
+  m_GameObject: {fileID: 170590}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1, z: -1}
---- !u!135 &13514158
-SphereCollider:
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.49999997, z: 0}
+--- !u!136 &13656776
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170806}
+  m_GameObject: {fileID: 133608}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1, z: -1}
---- !u!135 &13568758
-SphereCollider:
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.49999997, z: 0}
+--- !u!136 &13660514
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 170134}
+  m_GameObject: {fileID: 105916}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1, z: -1}
---- !u!135 &13591984
-SphereCollider:
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.49999997, z: 0}
+--- !u!136 &13673270
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189516}
+  m_GameObject: {fileID: 105900}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 1, z: -1}
+  m_Radius: 0.8
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: -0.00000047683716, y: 0.49999997, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
