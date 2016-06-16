@@ -10966,7 +10966,7 @@ GameObject:
   - 95: {fileID: 699806096}
   - 64: {fileID: 699806095}
   - 114: {fileID: 699806094}
-  - 135: {fileID: 699806093}
+  - 65: {fileID: 699806093}
   - 82: {fileID: 699806092}
   - 82: {fileID: 699806091}
   - 82: {fileID: 699806090}
@@ -11216,19 +11216,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!135 &699806093
-SphereCollider:
+--- !u!65 &699806093
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13543970, guid: c33673289d0a243a4a476120f85c30e9,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 699806088}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: -1}
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
 --- !u!114 &699806094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17863,7 +17862,7 @@ GameObject:
   - 95: {fileID: 1051635975}
   - 64: {fileID: 1051635974}
   - 114: {fileID: 1051635973}
-  - 135: {fileID: 1051635972}
+  - 65: {fileID: 1051635972}
   - 82: {fileID: 1051635971}
   - 82: {fileID: 1051635970}
   - 82: {fileID: 1051635969}
@@ -18113,19 +18112,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!135 &1051635972
-SphereCollider:
+--- !u!65 &1051635972
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13546894, guid: c33673289d0a243a4a476120f85c30e9,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1051635967}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: -1}
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
 --- !u!114 &1051635973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36545,7 +36543,7 @@ GameObject:
   - 95: {fileID: 2074800791}
   - 64: {fileID: 2074800790}
   - 114: {fileID: 2074800789}
-  - 135: {fileID: 2074800788}
+  - 65: {fileID: 2074800788}
   - 82: {fileID: 2074800787}
   - 82: {fileID: 2074800786}
   - 82: {fileID: 2074800785}
@@ -36795,19 +36793,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!135 &2074800788
-SphereCollider:
+--- !u!65 &2074800788
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13575262, guid: 373951286a96940f6bd24c67a31f2fe8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2074800783}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: -1}
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
 --- !u!114 &2074800789
 MonoBehaviour:
   m_ObjectHideFlags: 0
