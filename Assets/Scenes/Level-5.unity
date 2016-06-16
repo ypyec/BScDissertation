@@ -11919,6 +11919,10 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6564102, guid: ce2e7be09bcfd4927b35d53a199d76a7, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ce2e7be09bcfd4927b35d53a199d76a7, type: 2}
   m_IsPrefabParent: 0
@@ -15570,11 +15574,11 @@ GameObject:
   - 23: {fileID: 647160422}
   - 95: {fileID: 647160421}
   - 64: {fileID: 647160420}
-  - 135: {fileID: 647160419}
   - 114: {fileID: 647160418}
   - 82: {fileID: 647160417}
   - 82: {fileID: 647160416}
   - 82: {fileID: 647160415}
+  - 65: {fileID: 647160419}
   m_Layer: 0
   m_Name: door-03
   m_TagString: Untagged
@@ -15834,18 +15838,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyLocked: 0
---- !u!135 &647160419
-SphereCollider:
+--- !u!65 &647160419
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13592370, guid: fe320443175114ba0a637557a2761d4d,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 647160413}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Size: {x: 0.5, y: 2, z: 2}
   m_Center: {x: 0, y: 1, z: -1}
 --- !u!64 &647160420
 MeshCollider:
@@ -19068,6 +19071,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 115250, guid: 71e0aa97ab380417cb856b0d37a96acd, type: 2}
       propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544736, guid: 71e0aa97ab380417cb856b0d37a96acd, type: 2}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -25163,6 +25170,10 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6505628, guid: 4128a5bd605e54b76990e372ee812d85, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4128a5bd605e54b76990e372ee812d85, type: 2}
   m_IsPrefabParent: 0
@@ -28588,10 +28599,10 @@ GameObject:
   - 95: {fileID: 1234624595}
   - 64: {fileID: 1234624594}
   - 114: {fileID: 1234624593}
-  - 135: {fileID: 1234624592}
   - 82: {fileID: 1234624591}
   - 82: {fileID: 1234624590}
   - 82: {fileID: 1234624589}
+  - 65: {fileID: 1234624592}
   m_Layer: 0
   m_Name: door-02
   m_TagString: Untagged
@@ -28838,19 +28849,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!135 &1234624592
-SphereCollider:
+--- !u!65 &1234624592
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13575262, guid: 373951286a96940f6bd24c67a31f2fe8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1234624587}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: -1}
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
 --- !u!114 &1234624593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33705,7 +33715,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 13564960, guid: 585fb9b7228a24a02af39dbf13663c38, type: 2}
       propertyPath: m_Radius
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 585fb9b7228a24a02af39dbf13663c38, type: 2}
@@ -39814,6 +39824,10 @@ Prefab:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6544736, guid: 71e0aa97ab380417cb856b0d37a96acd, type: 2}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71e0aa97ab380417cb856b0d37a96acd, type: 2}
   m_IsPrefabParent: 0
@@ -43961,6 +43975,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 115250, guid: 71e0aa97ab380417cb856b0d37a96acd, type: 2}
       propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6544736, guid: 71e0aa97ab380417cb856b0d37a96acd, type: 2}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -49019,7 +49037,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 13564960, guid: 13038d0d565044ac69cc5ba2efd1f74e, type: 2}
       propertyPath: m_Radius
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 13038d0d565044ac69cc5ba2efd1f74e, type: 2}
@@ -50665,10 +50683,10 @@ GameObject:
   - 95: {fileID: 2059536356}
   - 64: {fileID: 2059536355}
   - 114: {fileID: 2059536354}
-  - 135: {fileID: 2059536353}
   - 82: {fileID: 2059536352}
   - 82: {fileID: 2059536351}
   - 82: {fileID: 2059536350}
+  - 65: {fileID: 2059536353}
   m_Layer: 0
   m_Name: door-02
   m_TagString: Untagged
@@ -50915,19 +50933,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!135 &2059536353
-SphereCollider:
+--- !u!65 &2059536353
+BoxCollider:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13575262, guid: 373951286a96940f6bd24c67a31f2fe8,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2059536348}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0.5, z: -1}
+  m_Size: {x: 0.5, y: 2, z: 2}
+  m_Center: {x: 0, y: 1, z: -1}
 --- !u!114 &2059536354
 MonoBehaviour:
   m_ObjectHideFlags: 0
