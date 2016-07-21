@@ -2475,11 +2475,11 @@ Prefab:
       objectReference: {fileID: 1409285041}
     - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22481902, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 22427180, guid: 973febb5348cf443ca678d89d77d4735, type: 2}
       propertyPath: m_RootOrder
@@ -11166,7 +11166,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 971536506}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 2, z: 2}

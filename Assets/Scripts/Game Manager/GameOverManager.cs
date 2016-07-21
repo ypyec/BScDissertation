@@ -30,7 +30,6 @@ public class GameOverManager : MonoBehaviour
 		exitText = exitText.GetComponent<Button> ();
 		timer = 0.5f;
 		index = 0;
-		GameOverMenu.gameObject.SetActive (false);
 		GameOverMenu.enabled = false;
 		audioSource = audioSource.GetComponent<AudioSource> ();
 		GameOverSelect (index);
@@ -45,9 +44,8 @@ public class GameOverManager : MonoBehaviour
 	{
 		timer += Time.unscaledDeltaTime;
 		// If the player has run out of health...
-		if(playerHealth.currentHealth <= 0 && timer > 3f)
+		if(playerHealth.currentHealth <= 0)
 		{
-			GameOverMenu.gameObject.SetActive (true);
 			text1.enabled = false;
 			text2.enabled = false;
 			topText.text = text2.text;
